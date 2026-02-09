@@ -1,0 +1,93 @@
+---
+title: "Working with Web Tracking Data"
+subtitle: ""
+author:
+  - "Felix Schmidt"
+  - "Maximilian Haag"
+institute: ""
+output:
+    beamer_presentation:
+        keep_tex: yes
+        latex_engine: xelatex
+aspectratio: 169
+date: "`r Sys.Date()`"
+theme: metropolis
+colortheme: dove
+fontfamily: sourcesanspro
+fontsize: 10
+header-includes: |
+    % set the title background
+    \pgfdeclareimage[width=\paperwidth,height=\paperheight]{bgtitle}{template/background3.pdf}
+    \usebackgroundtemplate{\pgfuseimage{bgtitle}}
+    \usefonttheme[onlylarge]{structurebold}
+    \setbeamerfont{page number in head/foot}{size=\tiny}
+    \date{\vspace{2.8em}\insertdate}
+    % Redefine the frametitle to set the opacity of the filling and text
+    \makeatletter
+        \setbeamertemplate{frametitle}
+        {
+          \ifbeamercolorempty[bg]{frametitle}{}{\nointerlineskip}%
+          \@tempdima=\textwidth%
+          \advance\@tempdima by\beamer@leftmargin%
+          \advance\@tempdima by\beamer@rightmargin%
+          \pgfsetfillopacity{0}
+          \begin{beamercolorbox}[sep=0.3cm,left,wd=\the\@tempdima]{frametitle}
+            \usebeamerfont{frametitle}%
+            \vbox{}\vskip-.45ex%
+            \if@tempswa\else\csname beamer@fteleft\endcsname\fi%
+            \strut\pgfsetfillopacity{1}\insertframetitle\strut\par%
+            {%
+              \ifx\insertframesubtitle\@empty%
+              \else%
+              {\usebeamerfont{framesubtitle}\usebeamercolor[fg]{framesubtitle}\insertframesubtitle\strut\par}%
+              \fi
+            }%
+            \vskip-1ex%
+            \if@tempswa\else\vskip-.3cm\fi%
+          \end{beamercolorbox}%
+        }
+    \makeatother
+    % Set a mode<all> command to include to use in include-before
+    \newcommand{\modeall}{\mode<all>}
+    \newcommand{\setbgimage}[1]{
+        \modeall\usebackgroundtemplate{\includegraphics[width=\paperwidth]{#1}}
+        \modeall\pgfdeclareimage[width=\paperwidth,height=\paperheight]{background}{#1}
+        \modeall\usebackgroundtemplate{\pgfuseimage{background}}
+        \mode*
+    }
+    % Set a default background image command
+    \newcommand{\defaultbgimage}{template/background8.pdf}
+    \newcommand{\setdefaultbgimage}{
+        \setbgimage{\defaultbgimage}
+    }
+    % Set font color for title page elements
+    \setbeamercolor{hrule}{fg=white}
+    \setbeamercolor{title}{fg=white}
+    \setbeamercolor{subtitle}{fg=white}
+    \setbeamercolor{author}{fg=white}
+    \setbeamercolor{institute}{fg=white}
+    \setbeamercolor{date}{fg=white}
+    % no footer for the title slide
+    \setbeamertemplate{frame footer}{}
+    % define a new title slide template
+    \defbeamertemplate*{title page}{customized}[1][]
+    {
+      \vfill
+      \usebeamerfont{title}\usebeamercolor[fg]{title}\inserttitle\par
+      \usebeamerfont{subtitle}\usebeamercolor[fg]{subtitle}\insertsubtitle\par
+      \bigskip
+      \bigskip
+      \usebeamerfont{author}\insertauthor\par
+      \usebeamerfont{institute}\insertinstitute\par
+      \smallskip
+      \usebeamerfont{date}\insertdate\par
+    }
+include-before: |
+    \setdefaultbgimage
+    \modeall\setbeamertemplate{frame footer}{\insertdate}
+---
+
+```{r setup, include=FALSE}
+knitr::opts_chunk$set(echo = TRUE)
+source("../helpers.R")
+```
