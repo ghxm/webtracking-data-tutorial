@@ -26,6 +26,191 @@ In this code along, we will work with the Web Tracking data from the GESIS panel
 
 @TODO
 
-# 
+# Topics
+## Basics
+
+For those less acquainted with computational methods, we begin with some basic examples so that you can familiarize yourself with browsing data. You will still need to install the packages and load the data as described above.
+
+First, let’s get a feeling for the data: How many participants are in the data?
+
+
+1. Load Campusfile
+2. Linkage Merge survey data (demographics)
+
+
+```{r}
+setwd(dirname(rstudioapi::getActiveDocumentContext()$path))
+
+df <- read_csv2("../data/ZA5670_webtracking_data.csv")
+glimpse(df)
+
+df %>%
+  summarise(
+    n_rows = n(),
+    n_panelists = n_distinct(panelist_id),
+    missing_start_time = sum(is.na(start_time)),
+    missing_host = sum(is.na(host))
+  )
+```
+```{r}
+survey_data <- read_csv2("../data/ZA5670_survey_data.csv")
+glimpse(survey_data)
+
+survey_data = survey_data %>% 
+  dplyr::select(panelist_id, da119a_sex, da120a_ybrth, da127a_seduc)
+
+
+
+# merge: many browsing rows + one survey row per panelist
+data_full <- df %>%
+  left_join(survey_data, by = "panelist_id")
+
+glimpse(data_full)
+```
+
+## Working with URLs
+1. extract DOMAIN from HOST
+
+
+```{r}
+data_full <- data_full %>%
+  mutate(domain = adaR::ada_get_domain(paste0('https://', host)))
+
+
+# Most common domains
+data_full %>% 
+  count(domain, sort = TRUE) %>% 
+  head(20)
+```
+
+
+
+
+2. 
+
+
+
+## Classify hosts (domains)
+1. Merge GOND (German News List)
+
+```{r}
+gond <- openxlsx::read.xlsx("../data/GONDv3_domains.xlsx")
+glimpse(gond)
+
+gond = gond %>% 
+  dplyr::filter(language=="de")
+
+# We will join after we create `domain` from `host`.
+# Expected: GOND has a column called `domain` (e.g., spiegel.de).
+```
+
+```{r}
+# flag news domains
+data_full = data_full %>% 
+  mutate(is_news = if_else(domain %in% gond$domain,1,0))
+
+
+# How many news visits are in the data?
+prop.table(table(data_full$is_news))
+
+
+# Most common news domains
+data_full %>% 
+  filter(is_news==1) %>% 
+  count(domain, sort = TRUE) %>% 
+  head(20)
+```
+
+
+
+2. Flag "search engines"
+
+```{r}
+search_engines <- c(
+  "google.com", "google.de",
+  "bing.com",
+  "duckduckgo.com",
+  "yahoo.com",
+  "ecosia.org"
+)
+
+# flag news search_engines
+data_full = data_full %>% 
+  mutate(is_se = if_else(domain %in% search_engines,1,0))
+
+```
+
+```{r}
+data_full %>%
+  summarise(
+    n_visits = n(),
+    n_news_visits = sum(is_news, na.rm = TRUE),
+    n_search_visits = sum(is_se, na.rm = TRUE),
+    share_news = mean(is_news, na.rm = TRUE),
+    share_search = mean(is_se, na.rm = TRUE)
+  )
+
+```
+
+```{r}
+prop.table(table(data_full$da120a_ybrth, data_full$is_news))
+```
+
+
+
+## Measures and Operationalisations (by panelist)
+1. Duration of a visit
+2. Number of news visits
+
+```{r}
+df_ind <- data_full %>%
+  group_by(panelist_id) %>%
+  summarise(
+    n_visits = n(),
+    news_visits   = sum(is_news, na.rm = TRUE),
+    search_visits = sum(is_se,   na.rm = TRUE),
+    .groups = "drop"
+  )
+```
+
+
+
+summary(news_visits$news_visits)
+news_visits %>% arrange(desc(news_visits)) %>% head(10)
+
+3. Number of search engine visits
+
+## Distributions (and Associations)
+1. Build participant-level analysis dataset
+
+For associations with survey variables, we build a one-row-per-person dataset.
+
+```{r}
+df_analysis <- survey %>%
+  left_join(news_visits, by = "panelist_id") %>%
+  left_join(search_visits, by = "panelist_id") %>%
+  mutate(
+    news_visits = replace_na(news_visits, 0),
+    search_visits = replace_na(search_visits, 0)
+  )
+
+glimpse(analysis_df)
+```
+
+
+
+1. skewed distributions
+2. political interest and news visits?
+
+## Tasks
+Do people with a high interest in politics visit news sites more often?
+
+
+##
+
+## 
+
+
+
 
 ...
