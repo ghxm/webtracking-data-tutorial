@@ -16,3 +16,16 @@ output:
 knitr::opts_chunk$set(echo = TRUE, warning = FALSE, message = FALSE)
 source("../helpers.R")
 ```
+
+# Introduction
+
+In this code along, we will work with the Web Tracking data from the GESIS panel.dbd (Campusfile: [ZA5670](https://search.gesis.org/research_data/ZA5670)). We will cover data loading, cleaning, and basic analysis using R. Make sure you have downloaded the data and placed it in the `data/` folder as per the setup instructions.
+
+
+# Setup
+
+@TODO
+
+# 
+
+...
