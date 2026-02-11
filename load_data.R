@@ -180,3 +180,14 @@ if (!file.exists(ENHANCED_DATA_PATH)) {
   cat("Setup complete! You're ready to start.\n")
   cat("========================================\n\n")
 }
+
+# ============================================================================
+# Load enhanced dataset into wt_data for tutorial use
+# ============================================================================
+# This loads the enhanced web tracking data into a dataframe called wt_data
+# with columns: panelist_id, start_time, url
+
+wt_data <- load_enhanced_webtracking_data()
+
+cat("Enhanced web tracking data loaded into 'wt_data' dataframe\n")
+cat("Columns: panelist_id, start_time, url\n\n")

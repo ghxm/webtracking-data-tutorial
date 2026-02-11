@@ -112,39 +112,179 @@ Make sure you have downloaded the data and placed it in the `data/` folder as pe
 
 ## Loading and understanding the dataset
 
-**Description:** We'll load the enhanced web tracking dataset and explore its structure. Real-world web tracking data is messy - you'll see full URLs, domain-only entries, and privacy placeholders all mixed together. Understanding this heterogeneity is the first step in preprocessing.
+We'll take a look at the enhanced web tracking dataset and explore its structure.
 
-**Learning Objectives:**
 
-- Understand the three-column structure: panelist_id, timestamp, url
-- Identify different types of URL data quality (full URLs vs domains vs blacked_out)
-- Explore basic properties: number of panelists, time range, visit counts
-- Recognize panel data characteristics (multiple visits per person over time)
+```{r examine-data}
+# Examine data structure
+cat("=== Dataset Structure ===\n")
+glimpse(wt_data)
 
-```{r load-data}
-# TODO: Load enhanced dataset
-# TODO: Examine structure with str(), head(), glimpse()
-# TODO: Count number of unique panelists
-# TODO: Check time range (min/max timestamps)
-# TODO: Count visits by URL type (full vs domain vs blacked_out)
-# TODO: Show sample URLs from each type
+cat("\n=== First 10 rows ===\n")
+head(wt_data, 10)
+
+
 ```
 
-**Try it yourself:** How would you count the average number of visits per panelist? How would you identify the most active browsing days?
+We'll also check what time range our data is covering:
+
+```{r check-time-range}
+# Check time range
+# Parse timestamps (ISO format with timezone)
+wt_data <- wt_data %>%
+  mutate(timestamp = as.POSIXct(start_time, format = "%Y-%m-%d %H:%M:%S"))
+
+cat("\n=== Time Range ===\n")
+cat("Start:", format(min(wt_data$timestamp, na.rm = TRUE), "%Y-%m-%d %H:%M"), "\n")
+cat("End:", format(max(wt_data$timestamp, na.rm = TRUE), "%Y-%m-%d %H:%M"), "\n")
+cat("Duration:",
+    as.numeric(difftime(max(wt_data$timestamp, na.rm = TRUE),
+                        min(wt_data$timestamp, na.rm = TRUE),
+                        units = "days")),
+    "days\n")
+
+
+```
+
+Now let's examine our panelists and visits in more detail. We'll count the total number of visits, unique panelists, and look at the distribution of visits per panelist. We'll also check the time range of the data to understand how long the tracking period is. Finally, we'll look at the distribution of visits per day per panelist to see if there are any temporal patterns in the data.
+
+```{r}
+
+# Count unique panelists
+n_panelists <- n_distinct(wt_data$panelist_id)
+cat("\n=== Basic Statistics ===\n")
+cat("Total visits:", format(nrow(wt_data), big.mark = ","), "\n")
+cat("Unique panelists:", n_panelists, "\n")
+
+# Show visits per panelist (summary statistics)
+cat("\n=== Visits per Panelist ===\n")
+visits_per_panelist <- wt_data %>%
+  count(panelist_id, name = "visits") %>%
+  pull(visits)
+
+cat("Mean:", round(mean(visits_per_panelist), 1), "\n")
+cat("Median:", median(visits_per_panelist), "\n")
+cat("Min:", min(visits_per_panelist), "\n")
+cat("Max:", format(max(visits_per_panelist), big.mark = ","), "\n")
+
+# Show visits per day per panelist
+wt_data <- wt_data %>%
+  mutate(date = as.Date(timestamp))
+
+cat("\n=== Visits per Day per Panelist ===\n")
+visits_per_day <- wt_data %>%
+  group_by(panelist_id, date) %>%
+  summarise(visits = n(), .groups = "drop") %>%
+  pull(visits)
+
+cat("Mean:", round(mean(visits_per_day), 1), "\n")
+cat("Median:", median(visits_per_day), "\n")
+cat("Max:", max(visits_per_day), "\n")
+
+
+```
+
+
+
+Of course, we can also visualize this data to get a better sense of the distribution of visits and temporal patterns:
+
+
+```{r visualize-data-visits-per-user, fig.width=8, fig.height=5}
+# Distribution of visits per panelist
+visits_per_user <- wt_data %>%
+  count(panelist_id, name = "visits")
+
+ggplot(visits_per_user, aes(x = visits)) +
+  geom_histogram(bins = 50, fill = "steelblue", color = "white") +
+  scale_x_continuous(labels = function(x) format(x, big.mark = ",", scientific = FALSE)) +
+  labs(
+    title = "Distribution of Visits per Panelist",
+    x = "Number of Visits",
+    y = "Number of Panelists"
+  ) +
+  theme_minimal()
+```
+
+
+
+
+```{r visualize-data-visits-over-time, fig.width=10, fig.height=5}
+# Visits over time (daily counts)
+visits_over_time <- wt_data %>%
+  count(date, name = "visits")
+
+ggplot(visits_over_time, aes(x = date, y = visits)) +
+  geom_line(color = "steelblue", linewidth = 0.8) +
+  geom_smooth(method = "loess", se = TRUE, color = "darkred", alpha = 0.2) +
+  scale_y_continuous(labels = function(x) format(x, big.mark = ",", scientific = FALSE)) +
+  labs(
+    title = "Web Tracking Visits Over Time",
+    x = "Date",
+    y = "Number of Visits"
+  ) +
+  theme_minimal() +
+  theme(axis.text.x = element_text(angle = 45, hjust = 1))
+```
+
+```{r visualize-data-visits-day-time, fig.width=10, fig.height=5}
+# Visits by hour of day
+visits_by_hour <- wt_data %>%
+  mutate(hour = as.numeric(format(timestamp, "%H"))) %>%
+  count(hour, name = "visits")
+
+ggplot(visits_by_hour, aes(x = hour, y = visits)) +
+  geom_col(fill = "steelblue") +
+  scale_x_continuous(breaks = 0:23) +
+  scale_y_continuous(labels = function(x) format(x, big.mark = ",", scientific = FALSE)) +
+  labs(
+    title = "Web Tracking Activity by Hour of Day",
+    x = "Hour of Day (0-23)",
+    y = "Number of Visits"
+  ) +
+  theme_minimal()
+```
+
+
+
+The data contains not only full URLs but also entries that are just domains or privacy placeholders. This is common in web tracking data due to privacy settings and browser behavior. Understanding this heterogeneity is crucial for preprocessing and analysis. Let's categorize the URLs into types and see how many visits fall into each category. This will help us understand the composition of our dataset and inform our parsing and classification strategies. We'll also show sample URLs from each type to illustrate the differences.
+
+```{r annotate-url-type}
+
+# Annotate URL type (3 categories)
+wt_data <- wt_data %>%
+  mutate(
+    url_type = case_when(
+      url %in% c("blacked_out", "full_deny") ~ "Privacy placeholder",
+      str_detect(url, "^https?://") | str_detect(url, "/") ~ "Full URL",
+      TRUE ~ "Domain only"
+    )
+  )
+
+# Show URL type distribution
+cat("=== URL Type Distribution ===\n")
+wt_data %>%
+  count(url_type, sort = TRUE) %>%
+  mutate(
+    percentage = paste0(round(n / sum(n) * 100, 1), "%")
+  ) %>%
+  print()
+
+# Show sample URLs from each type
+cat("\n=== Sample URLs by Type ===\n")
+wt_data %>%
+  group_by(url_type) %>%
+  slice_sample(n = 3) %>%
+  select(url_type, url) %>%
+  ungroup() %>%
+  arrange(url_type) %>%
+  print(n = 15)
+```
 
 
 
 ## URL anatomy and parsing
 
-**Description:** URLs contain rich information encoded in their structure. We'll break them down into components (protocol, host, domain, path, query parameters) and learn how to extract each piece. We'll show both manual tidyverse approaches and webtrackR's built-in functions.
-
-**Learning Objectives:**
-
-- Understand URL structure and what each component means
-- Extract host/domain from full URLs and domain-only entries
-- Parse paths and query parameters from URLs
-- Handle edge cases (domain-only entries, privacy placeholders)
-- Understand why parsing matters for classification
+URLs contain rich information encoded in their structure. We'll break them down into components (protocol, host, domain, path, query parameters) and learn how to extract each piece. We'll show both manual tidyverse approaches and webtrackR's built-in functions.
 
 Because the data contains only the hostname / domain for some visits, we'll need to add `http://` to parse the URLs properly. This is a common issue with web tracking data where some entries are just domains without protocol or path for privacy reasons. Therefore, we want to add `http://` to all entries in the `url` column to ensure consistent parsing. This way, we can use URL parsing functions that expect a full URL format.
 
