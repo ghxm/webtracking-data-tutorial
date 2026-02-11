@@ -41,12 +41,22 @@ news_paths <- function(n) {
   if (n_home > 0) paths <- c(paths, rep("/", n_home))
   if (n_category > 0) paths <- c(paths, paste0("/", sample(categories, n_category, replace = TRUE), "/"))
   if (n_article > 0) {
-    paths <- c(paths, paste0(
+    base_paths <- paste0(
       "/", sample(categories, n_article, replace = TRUE),
       "/", sample(topics, n_article, replace = TRUE),
       "-", sample(c("analyse", "kommentar", "bericht", "interview"), n_article, replace = TRUE),
       "-a-", sample(100000:999999, n_article, replace = TRUE), ".html"
-    ))
+    )
+
+    # Add query parameters to some articles (tracking, sharing, etc.)
+    add_params <- runif(n_article) < 0.3
+    base_paths[add_params] <- paste0(
+      base_paths[add_params],
+      "?", sample(c("utm_source=google", "utm_source=facebook", "ref=twitter",
+                    "share=email", "print=true"), sum(add_params), replace = TRUE)
+    )
+
+    paths <- c(paths, base_paths)
   }
 
   sample(paths, n)
@@ -79,7 +89,16 @@ ecommerce_paths <- function(n, domain) {
 
     paths <- c()
     if (n_home > 0) paths <- c(paths, rep("/", n_home))
-    if (n_search > 0) paths <- c(paths, paste0("/s?k=", sample(search_terms, n_search, replace = TRUE)))
+    if (n_search > 0) {
+      # Add sorting/filtering params to searches
+      search_paths <- paste0("/s?k=", sample(search_terms, n_search, replace = TRUE))
+      add_sort <- runif(n_search) < 0.4
+      search_paths[add_sort] <- paste0(
+        search_paths[add_sort],
+        "&sort=", sample(c("price-asc-rank", "price-desc-rank", "review-rank", "date-desc-rank"), sum(add_sort), replace = TRUE)
+      )
+      paths <- c(paths, search_paths)
+    }
     if (n_product > 0) paths <- c(paths, sapply(1:n_product, function(i) paste0("/dp/", paste0(sample(c(LETTERS, 0:9), 10, replace = TRUE), collapse = ""))))
     if (n_cart > 0) paths <- c(paths, rep("/gp/cart/view.html", n_cart))
     if (n_gp > 0) paths <- c(paths, sapply(1:n_gp, function(i) paste0("/gp/product/", paste0(sample(c(LETTERS, 0:9), 10, replace = TRUE), collapse = ""))))
@@ -91,7 +110,16 @@ ecommerce_paths <- function(n, domain) {
 
     paths <- c()
     if (n_home > 0) paths <- c(paths, rep("/", n_home))
-    if (n_search > 0) paths <- c(paths, paste0("/sch/i.html?_nkw=", sample(search_terms, n_search, replace = TRUE)))
+    if (n_search > 0) {
+      # Add sorting params to searches
+      search_paths <- paste0("/sch/i.html?_nkw=", sample(search_terms, n_search, replace = TRUE))
+      add_sort <- runif(n_search) < 0.3
+      search_paths[add_sort] <- paste0(
+        search_paths[add_sort],
+        "&_sop=", sample(c("10", "12", "15", "16"), sum(add_sort), replace = TRUE)
+      )
+      paths <- c(paths, search_paths)
+    }
     if (n_item > 0) paths <- c(paths, paste0("/itm/", sample(100000000:999999999, n_item, replace = TRUE)))
     if (n_mys > 0) paths <- c(paths, rep("/mys/home", n_mys))
   } else {
@@ -118,7 +146,16 @@ video_social_paths <- function(n, domain) {
 
     paths <- c()
     if (n_home > 0) paths <- c(paths, rep("/", n_home))
-    if (n_watch > 0) paths <- c(paths, sapply(1:n_watch, function(i) paste0("/watch?v=", paste0(sample(c(letters, LETTERS, 0:9, "-", "_"), 11, replace = TRUE), collapse = ""))))
+    if (n_watch > 0) {
+      # Add tracking/list params to some videos
+      watch_paths <- sapply(1:n_watch, function(i) paste0("/watch?v=", paste0(sample(c(letters, LETTERS, 0:9, "-", "_"), 11, replace = TRUE), collapse = "")))
+      add_params <- runif(n_watch) < 0.3
+      watch_paths[add_params] <- paste0(
+        watch_paths[add_params],
+        "&", sample(c("list=PLxxx", "t=120s", "feature=share", "ab_channel=ChannelName"), sum(add_params), replace = TRUE)
+      )
+      paths <- c(paths, watch_paths)
+    }
     if (n_search > 0) paths <- c(paths, paste0("/results?search_query=", sample(search_terms, n_search, replace = TRUE)))
   } else if (str_detect(domain, "facebook")) {
     n_home <- round(n * 0.3)
@@ -136,7 +173,13 @@ video_social_paths <- function(n, domain) {
 
     paths <- c()
     if (n_home > 0) paths <- c(paths, rep("/", n_home))
-    if (n_post > 0) paths <- c(paths, sapply(1:n_post, function(i) paste0("/p/", paste0(sample(c(letters, LETTERS, 0:9), 11, replace = TRUE), collapse = ""))))
+    if (n_post > 0) {
+      # Add sharing params to some posts
+      post_paths <- sapply(1:n_post, function(i) paste0("/p/", paste0(sample(c(letters, LETTERS, 0:9), 11, replace = TRUE), collapse = "")))
+      add_params <- runif(n_post) < 0.2
+      post_paths[add_params] <- paste0(post_paths[add_params], "/?igshid=", paste0(sample(c(letters, 0:9), 8, replace = TRUE), collapse = ""))
+      paths <- c(paths, post_paths)
+    }
     if (n_reel > 0) paths <- c(paths, sapply(1:n_reel, function(i) paste0("/reel/", paste0(sample(c(letters, LETTERS, 0:9), 11, replace = TRUE), collapse = ""))))
   } else {
     paths <- rep("/", n)
