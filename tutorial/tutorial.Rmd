@@ -308,13 +308,23 @@ wt_data %>%
 
 URLs contain rich information encoded in their structure. We'll break them down into components (protocol, host, domain, path, query parameters) and learn how to extract each piece. We'll show both manual tidyverse approaches and webtrackR's built-in functions.
 
-Because the data contains only the hostname / domain for some visits, we'll need to add `http://` to parse the URLs properly. This is a common issue with web tracking data where some entries are just domains without protocol or path for privacy reasons. Therefore, we want to add `http://` to all entries in the `url` column to ensure consistent parsing. This way, we can use URL parsing functions that expect a full URL format.
+Because the data contains only the hostname / domain for some visits, we'll need to add a protocol to parse the URLs properly. This is a common issue with web tracking data where some entries are just domains without protocol or path for privacy reasons. Therefore, we want to add `https://` to all entries in the `url` column to ensure consistent parsing. This way, we can use URL parsing functions that expect a full URL format.
 
 ```{r add-protocol}
+# Add http:// protocol to URLs that don't have one for consistent parsing
+# Skip privacy placeholders and special browser URLs
 
-# TODO: Add http:// to all entries (that don't have a protocol) in the url column for consistent parsing
-
-
+wt_data <- wt_data %>%
+  mutate(
+    url = case_when(
+      # Keep privacy placeholders as is
+      url %in% c("blacked_out", "full_deny") ~ url,
+      # Already has a protocol (http://, https://, chrome://, about:, etc.) - keep as is
+      str_detect(url, "^[a-z][a-z0-9+.-]*:") ~ url,
+      # Add http:// to everything else (domain-only URLs)
+      TRUE ~ paste0("https://", url)
+    )
+  )
 
 ```
 
@@ -324,33 +334,104 @@ Now, we can begin dissecting the URLs into their components. While we could use 
 ![URL anatomy. Source: https://journals.sagepub.com/doi/10.1177/08944393241227868#fig2-08944393241227868](../assets/url_anatomy.jpg)
 
 
-
-```{r parse-urls}
-# TODO: Manual approach using tidyr::separate() and stringr::str_extract()
-# Show basic regex patterns for extracting URL components
-
-# TODO: Package approach using webtrackR::extract_host(), extract_domain(), extract_path()
-# This is the main approach we'll use going forward
-
-```
-
-You can also do this in one step with the `adaR` package:
-
 ```{r ada-parse}
+# Using adaR to parse URL components
+# adaR provides individual extraction functions and a comprehensive parser
 
-# TODO: Show how to use 
-# TODO: Mention adaR::ada_parse() as alternative for robust URL parsing
-# (don't demo extensively, just point out it exists)
+# Get protocol (scheme)
+cat("=== Top 20 Protocols ===\n")
+wt_data %>%
+  mutate(protocol = ada_get_protocol(url)) %>%
+  count(protocol, sort = TRUE) %>%
+  head(20) %>%
+  print()
 
-# TODO: Compare results - show sample of parsed URLs to extract all URL components 
+# Get host (domain + port)
+cat("\n=== Top 20 Hosts ===\n")
+wt_data %>%
+  mutate(host = ada_get_host(url)) %>%
+  count(host, sort = TRUE) %>%
+  head(20) %>%
+  print()
 
+# Get hostname (domain without port)
+cat("\n=== Top 20 Hostnames ===\n")
+wt_data %>%
+  mutate(hostname = ada_get_hostname(url)) %>%
+  count(hostname, sort = TRUE) %>%
+  head(20) %>%
+  print()
+
+# OR: Parse all components at once with ada_url_parse()
+cat("\n=== Sample of Parsed URL Components ===\n")
+url_components <- ada_url_parse(head(wt_data$url, 50))
+print(url_components |> filter(href!='blacked_out' & href!='full_deny'))
+
+cat("\nColumns returned by ada_url_parse():\n")
+cat(paste(names(url_components), collapse = ", "), "\n")
+```
+
+We can also use `adaR` to check and modify URLs. For more information, see the [adaR documentation](https://gesistsa.github.io/adaR/).
+
+
+You can also use the `webtrackR` package to extract specific components. The package automatically takes care of missing protocols and then calls `adaR` under the hood.
+
+```{r webtrackr-parse}
+# Using webtrackR to extract URL components
+# webtrackR adds new columns to the dataset and returns the modified data frame
+
+# Before using webtrackR functions, we need to convert our data frame to a webtrackR dataset with appropriate timestamp parsing and variable names.
+
+wtr_data <- wt_data %>%
+    select(-timestamp) %>% # Remove previously parsed timestamp to avoid confusion
+      as.wt_dt(
+          timestamp_format = "%Y-%m-%d %H:%M:%OS",
+          tz = "UTC",
+          varnames = c(panelist_id = "panelist_id", url = "url", timestamp = "start_time")
+        )
+
+# Extract host (automatically handles missing protocols via adaR)
+wtr_data <- extract_host(wtr_data, varname = "url")
+
+# Extract domain (top-level domain)
+wtr_data <- extract_domain(wtr_data, varname = "url")
+
+# Extract path
+wtr_data <- extract_path(wtr_data, varname = "url")
+
+
+# Show results
+cat("=== Top 20 Domains ===\n")
+wtr_data %>%
+  count(domain, sort = TRUE) %>%
+  head(20) %>%
+  print()
+
+cat("\n=== Sample of Extracted Components ===\n")
+wtr_data %>%
+  select(url, host, domain) %>%
+  filter(!is.na(domain)) %>%
+  slice_sample(n = 10) %>%
+  print()
+
+cat("\nNote: webtrackR's extract_domain() returns the 'top private domain',")
+cat("\ne.g., 'mysite.blogspot.com' not 'blogspot.com'\n")
 ```
 
 
+An added benefitr using `webtrackR` is that is allows us to call `summary` on the dataset to get a quick overview of the variables and their distributions. This is a useful way to check that our parsing worked as expected and to understand the composition of our data.
+
+```{r webtrackr-summary}
+# Show summary of webtrackR dataset
+cat("=== Summary of webtrackR Dataset ===\n")
+summary(wtr_data)
+```
 
 
 
 ## Data cleaning and deduplication
+
+TODO: continue here The `webtrackR` package provides a number other convenient functions for cleaning and deduplicating web tracking data. This is an essential step before any analysis, as raw web tracking data often contains artifacts like consecutive duplicate visits (e.g., from browser refreshes or referrals), extremely short visits (e.g., accidental clicks), and invalid timestamps. We'll learn how to clean these artifacts to get a more realistic picture of browsing behavior.
 
 **Description:** Web browsers and tracking systems create artifacts - consecutive duplicate visits, extremely short visits, invalid timestamps. We'll clean these artifacts to get a realistic picture of browsing behavior. We'll calculate visit durations and remove consecutive duplicates.
 
