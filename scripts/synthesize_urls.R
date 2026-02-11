@@ -1,0 +1,314 @@
+# URL Synthesis Script for Web Tracking Tutorial
+# Creates enhanced dataset with realistic full URLs
+
+library(tidyverse)
+library(lubridate)
+
+set.seed(42) # Reproducibility
+
+# Read original data
+original_data <- read_delim(
+  "data/ZA5670_webtracking_data.csv",
+  delim = ";",
+  col_types = cols(
+    panelist_id = col_character(),
+    start_time = col_character(),
+    host = col_character()
+  )
+)
+
+# Remove quotes from character columns
+original_data <- original_data %>%
+  mutate(across(where(is.character), ~ str_remove_all(.x, '\"')))
+
+# URL Templates for different domain categories
+# Each returns a vector of possible paths for that domain
+
+news_paths <- function(n) {
+  categories <- c("politik", "wirtschaft", "sport", "kultur", "panorama", "wissenschaft")
+  topics <- c(
+    "bundesregierung", "klimawandel", "bundestagswahl", "ukraine-konflikt",
+    "inflation", "energiekrise", "bundeskanzler", "europa", "migration",
+    "fussball", "bundesliga", "olympia", "kultur-debatte"
+  )
+
+  # Calculate exact counts
+  n_home <- round(n * 0.15)
+  n_category <- round(n * 0.25)
+  n_article <- max(0, n - n_home - n_category)
+
+  paths <- c()
+  if (n_home > 0) paths <- c(paths, rep("/", n_home))
+  if (n_category > 0) paths <- c(paths, paste0("/", sample(categories, n_category, replace = TRUE), "/"))
+  if (n_article > 0) {
+    paths <- c(paths, paste0(
+      "/", sample(categories, n_article, replace = TRUE),
+      "/", sample(topics, n_article, replace = TRUE),
+      "-", sample(c("analyse", "kommentar", "bericht", "interview"), n_article, replace = TRUE),
+      "-a-", sample(100000:999999, n_article, replace = TRUE), ".html"
+    ))
+  }
+
+  sample(paths, n)
+}
+
+wiki_paths <- function(n) {
+  topics <- c(
+    "Bundestagswahl", "Klimawandel", "Künstliche_Intelligenz", "COVID-19-Pandemie",
+    "Europäische_Union", "Deutschland", "Berlin", "Bundeskanzler",
+    "Photosynthese", "Quantenphysik", "Geschichte_Deutschlands", "Bundesliga",
+    "Python_(Programmiersprache)", "Maschinelles_Lernen", "Volkswirtschaft"
+  )
+
+  paths <- paste0("/wiki/", sample(topics, n, replace = TRUE))
+  paths
+}
+
+ecommerce_paths <- function(n, domain) {
+  search_terms <- c(
+    "laptop", "smartphone", "kopfhörer", "bücher", "kaffeemaschine",
+    "fernseher", "fahrrad", "schuhe", "kleidung", "spielzeug"
+  )
+
+  if (str_detect(domain, "amazon")) {
+    n_home <- round(n * 0.1)
+    n_search <- round(n * 0.4)
+    n_product <- round(n * 0.3)
+    n_cart <- round(n * 0.1)
+    n_gp <- max(0, n - n_home - n_search - n_product - n_cart)
+
+    paths <- c()
+    if (n_home > 0) paths <- c(paths, rep("/", n_home))
+    if (n_search > 0) paths <- c(paths, paste0("/s?k=", sample(search_terms, n_search, replace = TRUE)))
+    if (n_product > 0) paths <- c(paths, sapply(1:n_product, function(i) paste0("/dp/", paste0(sample(c(LETTERS, 0:9), 10, replace = TRUE), collapse = ""))))
+    if (n_cart > 0) paths <- c(paths, rep("/gp/cart/view.html", n_cart))
+    if (n_gp > 0) paths <- c(paths, sapply(1:n_gp, function(i) paste0("/gp/product/", paste0(sample(c(LETTERS, 0:9), 10, replace = TRUE), collapse = ""))))
+  } else if (str_detect(domain, "ebay")) {
+    n_home <- round(n * 0.1)
+    n_search <- round(n * 0.5)
+    n_item <- round(n * 0.3)
+    n_mys <- max(0, n - n_home - n_search - n_item)
+
+    paths <- c()
+    if (n_home > 0) paths <- c(paths, rep("/", n_home))
+    if (n_search > 0) paths <- c(paths, paste0("/sch/i.html?_nkw=", sample(search_terms, n_search, replace = TRUE)))
+    if (n_item > 0) paths <- c(paths, paste0("/itm/", sample(100000000:999999999, n_item, replace = TRUE)))
+    if (n_mys > 0) paths <- c(paths, rep("/mys/home", n_mys))
+  } else {
+    n_home <- round(n * 0.2)
+    n_search <- round(n * 0.6)
+    n_anzeige <- max(0, n - n_home - n_search)
+
+    paths <- c()
+    if (n_home > 0) paths <- c(paths, rep("/", n_home))
+    if (n_search > 0) paths <- c(paths, paste0("/s-", sample(search_terms, n_search, replace = TRUE), "/k0"))
+    if (n_anzeige > 0) paths <- c(paths, paste0("/anzeige/", sample(100000000:999999999, n_anzeige, replace = TRUE)))
+  }
+
+  sample(paths, n)
+}
+
+video_social_paths <- function(n, domain) {
+  if (str_detect(domain, "youtube")) {
+    n_home <- round(n * 0.1)
+    n_watch <- round(n * 0.7)
+    n_search <- max(0, n - n_home - n_watch)
+
+    search_terms <- c("tutorial", "musik", "nachrichten", "sport", "comedy", "rezept", "diy", "gaming")
+
+    paths <- c()
+    if (n_home > 0) paths <- c(paths, rep("/", n_home))
+    if (n_watch > 0) paths <- c(paths, sapply(1:n_watch, function(i) paste0("/watch?v=", paste0(sample(c(letters, LETTERS, 0:9, "-", "_"), 11, replace = TRUE), collapse = ""))))
+    if (n_search > 0) paths <- c(paths, paste0("/results?search_query=", sample(search_terms, n_search, replace = TRUE)))
+  } else if (str_detect(domain, "facebook")) {
+    n_home <- round(n * 0.3)
+    n_section <- round(n * 0.4)
+    n_video <- max(0, n - n_home - n_section)
+
+    paths <- c()
+    if (n_home > 0) paths <- c(paths, rep("/", n_home))
+    if (n_section > 0) paths <- c(paths, paste0("/", sample(c("watch", "marketplace", "groups", "events"), n_section, replace = TRUE)))
+    if (n_video > 0) paths <- c(paths, paste0("/video/", sample(100000000000:999999999999, n_video, replace = TRUE)))
+  } else if (str_detect(domain, "instagram")) {
+    n_home <- round(n * 0.2)
+    n_post <- round(n * 0.5)
+    n_reel <- max(0, n - n_home - n_post)
+
+    paths <- c()
+    if (n_home > 0) paths <- c(paths, rep("/", n_home))
+    if (n_post > 0) paths <- c(paths, sapply(1:n_post, function(i) paste0("/p/", paste0(sample(c(letters, LETTERS, 0:9), 11, replace = TRUE), collapse = ""))))
+    if (n_reel > 0) paths <- c(paths, sapply(1:n_reel, function(i) paste0("/reel/", paste0(sample(c(letters, LETTERS, 0:9), 11, replace = TRUE), collapse = ""))))
+  } else {
+    paths <- rep("/", n)
+  }
+
+  sample(paths, n)
+}
+
+search_paths <- function(n, domain) {
+  queries <- c(
+    "klimawandel", "bundestagswahl", "rezepte", "wetter", "nachrichten",
+    "coronavirus", "laptop+kaufen", "urlaub+2024", "fußball+ergebnisse",
+    "künstliche+intelligenz", "steuererklärung", "gesunde+ernährung"
+  )
+
+  if (str_detect(domain, "google")) {
+    n_home <- round(n * 0.1)
+    n_search <- round(n * 0.8)
+    n_paginated <- max(0, n - n_home - n_search)
+
+    paths <- c()
+    if (n_home > 0) paths <- c(paths, rep("/", n_home))
+    if (n_search > 0) paths <- c(paths, paste0("/search?q=", sample(queries, n_search, replace = TRUE)))
+    if (n_paginated > 0) paths <- c(paths, paste0("/search?q=", sample(queries, n_paginated, replace = TRUE), "&start=", sample(c(10, 20, 30), n_paginated, replace = TRUE)))
+  } else if (str_detect(domain, "bing")) {
+    n_home <- round(n * 0.1)
+    n_search <- max(0, n - n_home)
+
+    paths <- c()
+    if (n_home > 0) paths <- c(paths, rep("/", n_home))
+    if (n_search > 0) paths <- c(paths, paste0("/search?q=", sample(queries, n_search, replace = TRUE)))
+  } else if (str_detect(domain, "duckduckgo")) {
+    n_home <- round(n * 0.1)
+    n_search <- max(0, n - n_home)
+
+    paths <- c()
+    if (n_home > 0) paths <- c(paths, rep("/", n_home))
+    if (n_search > 0) paths <- c(paths, paste0("/?q=", sample(queries, n_search, replace = TRUE)))
+  } else if (str_detect(domain, "ecosia")) {
+    n_home <- round(n * 0.1)
+    n_search <- max(0, n - n_home)
+
+    paths <- c()
+    if (n_home > 0) paths <- c(paths, rep("/", n_home))
+    if (n_search > 0) paths <- c(paths, paste0("/search?q=", sample(queries, n_search, replace = TRUE)))
+  } else {
+    paths <- rep("/", n)
+  }
+
+  sample(paths, n)
+}
+
+# Domain categorization function
+categorize_domain <- function(domain) {
+  case_when(
+    str_detect(domain, "blacked_out|full_deny") ~ "privacy",
+    str_detect(domain, "spiegel|zeit|tagesschau|sueddeutsche|faz|welt|tagesschau|t-online|msn|heise") ~ "news",
+    str_detect(domain, "wikipedia") ~ "wikipedia",
+    str_detect(domain, "amazon|ebay|kleinanzeigen|zalando|otto\\.de") ~ "ecommerce",
+    str_detect(domain, "youtube|facebook|instagram|twitter|tiktok|reddit") ~ "social_video",
+    str_detect(domain, "google|bing|duckduckgo|ecosia|yahoo") ~ "search",
+    TRUE ~ "other"
+  )
+}
+
+# Generate URL for a given domain
+generate_url <- function(domain, category, make_full_url) {
+  # Privacy placeholders stay as is
+  if (category == "privacy") {
+    return(domain)
+  }
+
+  # Some entries stay domain-only
+  if (!make_full_url) {
+    return(domain)
+  }
+
+  # Add protocol prefix if not present
+  if (!str_detect(domain, "^https?://")) {
+    if (str_detect(domain, "^www\\.")) {
+      protocol <- "https://"
+    } else {
+      protocol <- "https://www."
+    }
+    domain_clean <- domain
+  } else {
+    protocol <- ""
+    domain_clean <- domain
+  }
+
+  # Generate path based on category
+  path <- case_when(
+    category == "news" ~ news_paths(1),
+    category == "wikipedia" ~ wiki_paths(1),
+    category == "ecommerce" ~ ecommerce_paths(1, domain),
+    category == "social_video" ~ video_social_paths(1, domain),
+    category == "search" ~ search_paths(1, domain),
+    TRUE ~ "/"
+  )
+
+  paste0(protocol, domain_clean, path)
+}
+
+# Define domains that should ALWAYS stay as domain-only (never get full URLs)
+# These include email, banking, and survey platforms
+always_domain_only <- function(domain) {
+  str_detect(domain, regex(
+    "mail\\.|webmail\\.|web\\.de|gmx\\.net|puls\\.gesis\\.org|sparkasse|bank|online-banking|login\\.|auth\\.|sso\\.",
+    ignore_case = TRUE
+  ))
+}
+
+# Main synthesis logic
+cat("Synthesizing URLs...\n")
+
+enhanced_data <- original_data %>%
+  mutate(
+    category = categorize_domain(host),
+    # Determine if this entry should get a full URL
+    # Privacy placeholders: always stay as is
+    # Email/banking/survey platforms: always domain-only
+    # Other sites: 70% full URLs, 30% domain-only
+    make_full_url = case_when(
+      category == "privacy" ~ FALSE,
+      always_domain_only(host) ~ FALSE,
+      TRUE ~ runif(n()) < 0.70
+    )
+  ) %>%
+  rowwise() %>%
+  mutate(
+    url = generate_url(host, category, make_full_url)
+  ) %>%
+  ungroup() %>%
+  select(panelist_id, start_time, url)
+
+# Check distribution
+cat("\nURL type distribution:\n")
+enhanced_data %>%
+  mutate(
+    url_type = case_when(
+      str_detect(url, "blacked_out|full_deny") ~ "Privacy placeholder",
+      str_detect(url, "^https?://.*/.+") ~ "Full URL with path",
+      str_detect(url, "^https?://") ~ "Full URL (root)",
+      str_detect(url, "/") ~ "Domain with path",
+      TRUE ~ "Domain only"
+    )
+  ) %>%
+  count(url_type) %>%
+  mutate(percentage = scales::percent(n / sum(n))) %>%
+  print()
+
+# Sample URLs from each category
+cat("\nSample URLs by category:\n")
+enhanced_data %>%
+  mutate(category = case_when(
+    str_detect(url, "blacked_out|full_deny") ~ "privacy",
+    str_detect(url, "spiegel|zeit|tagesschau|t-online") ~ "news",
+    str_detect(url, "wikipedia") ~ "wikipedia",
+    str_detect(url, "amazon|ebay|kleinanzeigen") ~ "ecommerce",
+    str_detect(url, "youtube|facebook|instagram") ~ "social_video",
+    str_detect(url, "google|bing|duckduckgo|ecosia") ~ "search",
+    TRUE ~ "other"
+  )) %>%
+  filter(category != "privacy") %>%
+  group_by(category) %>%
+  slice_sample(n = 2) %>%
+  select(category, url) %>%
+  print(n = 20)
+
+# Write to CSV
+cat("\nWriting enhanced dataset...\n")
+write_csv(enhanced_data, "data/ZA5670_webtracking_data_enhanced.csv")
+
+cat("\nDone! Enhanced dataset saved to data/ZA5670_webtracking_data_enhanced.csv\n")
+cat(sprintf("Total records: %d\n", nrow(enhanced_data)))
