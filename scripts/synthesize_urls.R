@@ -209,6 +209,12 @@ generate_url <- function(domain, category, make_full_url) {
     return(domain)
   }
 
+  # Special browser URLs stay as is (don't add paths)
+  # These include chrome://, about:, extensions, file://, etc.
+  if (str_detect(domain, "^(chrome|about|chrome-extension|moz-extension|edge|opera|file|data|javascript):")) {
+    return(domain)
+  }
+
   # Some entries stay domain-only
   if (!make_full_url) {
     return(domain)
