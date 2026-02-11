@@ -1,4 +1,4 @@
-# Helper functions for "Working with Web Tracking Data" workshop
+# Data loading functions for "Working with Web Tracking Data" workshop
 
 library(tidyverse)
 

@@ -89,7 +89,7 @@ include-before: |
 
 ```{r setup, include=FALSE}
 knitr::opts_chunk$set(echo = TRUE)
-source("../helpers.R")
+
 ```
 
 # First slide

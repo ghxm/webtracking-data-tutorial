@@ -7,7 +7,7 @@ Workshop session materials for an interactive code-along.
 - `slides/` - Presentation slides (using gesis-pandoc-beamer template)
 - `tutorial/` - Interactive tutorial session with integrated exercises
 - `data/` - Data files (see setup instructions below)
-- `helpers.R` - Shared helper functions sourced by all documents
+- `load_data.R` - Data loading functions sourced by tutorial
 - `scripts/` - Data processing scripts (URL synthesis, etc.)
 
 ## Setup

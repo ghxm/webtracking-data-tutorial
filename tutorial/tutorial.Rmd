@@ -75,8 +75,9 @@ if (getRversion() < "4.0.0") {
   warning("This tutorial requires R >= 4.0.0. You have ", getRversion())
 }
 
-# Load helper functions and create enhanced dataset
-source("helpers.R")
+# Load data functions and create enhanced dataset
+# Use here::here() to find load_data.R from project root (works when knitting)
+source(here::here("load_data.R"))
 
 cat("✓ Setup complete!\n\n")
 ```
@@ -159,7 +160,7 @@ Now, we can begin dissecting the URLs into their components. While we could use 
 
 TODO: add image url parts
 
-![URL anatomy. Source: https://journals.sagepub.com/doi/10.1177/08944393241227868#fig2-08944393241227868](assets/url_parts.jpg)
+![URL anatomy. Source: https://journals.sagepub.com/doi/10.1177/08944393241227868#fig2-08944393241227868](../assets/url_anatomy.jpg)
 
 ```{r parse-urls}
 # TODO: Manual approach using tidyr::separate() and stringr::str_extract()
