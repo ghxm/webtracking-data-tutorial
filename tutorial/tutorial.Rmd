@@ -9,7 +9,7 @@ output:
     toc: true
     toc_float: true
     code_folding: show
-    theme: flatly
+    theme: cosmo
 ---
 
 # Setup and Prerequisites
@@ -158,9 +158,10 @@ Because the data contains only the hostname / domain for some visits, we'll need
 
 Now, we can begin dissecting the URLs into their components. While we could use manual string manipulation with regex and tidyverse functions, we'll primarily rely on webtrackR's built-in URL parsing functions for robustness and ease of use. These functions can handle edge cases and inconsistencies in the data more effectively than manual approaches.
 
-TODO: add image url parts
 
 ![URL anatomy. Source: https://journals.sagepub.com/doi/10.1177/08944393241227868#fig2-08944393241227868](../assets/url_anatomy.jpg)
+
+
 
 ```{r parse-urls}
 # TODO: Manual approach using tidyr::separate() and stringr::str_extract()
