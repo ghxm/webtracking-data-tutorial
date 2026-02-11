@@ -65,7 +65,7 @@ cat("✓ All packages loaded\n\n")
 
 ## Setup Data
 
-The GESIS Web Tracking data contains only host-level information. We'll create an enhanced dataset with synthetic full URLs to practice URL parsing and classification. This takes 2-3 minutes on first run.
+The GESIS Web Tracking data contains only host-level information. We'll create an enhanced dataset with synthetic full URLs to practice URL parsing and classification. This takes 2-3 minutes on the first run.
 
 ```{r setup, include=TRUE, message=TRUE}
 knitr::opts_chunk$set(echo = TRUE, warning = FALSE, message = FALSE)
@@ -131,7 +131,7 @@ Make sure you have downloaded the data and placed it in the `data/` folder as pe
 
 **Try it yourself:** How would you count the average number of visits per panelist? How would you identify the most active browsing days?
 
----
+
 
 ## URL anatomy and parsing
 
@@ -149,12 +149,17 @@ Because the data contains only the hostname / domain for some visits, we'll need
 
 ```{r add-protocol}
 
+# TODO: Add http:// to all entries (that don't have a protocol) in the url column for consistent parsing
+
 
 
 ```
 
+Now, we can begin dissecting the URLs into their components. While we could use manual string manipulation with regex and tidyverse functions, we'll primarily rely on webtrackR's built-in URL parsing functions for robustness and ease of use. These functions can handle edge cases and inconsistencies in the data more effectively than manual approaches.
 
 TODO: add image url parts
+
+![URL anatomy. Source: https://journals.sagepub.com/doi/10.1177/08944393241227868#fig2-08944393241227868](assets/url_parts.jpg)
 
 ```{r parse-urls}
 # TODO: Manual approach using tidyr::separate() and stringr::str_extract()
@@ -163,23 +168,23 @@ TODO: add image url parts
 # TODO: Package approach using webtrackR::extract_host(), extract_domain(), extract_path()
 # This is the main approach we'll use going forward
 
+```
+
+You can also do this in one step with the `adaR` package:
+
+```{r ada-parse}
+
+# TODO: Show how to use 
 # TODO: Mention adaR::ada_parse() as alternative for robust URL parsing
 # (don't demo extensively, just point out it exists)
 
-# TODO: Compare results - show sample of parsed URLs
+# TODO: Compare results - show sample of parsed URLs to extract all URL components 
+
 ```
 
-**Key Concepts:**
 
-- **Protocol**: `https://` or `http://`
-- **Host**: Full hostname like `www.spiegel.de`
-- **Domain**: Root domain like `spiegel.de`
-- **Path**: Everything after domain, like `/politik/bundestagswahl-a-123456.html`
-- **Query**: Parameters after `?`, like `?q=klimawandel&start=10`
 
-**Try it yourself:** Can you extract just the top-level domain (`.de`, `.com`, `.org`) from the domain field?
 
----
 
 ## Data cleaning and deduplication
 
