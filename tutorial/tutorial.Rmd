@@ -419,7 +419,7 @@ cat("\ne.g., 'mysite.blogspot.com' not 'blogspot.com'\n")
 ```
 
 
-An added benefitr using `webtrackR` is that is allows us to call `summary` on the dataset to get a quick overview of the variables and their distributions. This is a useful way to check that our parsing worked as expected and to understand the composition of our data.
+An added benefit of using `webtrackR` is that it allows us to call `summary` on the dataset to get a quick overview of the variables and their distributions. This is a useful way to check that our parsing worked as expected and to understand the composition of our data.
 
 ```{r webtrackr-summary}
 # Show summary of webtrackR dataset
@@ -431,166 +431,226 @@ summary(wtr_data)
 
 ## Data cleaning and deduplication
 
-TODO: continue here The `webtrackR` package provides a number other convenient functions for cleaning and deduplicating web tracking data. This is an essential step before any analysis, as raw web tracking data often contains artifacts like consecutive duplicate visits (e.g., from browser refreshes or referrals), extremely short visits (e.g., accidental clicks), and invalid timestamps. We'll learn how to clean these artifacts to get a more realistic picture of browsing behavior.
+Raw web tracking data contains artifacts from browser behavior and the tracking system itself. Consecutive duplicate visits (e.g., from page refreshes or redirects), extremely short visits, and other noise need to be cleaned before analysis. Let's first look at what these artifacts look like in our data.
 
-**Description:** Web browsers and tracking systems create artifacts - consecutive duplicate visits, extremely short visits, invalid timestamps. We'll clean these artifacts to get a realistic picture of browsing behavior. We'll calculate visit durations and remove consecutive duplicates.
-
-**Learning Objectives:**
-
-- Understand why deduplication matters (browser artifacts, tracking quirks)
-- Calculate visit duration from timestamp differences
-- Remove consecutive duplicate visits within a time window
-- Handle edge cases (last visit in sequence, missing timestamps)
-- Understand trade-offs of different deduplication strategies
-
-```{r clean-data}
-# TODO: Manual approach using dplyr::lag(), filter(), time differences
-# Show basic logic: if same URL within X seconds, remove duplicate
-
-# TODO: Package approach using webtrackR::add_duration() and deduplicate()
-# This is the main approach we'll use
-
-# TODO: Compare before/after counts - how many visits were removed?
-# TODO: Show distribution of visit durations
+```{r show-artifacts}
+# Show consecutive duplicate visits for one panelist
+cat("=== Example: Consecutive Visits for One Panelist ===\n")
+wtr_data %>%
+  filter(panelist_id == unique(panelist_id)[1]) %>%
+  select(panelist_id, timestamp, url) %>%
+  head(20) %>%
+  print()
 ```
 
-**Key Concepts:**
+Notice how some URLs appear multiple times in a row. These are typically browser refreshes, redirects, or tracking artifacts rather than genuine separate visits. Before we can identify and remove these duplicates, we need to know how much time elapsed between consecutive visits.
 
-- **Consecutive duplicates**: Same URL visited multiple times in a row (often browser refreshes)
-- **Visit duration**: Time between current visit and next visit
-- **Deduplication window**: Time threshold for considering visits as duplicates (e.g., 1 second)
+```{r add-duration}
+# Add visit duration (time until next visit)
+# cutoff = 300 means durations > 300 seconds (5 min) are replaced with NA
+# (the user likely left the browser)
+cat("Records before cleaning:", format(nrow(wtr_data), big.mark = ","), "\n\n")
 
-**Try it yourself:** How would you identify and remove visits with duration less than 1 second? How does changing the deduplication window affect your data?
+wtr_data <- add_duration(wtr_data, cutoff = 300, replace_by = NA)
 
----
+cat("=== Duration Summary (seconds) ===\n")
+summary(wtr_data$duration)
+```
+
+The `duration` column now tells us how long each visit lasted (in seconds), calculated as the time difference to the next visit. Durations longer than 5 minutes are set to `NA` since the user likely navigated away or closed the browser.
+
+Let's visualize the distribution of visit durations to understand our data better:
+
+```{r duration-distribution, fig.width=8, fig.height=5}
+# Distribution of visit durations (< 60 seconds only for readability)
+wtr_data %>%
+  filter(!is.na(duration), duration <= 60) %>%
+  ggplot(aes(x = duration)) +
+  geom_histogram(bins = 60, fill = "steelblue", color = "white") +
+  scale_y_continuous(labels = function(x) format(x, big.mark = ",", scientific = FALSE)) +
+  labs(
+    title = "Distribution of Visit Durations (up to 60 seconds)",
+    x = "Duration (seconds)",
+    y = "Number of Visits"
+  ) +
+  theme_minimal()
+```
+
+We can see a large spike at very short durations. Many of these are consecutive visits to the same URL -- browser artifacts that we want to remove. The `deduplicate()` function from webtrackR identifies consecutive visits to the same URL within a time window and aggregates them into a single visit:
+
+```{r deduplicate}
+# Deduplicate consecutive visits to the same URL within 1 second
+wtr_data <- deduplicate(wtr_data, method = "aggregate", within = 1, keep_nvisits = TRUE)
+
+cat("Records after deduplication:", format(nrow(wtr_data), big.mark = ","), "\n")
+```
+
+We can also clean up URLs by removing query parameters and fragments. This is useful for grouping visits to the same page regardless of tracking parameters (e.g., `?utm_source=google`):
+
+```{r drop-query}
+# Remove query strings and fragments from URLs
+wtr_data <- drop_query(wtr_data, varname = "url")
+
+# Show before/after
+cat("=== URL Cleaning Examples ===\n")
+wtr_data %>%
+  filter(url != url_noquery) %>%
+  select(url, url_noquery) %>%
+  slice_sample(n = 5) %>%
+  print()
+```
+
+Let's see how much data we removed and how the duration distribution changed after cleaning:
+
+```{r after-cleaning, fig.width=8, fig.height=5}
+# Duration distribution after deduplication
+wtr_data %>%
+  filter(!is.na(duration), duration <= 60) %>%
+  ggplot(aes(x = duration)) +
+  geom_histogram(bins = 60, fill = "steelblue", color = "white") +
+  scale_y_continuous(labels = function(x) format(x, big.mark = ",", scientific = FALSE)) +
+  labs(
+    title = "Visit Durations After Deduplication (up to 60 seconds)",
+    x = "Duration (seconds)",
+    y = "Number of Visits"
+  ) +
+  theme_minimal()
+```
+
+**Try it yourself:** What happens if you change the deduplication window from 1 second to 5 seconds? How does it affect the number of records?
+
+
 
 ## Basic URL classification
 
-**Description:** Raw URLs are hard to analyze. We'll group them into meaningful categories like news, social media, e-commerce, search, and other. We'll use both simple pattern matching (regex) and webtrackR's classification functions.
+Raw URLs are hard to analyze directly. To make sense of browsing behavior, we need to group visits into meaningful categories. There are two main strategies: **domain-based** classification (matching against known domains) and **path-based** classification (using URL path patterns like `/politik/` or `/search?q=`).
 
-**Learning Objectives:**
+We'll start with a simple manual approach using `case_when()` and regex patterns, then show how `webtrackR` streamlines this with `classify_visits()`.
 
-- Understand domain-based vs path-based classification
-- Use regex patterns to detect categories (e.g., `/politik/` for news)
-- Build simple classification rules with case_when()
-- Use webtrackR's classify_visits() with classification lists
-- Understand trade-offs of classification granularity
+```{r classify-manual}
+# Re-extract domain after deduplication (cleaning may drop extra columns)
+wtr_data <- extract_domain(wtr_data, varname = "url")
 
-```{r classify-urls}
-# TODO: Manual approach using case_when() with str_detect() patterns
-# Simple categories: news, social, ecommerce, search, other
-# Show examples of each category
+# Manual classification using domain patterns
+wtr_data <- wtr_data %>%
+  mutate(
+    category = case_when(
+      str_detect(domain, "spiegel|zeit\\.de|tagesschau|sueddeutsche|faz\\.net|welt\\.de|t-online|heise") ~ "News",
+      str_detect(domain, "wikipedia") ~ "Wikipedia",
+      str_detect(domain, "amazon|ebay|kleinanzeigen|zalando|otto\\.de") ~ "E-commerce",
+      str_detect(domain, "youtube|facebook|instagram|twitter|tiktok|reddit") ~ "Social/Video",
+      str_detect(domain, "google|bing|duckduckgo|ecosia|yahoo") ~ "Search",
+      is.na(domain) ~ "Other/Unclassified",
+      TRUE ~ "Other/Unclassified"
+    )
+  )
 
-# TODO: Package approach using webtrackR::classify_visits()
-# Use simple classification list (5-7 categories max)
-
-# TODO: Check classification results - count visits by category
-# TODO: Show sample URLs from each category to verify
+cat("=== Classification Results (Manual) ===\n")
+wtr_data %>%
+  count(category, sort = TRUE) %>%
+  mutate(percentage = paste0(round(n / sum(n) * 100, 1), "%")) %>%
+  print()
 ```
 
-**Classification Examples:**
+This works, but manually writing regex for every domain is tedious and error-prone. The `classify_visits()` function from webtrackR offers a more structured approach. It takes a classification data frame that maps domains (or regex patterns) to categories:
 
-- **News**: Domains like spiegel.de, zeit.de, tagesschau.de; paths like `/politik/`, `/wirtschaft/`
-- **Social/Video**: youtube.com, facebook.com, instagram.com
-- **E-commerce**: amazon.de, ebay.de; paths like `/s?k=`, `/dp/`
-- **Search**: google.com, bing.com; paths like `/search?q=`
-- **Wikipedia**: wikipedia.org
+```{r classify-webtrackr}
+# Create a classification list as a data frame
+# Each row maps a domain to a category
+classification_df <- tibble(
+  domain = c(
+    # News
+    "spiegel.de", "zeit.de", "tagesschau.de", "sueddeutsche.de",
+    "faz.net", "welt.de", "t-online.de", "heise.de", "n-tv.de",
+    # Social/Video
+    "youtube.com", "facebook.com", "instagram.com", "twitter.com",
+    "tiktok.com", "reddit.com",
+    # E-commerce
+    "amazon.de", "ebay.de", "kleinanzeigen.de", "zalando.de", "otto.de",
+    # Search
+    "google.com", "google.de", "bing.com", "duckduckgo.com", "ecosia.org",
+    # Wikipedia
+    "wikipedia.org"
+  ),
+  type = c(
+    rep("News", 8),
+    rep("Social/Video", 6),
+    rep("E-commerce", 5),
+    rep("Search", 5),
+    "Wikipedia"
+  )
+)
 
-**Try it yourself:** Can you further subdivide news into subcategories (politics, sports, culture) based on path patterns?
+# Apply classification using domain matching
+wtr_data <- classify_visits(wtr_data, classes = classification_df, match_by = "domain")
 
----
+cat("=== Classification Results (webtrackR) ===\n")
+wtr_data %>%
+  mutate(type = replace_na(type, "Other/Unclassified")) %>%
+  count(type, sort = TRUE) %>%
+  mutate(percentage = paste0(round(n / sum(n) * 100, 1), "%")) %>%
+  print()
+```
+
+Note that `classify_visits()` with `match_by = "domain"` performs exact domain matching. Visits to domains not in our list get `NA`. This is more precise than regex but requires listing each domain explicitly. For a comprehensive classification, you would build a larger domain list -- or combine both approaches.
+
+```{r classify-check}
+# Verify classification by showing sample URLs from each category
+cat("=== Sample URLs by Category ===\n")
+wtr_data %>%
+  mutate(type = replace_na(type, "Other/Unclassified")) %>%
+  group_by(type) %>%
+  slice_sample(n = 3) %>%
+  select(type, domain, url) %>%
+  ungroup() %>%
+  arrange(type) %>%
+  print(n = 20)
+```
+
+Let's visualize the distribution of visits across categories:
+
+```{r classify-viz, fig.width=8, fig.height=5}
+wtr_data %>%
+  mutate(type = replace_na(type, "Other/Unclassified")) %>%
+  count(type, sort = TRUE) %>%
+  mutate(type = fct_reorder(type, n)) %>%
+  ggplot(aes(x = type, y = n)) +
+  geom_col(fill = "steelblue") +
+  coord_flip() +
+  scale_y_continuous(labels = function(x) format(x, big.mark = ",", scientific = FALSE)) +
+  labs(
+    title = "Web Tracking Visits by Category",
+    x = NULL,
+    y = "Number of Visits"
+  ) +
+  theme_minimal()
+```
+
+**Try it yourself:** Can you subdivide news visits into subcategories (politics, sports, culture) using the `path` column? Hint: use `str_detect(path, "politik|political")` patterns on the path component.
 
 ## Aggregation and summary statistics
 
-**Description:** Once data is cleaned and classified, we can aggregate it to create meaningful summaries. We'll count visits, sum durations, and calculate statistics by panelist and category. These aggregated metrics form the basis for analysis.
-
-**Learning Objectives:**
-
-- Calculate per-panelist metrics (total visits, total duration)
-- Aggregate by category (visits per category per person)
-- Identify temporal patterns (visits by day, hour)
-- Create summary tables suitable for analysis
-- Understand wide vs long data formats
+<!-- TODO -->
 
 ```{r aggregate-data}
-# TODO: Manual approach using group_by(), summarize(), count()
-# Count visits per panelist
-# Sum duration per panelist per category
-# Calculate visits by day/hour
-
-# TODO: Package approach using webtrackR::sum_visits(), sum_durations()
-
-# TODO: Create wide-format dataset (one row per panelist, columns for each category)
-# This format is useful for regression analysis
-
-# TODO: Show distribution of browsing activity across panelists
+# TODO
 ```
 
-**Key Metrics:**
-
-- **Total visits**: Count of all visits per panelist
-- **Total duration**: Sum of all visit durations per panelist
-- **Category counts**: Number of visits to each category per panelist
-- **Temporal patterns**: Visits by day of week, hour of day
-
-**Try it yourself:** Can you identify "heavy users" (top 10% most active panelists)? How does browsing behavior differ between weekdays and weekends?
-
----
 
 ## Quick survey integration
 
-**Description:** Web tracking data becomes most powerful when linked with survey responses. We'll perform a simple join to add panelist demographics and show how this enables analysis of browsing patterns by user characteristics.
-
-**Learning Objectives:**
-
-- Understand one-to-many relationships (one survey response, many visits)
-- Join web tracking data with survey data by panelist_id
-- Check merge success (all panelists matched?)
-- Prepare combined dataset for analysis
+<!-- TODO  -->
 
 ```{r join-survey}
-# TODO: Load survey data
-# TODO: Perform left_join() by panelist_id
-# TODO: Check merge - any unmatched panelists?
-# TODO: Show sample of combined data
+# TODO
 ```
 
-**Key Concepts:**
-
-- **One-to-many join**: Each panelist has one survey response but many web visits
-- **Left join**: Keep all web visits, add survey data where available
-- **Merge validation**: Always check if all records matched as expected
-
-**Try it yourself:** How would you calculate average visits by age group or education level using the merged data?
-
----
 
 ## Wrap-up and next steps
 
-**Description:** We've covered the core preprocessing pipeline for web tracking data. You now know how to load, parse, clean, classify, and aggregate browsing data. These skills form the foundation for any analysis of web tracking data.
+<!-- TODO -->
 
-**What we accomplished:**
 
-1. ✓ Loaded and understood web tracking data structure
-2. ✓ Parsed URLs into meaningful components
-3. ✓ Cleaned and deduplicated visit sequences
-4. ✓ Classified visits into categories
-5. ✓ Aggregated statistics by panelist and category
-6. ✓ Linked tracking data with survey responses
-
-**Next steps:**
-
-- Explore **session detection** (grouping visits into browsing sessions)
-- Try **sequence analysis** (analyzing browsing sequences and transitions)
-- Build **statistical models** (regression, classification)
-- Implement **custom classification schemes** for your research questions
-
-**Quick visualization of our final dataset:**
-
-```{r final-viz}
-# TODO: Create simple bar chart of visits by category
-# TODO: Show distribution of browsing activity across panelists
-```
 
 # Exercises
 
