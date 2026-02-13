@@ -768,7 +768,8 @@ For YouTube videos, extract the video ID from URLs and identify most-watched vid
 
 ```{r exercise-4}
 # Hint: Use ada_get_search() from adaR to extract query string,
-# then str_extract() to pull the video ID
+# (note: youtube has many URL formats, if you want to be extra thorough,
+# you can also inspect the paths of youtube URLs, see https://gist.github.com/rodrigoborgesdeoliveira/987683cfbfcc8d800192da1e73adc486 for examples)
 
 ```
 

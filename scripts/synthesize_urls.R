@@ -154,14 +154,15 @@ video_social_paths <- function(n, domain) {
         "OPf0YbXqDm0", "fJ9rUzIMcZQ", "hT_nvWreIhg", "YQHsXMglC9A",
         "CevxZvSJLk8", "LsoLEjrDogU", "pRpeEdMmmQ0", "e-ORhEE9VVg"
       )
-      # 10% from the popular pool, 90% random unique IDs
-      n_popular <- round(n_watch * 0.10)
-      n_random <- n_watch - n_popular
-      ids <- c(
-        sample(popular_ids, n_popular, replace = TRUE),
-        replicate(n_random, paste0(sample(c(letters, LETTERS, 0:9), 11, replace = TRUE), collapse = ""))
-      )
-      watch_paths <- paste0("/watch?v=", sample(ids))
+      # Each video: 25% chance from popular pool, 75% random unique
+      ids <- sapply(1:n_watch, function(i) {
+        if (runif(1) < 0.25) {
+          sample(popular_ids, 1)
+        } else {
+          paste0(sample(c(letters, LETTERS, 0:9), 11, replace = TRUE), collapse = "")
+        }
+      })
+      watch_paths <- paste0("/watch?v=", ids)
       add_params <- runif(n_watch) < 0.3
       watch_paths[add_params] <- paste0(
         watch_paths[add_params],
