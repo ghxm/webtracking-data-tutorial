@@ -436,10 +436,10 @@ Raw web tracking data contains artifacts from browser behavior and the tracking 
 ```{r show-artifacts}
 # Show consecutive duplicate visits for one panelist
 cat("=== Example: Consecutive Visits for One Panelist ===\n")
-wtr_data %>%
+wtr_data %>% 
   filter(panelist_id == unique(panelist_id)[1]) %>%
   select(panelist_id, timestamp, url) %>%
-  head(20) %>%
+  head(50) %>%
   print()
 ```
 
@@ -557,7 +557,7 @@ This works, but manually writing regex for every domain is tedious and error-pro
 ```{r classify-webtrackr}
 # Create a classification list as a data frame
 # Each row maps a domain to a category
-classification_df <- tibble(
+classification_df <- data.table::data.table(
   domain = c(
     # News
     "spiegel.de", "zeit.de", "tagesschau.de", "sueddeutsche.de",
@@ -573,7 +573,7 @@ classification_df <- tibble(
     "wikipedia.org"
   ),
   type = c(
-    rep("News", 8),
+    rep("News", 9),
     rep("Social/Video", 6),
     rep("E-commerce", 5),
     rep("Search", 5),

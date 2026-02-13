@@ -80,7 +80,7 @@ ecommerce_paths <- function(n, domain) {
     "fernseher", "fahrrad", "schuhe", "kleidung", "spielzeug"
   )
 
-  if (str_detect(domain, "amazon")) {
+  if (str_detect(domain, "^(www\\.)?amazon\\.(de|com)$")) {
     n_home <- round(n * 0.1)
     n_search <- round(n * 0.4)
     n_product <- round(n * 0.3)
@@ -102,7 +102,7 @@ ecommerce_paths <- function(n, domain) {
     if (n_product > 0) paths <- c(paths, sapply(1:n_product, function(i) paste0("/dp/", paste0(sample(c(LETTERS, 0:9), 10, replace = TRUE), collapse = ""))))
     if (n_cart > 0) paths <- c(paths, rep("/gp/cart/view.html", n_cart))
     if (n_gp > 0) paths <- c(paths, sapply(1:n_gp, function(i) paste0("/gp/product/", paste0(sample(c(LETTERS, 0:9), 10, replace = TRUE), collapse = ""))))
-  } else if (str_detect(domain, "ebay")) {
+  } else if (str_detect(domain, "^(www\\.)?ebay\\.(de|com)$")) {
     n_home <- round(n * 0.1)
     n_search <- round(n * 0.5)
     n_item <- round(n * 0.3)
@@ -195,7 +195,7 @@ search_paths <- function(n, domain) {
     "künstliche+intelligenz", "steuererklärung", "gesunde+ernährung"
   )
 
-  if (str_detect(domain, "google")) {
+  if (str_detect(domain, "^(www\\.)?google\\.(com|de)$")) {
     n_home <- round(n * 0.1)
     n_search <- round(n * 0.8)
     n_paginated <- max(0, n - n_home - n_search)
@@ -204,21 +204,21 @@ search_paths <- function(n, domain) {
     if (n_home > 0) paths <- c(paths, rep("/", n_home))
     if (n_search > 0) paths <- c(paths, paste0("/search?q=", sample(queries, n_search, replace = TRUE)))
     if (n_paginated > 0) paths <- c(paths, paste0("/search?q=", sample(queries, n_paginated, replace = TRUE), "&start=", sample(c(10, 20, 30), n_paginated, replace = TRUE)))
-  } else if (str_detect(domain, "bing")) {
+  } else if (str_detect(domain, "^(www\\.)?bing\\.com$")) {
     n_home <- round(n * 0.1)
     n_search <- max(0, n - n_home)
 
     paths <- c()
     if (n_home > 0) paths <- c(paths, rep("/", n_home))
     if (n_search > 0) paths <- c(paths, paste0("/search?q=", sample(queries, n_search, replace = TRUE)))
-  } else if (str_detect(domain, "duckduckgo")) {
+  } else if (str_detect(domain, "^(www\\.)?duckduckgo\\.com$")) {
     n_home <- round(n * 0.1)
     n_search <- max(0, n - n_home)
 
     paths <- c()
     if (n_home > 0) paths <- c(paths, rep("/", n_home))
     if (n_search > 0) paths <- c(paths, paste0("/?q=", sample(queries, n_search, replace = TRUE)))
-  } else if (str_detect(domain, "ecosia")) {
+  } else if (str_detect(domain, "^(www\\.)?ecosia\\.org$")) {
     n_home <- round(n * 0.1)
     n_search <- max(0, n - n_home)
 
@@ -238,9 +238,9 @@ categorize_domain <- function(domain) {
     str_detect(domain, "blacked_out|full_deny") ~ "privacy",
     str_detect(domain, "spiegel|zeit|tagesschau|sueddeutsche|faz|welt|tagesschau|t-online|msn|heise") ~ "news",
     str_detect(domain, "wikipedia") ~ "wikipedia",
-    str_detect(domain, "amazon|ebay|kleinanzeigen|zalando|otto\\.de") ~ "ecommerce",
+    str_detect(domain, "^(www\\.)?amazon\\.(de|com)|^(www\\.)?ebay\\.(de|com)|^(www\\.)?kleinanzeigen\\.de|^(www\\.)?zalando\\.de|^(www\\.)?otto\\.de") ~ "ecommerce",
     str_detect(domain, "youtube|facebook|instagram|twitter|tiktok|reddit") ~ "social_video",
-    str_detect(domain, "google|bing|duckduckgo|ecosia|yahoo") ~ "search",
+    str_detect(domain, "^(www\\.)?google\\.(com|de)|^(www\\.)?bing\\.com|^(www\\.)?duckduckgo\\.com|^(www\\.)?ecosia\\.org|^(www\\.)?search\\.yahoo") ~ "search",
     TRUE ~ "other"
   )
 }
@@ -265,11 +265,7 @@ generate_url <- function(domain, category, make_full_url) {
 
   # Add protocol prefix if not present
   if (!str_detect(domain, "^https?://")) {
-    if (str_detect(domain, "^www\\.")) {
-      protocol <- "https://"
-    } else {
-      protocol <- "https://www."
-    }
+    protocol <- "https://"
     domain_clean <- domain
   } else {
     protocol <- ""
@@ -321,15 +317,44 @@ enhanced_data <- original_data %>%
   ungroup() %>%
   select(panelist_id, start_time, url)
 
-# Check distribution
+# ============================================================================
+# Inject duplicate artifacts (consecutive visits to same URL within 1-2 sec)
+# ============================================================================
+# This simulates real tracking artifacts: browser refreshes, redirects, and
+# duplicate logging. We identify visits that are close together in time
+# (within 2 seconds) for the same panelist, and copy the URL from the
+# previous visit to create realistic duplicates that students can clean.
+
+cat("Injecting duplicate artifacts...\n")
+
+enhanced_data <- enhanced_data %>%
+  group_by(panelist_id) %>%
+  mutate(
+    timestamp = as.POSIXct(start_time, format = "%Y-%m-%d %H:%M:%S"),
+    time_diff = as.numeric(difftime(timestamp, lag(timestamp), units = "secs")),
+    prev_url = lag(url),
+    # ~5% of visits within 1 second become duplicates of the previous visit
+    make_duplicate = !is.na(time_diff) & time_diff <= 1 & runif(n()) < 0.05,
+    url = if_else(make_duplicate, prev_url, url)
+  ) %>%
+  ungroup() %>%
+  select(panelist_id, start_time, url)
+
+n_duplicates <- sum(enhanced_data %>%
+  group_by(panelist_id) %>%
+  mutate(is_dup = url == lag(url) & !is.na(lag(url))) %>%
+  pull(is_dup), na.rm = TRUE)
+
+cat(sprintf("  Consecutive duplicate URLs in data: %d (%.1f%%)\n",
+            n_duplicates, n_duplicates / nrow(enhanced_data) * 100))
+
+# Check distribution (3 categories matching the tutorial)
 cat("\nURL type distribution:\n")
 enhanced_data %>%
   mutate(
     url_type = case_when(
-      str_detect(url, "blacked_out|full_deny") ~ "Privacy placeholder",
-      str_detect(url, "^https?://.*/.+") ~ "Full URL with path",
-      str_detect(url, "^https?://") ~ "Full URL (root)",
-      str_detect(url, "/") ~ "Domain with path",
+      url %in% c("blacked_out", "full_deny") ~ "Privacy placeholder",
+      str_detect(url, "^https?://") | str_detect(url, "^[a-z][a-z0-9+.-]*:") ~ "Full URL",
       TRUE ~ "Domain only"
     )
   ) %>%
