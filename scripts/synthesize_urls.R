@@ -308,27 +308,73 @@ always_domain_only <- function(domain) {
   ))
 }
 
+# Vectorized path generation: generate all paths for a group at once
+generate_paths_for_group <- function(hosts, category, n) {
+  if (n == 0) return(character(0))
+
+  if (category == "news") return(news_paths(n))
+  if (category == "wikipedia") return(wiki_paths(n))
+
+  # For domain-specific functions, generate per unique domain
+  if (category %in% c("ecommerce", "social_video", "search")) {
+    paths <- character(n)
+    for (dom in unique(hosts)) {
+      idx <- which(hosts == dom)
+      paths[idx] <- switch(category,
+        "ecommerce" = ecommerce_paths(length(idx), dom),
+        "social_video" = video_social_paths(length(idx), dom),
+        "search" = search_paths(length(idx), dom)
+      )
+    }
+    return(paths)
+  }
+
+  # "other" category
+  rep("/", n)
+}
+
 # Main synthesis logic
 cat("Synthesizing URLs...\n")
 
 enhanced_data <- original_data %>%
   mutate(
     category = categorize_domain(host),
-    # Determine if this entry should get a full URL
-    # Privacy placeholders: always stay as is
-    # Email/banking/survey platforms: always domain-only
-    # Other sites: 70% full URLs, 30% domain-only
     make_full_url = case_when(
       category == "privacy" ~ FALSE,
       always_domain_only(host) ~ FALSE,
       TRUE ~ runif(n()) < 0.70
-    )
-  ) %>%
-  rowwise() %>%
-  mutate(
-    url = generate_url(host, category, make_full_url)
-  ) %>%
-  ungroup() %>%
+    ),
+    # Flag special browser URLs
+    is_browser_url = str_detect(host, "^(chrome|about|chrome-extension|moz-extension|edge|opera|file|data|javascript):")
+  )
+
+# Start with domain as default URL
+enhanced_data$url <- enhanced_data$host
+
+# For full URLs: generate paths by category group and prepend protocol
+full_url_rows <- which(enhanced_data$make_full_url & !enhanced_data$is_browser_url & enhanced_data$category != "privacy")
+
+if (length(full_url_rows) > 0) {
+  sub <- enhanced_data[full_url_rows, ]
+
+  # Generate paths grouped by category
+  sub$path <- "/"
+  for (cat in unique(sub$category)) {
+    idx <- which(sub$category == cat)
+    sub$path[idx] <- generate_paths_for_group(sub$host[idx], cat, length(idx))
+  }
+
+  # Add protocol
+  sub$url <- paste0(
+    "https://",
+    sub$host,
+    sub$path
+  )
+
+  enhanced_data$url[full_url_rows] <- sub$url
+}
+
+enhanced_data <- enhanced_data %>%
   select(panelist_id, start_time, url)
 
 # ============================================================================
