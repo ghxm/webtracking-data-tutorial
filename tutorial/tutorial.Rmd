@@ -68,7 +68,7 @@ cat("✓ All packages loaded\n\n")
 The GESIS Web Tracking data contains only host-level information. We'll create an enhanced dataset with synthetic full URLs to practice URL parsing and classification. This takes 2-3 minutes on the first run.
 
 ```{r setup, include=TRUE, message=TRUE}
-knitr::opts_chunk$set(echo = TRUE, warning = FALSE, message = FALSE)
+knitr::opts_chunk$set(echo = TRUE, warning = FALSE, message = FALSE, collapse = TRUE)
 
 # Check R version (minimum 4.0.0)
 if (getRversion() < "4.0.0") {
@@ -467,6 +467,7 @@ wtr_data %>%
          timestamp >= dup_example$timestamp - 10,
          timestamp <= dup_example$timestamp + 10) %>%
   select(panelist_id, timestamp, url) %>%
+  as_tibble() %>%
   print(n = 20)
 
 ```
