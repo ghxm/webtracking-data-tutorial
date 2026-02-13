@@ -712,6 +712,9 @@ Note that `classify_visits()` with `match_by = "domain"` performs exact domain m
 <!-- TODO  -->
 
 ```{r join-survey}
+
+load_survey_data()
+
 # TODO
 ```
 
@@ -726,15 +729,59 @@ Note that `classify_visits()` with `match_by = "domain"` performs exact domain m
 
 Try these exercises on your own to practice what you've learned:
 
-1. **Custom classification**: Create a classification scheme for German news outlets (Spiegel vs Zeit vs Tagesschau, etc.)
+## 1. Custom classification
 
-2. **Temporal analysis**: Calculate average visit duration by hour of day. When are people browsing most actively?
+Create a classification scheme for German news outlets (Spiegel vs Zeit vs Tagesschau, etc.)
 
-3. **User segmentation**: Identify different browsing profiles (news readers, shoppers, video watchers, etc.) based on category proportions
+```{r exercise-1}
+# Hint: Use classify_visits() with a more granular classification data frame
+# where each news domain maps to its own category instead of all being "News"
+# classification_news <- data.table::data.table(
+#   domain = c("spiegel.de", "zeit.de", "tagesschau.de", ...),
+#   outlet = c("Spiegel", "Zeit", "Tagesschau", ...)
+# )
+# wtr_data <- classify_visits(wtr_data, classes = classification_news, match_by = "domain")
+```
 
-4. **Path analysis**: For YouTube videos, extract the video ID from URLs and identify most-watched videos
+## 2. Temporal analysis
 
-5. **Survey correlation**: Test if browsing behavior (total visits, category preferences) correlates with demographic variables from survey data
+Calculate average visit duration by hour of day. When are people browsing most actively?
+
+```{r exercise-2}
+# Hint: Extract hour from timestamp, group by hour, summarise duration
+
+
+```
+
+## 3. User segmentation
+
+Identify different browsing profiles (news readers, shoppers, video watchers, etc.) based on category proportions.
+
+```{r exercise-3}
+# Hint: Calculate share of visits per category per panelist
+# Then identify the dominant category per panelist with which.max()
+```
+
+## 4. Path analysis
+
+For YouTube videos, extract the video ID from URLs and identify most-watched videos.
+
+```{r exercise-4}
+# Hint: Use ada_get_search() from adaR to extract query string,
+# then str_extract() to pull the video ID
+
+```
+
+## 5. Survey correlation
+
+Test if browsing behavior (total visits, category preferences) correlates with demographic variables from survey data.
+
+```{r exercise-5}
+# Hint: First aggregate visits per panelist (sum_visits with visit_class),
+# then join with survey data (load_survey_data() + left_join by panelist_id),
+# then compare groups (e.g., boxplot of news visits by education level)
+
+```
 
 
 

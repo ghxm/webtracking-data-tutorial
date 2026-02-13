@@ -147,8 +147,21 @@ video_social_paths <- function(n, domain) {
     paths <- c()
     if (n_home > 0) paths <- c(paths, rep("/", n_home))
     if (n_watch > 0) {
-      # Add tracking/list params to some videos
-      watch_paths <- sapply(1:n_watch, function(i) paste0("/watch?v=", paste0(sample(c(letters, LETTERS, 0:9, "-", "_"), 11, replace = TRUE), collapse = "")))
+      # Pool of reusable video IDs (mix of "popular" and less common)
+      popular_ids <- c(
+        "dQw4w9WgXcQ", "1mR6zmSTDNE", "s-6MjhDDPLU", "x93gseHQLyo",
+        "kJQP7kiw5Fk", "9bZkp7q19f0", "RgKAFK5djSk", "JGwWNGJdvx8",
+        "OPf0YbXqDm0", "fJ9rUzIMcZQ", "hT_nvWreIhg", "YQHsXMglC9A",
+        "CevxZvSJLk8", "LsoLEjrDogU", "pRpeEdMmmQ0", "e-ORhEE9VVg"
+      )
+      # 10% from the popular pool, 90% random unique IDs
+      n_popular <- round(n_watch * 0.10)
+      n_random <- n_watch - n_popular
+      ids <- c(
+        sample(popular_ids, n_popular, replace = TRUE),
+        replicate(n_random, paste0(sample(c(letters, LETTERS, 0:9), 11, replace = TRUE), collapse = ""))
+      )
+      watch_paths <- paste0("/watch?v=", sample(ids))
       add_params <- runif(n_watch) < 0.3
       watch_paths[add_params] <- paste0(
         watch_paths[add_params],
