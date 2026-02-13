@@ -429,7 +429,10 @@ summary(wtr_data)
 
 
 
-## Data cleaning and deduplication
+## Data cleaning and augmentation
+
+
+### Deduplication
 
 Raw web tracking data contains artifacts from browser behavior and the tracking system itself. Consecutive duplicate visits (e.g., from page refreshes or redirects), extremely short visits, and other noise need to be cleaned before analysis. Let's first look at what these artifacts look like in our data.
 
@@ -443,7 +446,33 @@ wtr_data %>%
   print()
 ```
 
-Notice how some URLs appear multiple times in a row. These are typically browser refreshes, redirects, or tracking artifacts rather than genuine separate visits. Before we can identify and remove these duplicates, we need to know how much time elapsed between consecutive visits.
+Some URLs appear multiple times in a row:
+
+```{r show-duplicates}
+# Identify consecutive duplicate URLs per panelist
+# Find a panelist with consecutive duplicate URLs close in time
+dup_example <- wtr_data %>%
+  group_by(panelist_id) %>%
+  mutate(
+    time_diff = as.numeric(difftime(timestamp, lag(timestamp), units = "secs")),
+    is_duplicate = !is.na(lag(url)) & url == lag(url) & time_diff <= 2
+  ) %>%
+  ungroup() %>%
+  filter(is_duplicate) %>%
+  slice(1)
+
+# Show the surrounding visits for that panelist around the duplicate
+wtr_data %>%
+  filter(panelist_id == dup_example$panelist_id,
+         timestamp >= dup_example$timestamp - 10,
+         timestamp <= dup_example$timestamp + 10) %>%
+  select(panelist_id, timestamp, url) %>%
+  print(n = 20)
+
+```
+
+These are typically browser refreshes, redirects, or tracking artifacts rather than genuine separate visits. Before we can identify and remove these duplicates, we need to know how much time elapsed between consecutive visits.
+
 
 ```{r add-duration}
 # Add visit duration (time until next visit)
@@ -476,28 +505,13 @@ wtr_data %>%
   theme_minimal()
 ```
 
-We can see a large spike at very short durations. Many of these are consecutive visits to the same URL -- browser artifacts that we want to remove. The `deduplicate()` function from webtrackR identifies consecutive visits to the same URL within a time window and aggregates them into a single visit:
+We can see a large spike at very short durations. Many of these are consecutive visits to the same URL -- browser artifacts that we want to remove. The `deduplicate()` function from webtrackR identifies consecutive visits to the same URL within a time window and drops them:
 
 ```{r deduplicate}
-# Deduplicate consecutive visits to the same URL within 1 second
-wtr_data <- deduplicate(wtr_data, method = "aggregate", within = 1, keep_nvisits = TRUE)
+# Drop consecutive visits to the same URL within 3 seconds
+wtr_data <- deduplicate(wtr_data, method = "drop", within = 3)
 
 cat("Records after deduplication:", format(nrow(wtr_data), big.mark = ","), "\n")
-```
-
-We can also clean up URLs by removing query parameters and fragments. This is useful for grouping visits to the same page regardless of tracking parameters (e.g., `?utm_source=google`):
-
-```{r drop-query}
-# Remove query strings and fragments from URLs
-wtr_data <- drop_query(wtr_data, varname = "url")
-
-# Show before/after
-cat("=== URL Cleaning Examples ===\n")
-wtr_data %>%
-  filter(url != url_noquery) %>%
-  select(url, url_noquery) %>%
-  slice_sample(n = 5) %>%
-  print()
 ```
 
 Let's see how much data we removed and how the duration distribution changed after cleaning:
@@ -517,7 +531,92 @@ wtr_data %>%
   theme_minimal()
 ```
 
-**Try it yourself:** What happens if you change the deduplication window from 1 second to 5 seconds? How does it affect the number of records?
+
+### Sessions
+
+A browsing session is a sequence of visits without a long gap in between. webtrackR's `add_session()` assigns a session ID to each visit based on a timeout cutoff -- if the gap between two consecutive visits exceeds the cutoff, a new session starts. A common choice is 30 minutes (1800 seconds):
+
+```{r add-session}
+wtr_data <- add_session(wtr_data, cutoff = 1800)
+
+cat("=== Sessions ===\n")
+n_sessions <- wtr_data %>% distinct(panelist_id, session) %>% nrow()
+cat("Total sessions across all panelists:", format(n_sessions, big.mark = ","), "\n")
+```
+
+```{r session-stats}
+# Sessions per panelist
+sessions_per_user <- wtr_data %>%
+  group_by(panelist_id) %>%
+  summarise(n_sessions = n_distinct(session), .groups = "drop")
+
+cat("=== Sessions per Panelist ===\n")
+cat("Mean:", round(mean(sessions_per_user$n_sessions), 1), "\n")
+cat("Median:", median(sessions_per_user$n_sessions), "\n")
+cat("Min:", min(sessions_per_user$n_sessions), "\n")
+cat("Max:", format(max(sessions_per_user$n_sessions), big.mark = ","), "\n")
+```
+
+```{r sessions-per-day}
+# Sessions per panelist per day
+sessions_per_day <- wtr_data %>%
+  mutate(date = as.Date(timestamp)) %>%
+  group_by(panelist_id, date) %>%
+  summarise(n_sessions = n_distinct(session), .groups = "drop")
+
+cat("=== Sessions per Panelist per Day ===\n")
+cat("Mean:", round(mean(sessions_per_day$n_sessions), 1), "\n")
+cat("Median:", median(sessions_per_day$n_sessions), "\n")
+cat("Max:", max(sessions_per_day$n_sessions), "\n")
+```
+
+```{r session-distribution, fig.width=8, fig.height=5}
+ggplot(sessions_per_user, aes(x = n_sessions)) +
+  geom_histogram(bins = 50, fill = "steelblue", color = "white") +
+  labs(
+    title = "Distribution of Sessions per Panelist (30-min cutoff)",
+    x = "Number of Sessions",
+    y = "Number of Panelists"
+  ) +
+  theme_minimal()
+```
+
+
+### URL cleaning
+
+We can also clean up URLs by removing query parameters and fragments. This is useful for grouping visits to the same page regardless of tracking parameters (e.g., `?utm_source=google`):
+
+```{r drop-query}
+# Remove query strings and fragments from URLs
+wtr_data <- drop_query(wtr_data, varname = "url")
+
+# Show before/after
+cat("=== URL Cleaning Examples ===\n")
+wtr_data %>%
+  filter(url != url_noquery) %>%
+  select(url, url_noquery) %>%
+  slice_sample(n = 5) %>%
+  print()
+```
+
+
+
+This way we can easily inspect some of the top URLs:
+
+```{r top-urls}
+
+# Show top 20 URLs after cleaning
+cat("=== Top 20 URLs After Cleaning ===\n")
+wtr_data %>%
+    count(url_noquery, sort = TRUE) %>%
+    head(20) %>%
+    print()
+```
+
+
+
+
+**Try it yourself:** What happens if you change the deduplication window from 2 second to 5 seconds? How does it affect the number of records?
 
 
 
@@ -592,41 +691,12 @@ wtr_data %>%
   print()
 ```
 
-Note that `classify_visits()` with `match_by = "domain"` performs exact domain matching. Visits to domains not in our list get `NA`. This is more precise than regex but requires listing each domain explicitly. For a comprehensive classification, you would build a larger domain list -- or combine both approaches.
+Note that `classify_visits()` with `match_by = "domain"` performs exact domain matching. Visits to domains not in our list get `NA`. This is more precise than regex but requires listing each domain explicitly. For a comprehensive classification, you would rely on a larger domain list.
 
-```{r classify-check}
-# Verify classification by showing sample URLs from each category
-cat("=== Sample URLs by Category ===\n")
-wtr_data %>%
-  mutate(type = replace_na(type, "Other/Unclassified")) %>%
-  group_by(type) %>%
-  slice_sample(n = 3) %>%
-  select(type, domain, url) %>%
-  ungroup() %>%
-  arrange(type) %>%
-  print(n = 20)
-```
+<--- TODO --->
 
-Let's visualize the distribution of visits across categories:
 
-```{r classify-viz, fig.width=8, fig.height=5}
-wtr_data %>%
-  mutate(type = replace_na(type, "Other/Unclassified")) %>%
-  count(type, sort = TRUE) %>%
-  mutate(type = fct_reorder(type, n)) %>%
-  ggplot(aes(x = type, y = n)) +
-  geom_col(fill = "steelblue") +
-  coord_flip() +
-  scale_y_continuous(labels = function(x) format(x, big.mark = ",", scientific = FALSE)) +
-  labs(
-    title = "Web Tracking Visits by Category",
-    x = NULL,
-    y = "Number of Visits"
-  ) +
-  theme_minimal()
-```
 
-**Try it yourself:** Can you subdivide news visits into subcategories (politics, sports, culture) using the `path` column? Hint: use `str_detect(path, "politik|political")` patterns on the path component.
 
 ## Aggregation and summary statistics
 
