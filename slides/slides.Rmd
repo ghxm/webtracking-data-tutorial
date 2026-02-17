@@ -16,6 +16,7 @@ colortheme: dove
 fontfamily: sourcesanspro
 fontsize: 10
 header-includes: |
+    \usepackage{relsize}
     % set the title background
     \pgfdeclareimage[width=\paperwidth,height=\paperheight]{bgtitle}{template/background3.pdf}
     \usebackgroundtemplate{\pgfuseimage{bgtitle}}
@@ -92,38 +93,99 @@ knitr::opts_chunk$set(echo = TRUE)
 
 ```
 
-# First slide
+# What is web tracking data?
 
-This is the first slide.
+- Records of individual-level browsing behavior collected via browser extensions or metering software
+- Each record: **who** visited **what URL** at **what time**
+- Typically linked with survey data (demographics, attitudes, etc.)
 
-# {.plain}
+\bigskip
 
-\section{First section}
+**Minimum data structure:**
 
-# Second slide
-
-::: {.columns}
-
-:::: {.column width="50%"}
-
-This is slide number 2
-
-::::
-
-:::: {.column width="50%"}
-
-with columns....
-
-and a citation [@sample2023].
-
-::::
-
-:::
+| panelist_id | url | timestamp |
+|:------------|:----|:----------|
+| P001 | https://www.spiegel.de/politik/... | 2024-04-15 09:23:45 |
+| P001 | https://www.google.com/search?q=... | 2024-04-15 09:24:12 |
 
 
-# Third slide
 
-A last slide to wrap things up.
+# Our data today
+
+**GESIS Panel Campusfile (ZA5670)**
+
+- ~1.15 million URL visits from ~600 panelists
+- Tracking period: April--June 2024
+- Enhanced with **synthetic full URLs** for teaching purposes
+
+\bigskip
+
+**Data quality heterogeneity**
+
+- **Full URLs** with paths and query parameters
+- **Domain-only** entries, no path information
+- **Privacy placeholders** ("blacked\_out", "full\_deny")
+
+\bigskip
+
+&rarr; Handling this heterogeneity is a core preprocessing challenge.
+
+
+# What about HTML content?
+
+In addition to URLs, we also collect the HTML content of visited pages.
+
+&rarr; Working with HTMLs (parsing, text extraction, content analysis) will be covered in tomorrow's session.
+
+\bigskip
+
+\larger
+
+Today's session focuses on **URL-level preprocessing** as the foundation.
+
+
+# URL anatomy
+
+\begin{center}
+\includegraphics[width=0.85\textwidth]{../assets/url_anatomy.jpg}
+\end{center}
+
+\vspace{-0.2em}
+
+\smaller\smaller Source: Clemm von Hohenberg et al. (2024), Fig. 2
+
+\bigskip
+
+Each component carries different information for analysis:
+
+- **Domain/Host**: Which website (e.g., spiegel.de)
+- **Path**: Which page or section (e.g., /politik/article-name)
+- **Query parameters**: Search terms, filters, tracking codes
+
+
+# The preprocessing workflow
+
+1. **Parse URLs** -- Extract components (host, domain, path, query)
+2. **Clean and deduplicate** -- Remove tracking artifacts, consecutive duplicates
+3. **Classify visits** -- Assign categories (news, social, e-commerce, ...)
+4. **Aggregate** -- Summarize per panelist, per category, per time period
+
+\bigskip
+
+Each step involves **decisions** that affect downstream analysis.
+
+
+
+# Tools we'll use
+
+**R packages:**
+
+- `webtrackR` -- purpose-built for web tracking data preprocessing (extract, deduplicate, classify, aggregate)
+- `adaR` -- robust URL parsing (alternative to manual regex)
+- `dplyr` -- general data manipulation
+
+
+
 
 
 ```{=latex}
@@ -147,7 +209,7 @@ A last slide to wrap things up.
 \LARGE
 \centering
 
-**Thank you!**
+**Let's begin!**
 
 
 
@@ -164,6 +226,8 @@ A last slide to wrap things up.
 \begin{frame}<0| handout:0>
 ```
 
+<!---
+
 # References {.allowframebreaks}
 
 \begingroup
@@ -174,3 +238,5 @@ A last slide to wrap things up.
 :::
 
 \endgroup
+
+-->
