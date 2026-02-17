@@ -694,35 +694,321 @@ wtr_data %>%
 
 Note that `classify_visits()` with `match_by = "domain"` performs exact domain matching. Visits to domains not in our list get `NA`. This is more precise than regex but requires listing each domain explicitly. For a comprehensive classification, you would rely on a larger domain list.
 
-<--- TODO --->
 
+### Check and improve the News classification
+
+Our current News category may include misclassified domains. Because classification is a measurement decision, any errors at this stage directly affect all downstream analyses, such as visit counts, time measures, and correlations. We considered two common approaches. 
+
+1. First, we classified domains using regex or pattern matching (e.g., domains containing “news”, “zeitung”, or “nachrichten”). This approach is flexible and useful for detecting previously unknown news sites. However, it carries a substantial risk of false positives and may miss important outlets that do not contain obvious keywords in their domain (e.g., brand-based domains "spiegel").
+
+2. Second, we can use domain-specific mapping based on curated news lists. Here, a visit is classified as news if its domain appears in an established list (e.g., GOND or webtrackR::news_types). This approach typically offers higher precision and is more transparent and reproducible. Its main limitation is that it depends on having a comprehensive and up-to-date list.
+
+For substantive analysis, we therefore rely on an existing curated domain list. This provides a methodologically defensible and reproducible classification. Regex-based methods remain useful for exploratory checks or for identifying candidate domains to extend the list, but they should not serve as the primary classification strategy in a research setting.
+
+```{r check-news-cat}
+# First, inspect what is currently labeled as News (quick reality check)
+wtr_data %>% 
+  filter(category=='News') %>% 
+  distinct(domain)
+```
+
+```{r check-news-cat}
+# inspect the news classification based on domain-specific mapping
+wtr_data %>% 
+  filter(type=='News') %>% 
+  distinct(domain)
+```
+
+If you see obviously non-news domains, it’s a sign that the regex-classification need improvement. Looks like we mis-classified some domains. Let's do the news classification a comprehensive news-list or use WebtrackR's internal news list.
+
+```{r check-news-cat}
+# load webtrackR's internal news-list
+news_types = webtrackR::news_types
+
+# load GOND news list
+gond <- openxlsx::read.xlsx("../data/GONDv3_domains.xlsx") %>% 
+  dplyr::filter(language=="de") %>% 
+  dplyr::select(domain)
+
+# flag news based on domain-specific mapping
+wtr_data = wtr_data %>% 
+  mutate(is_news_gond = if_else(domain %in% gond$domain,1,0),
+         is_news_webtrackR = if_else(domain %in% news_types$domain,1,0)) 
+
+
+cat("=== Compare both news classifications ===\n")
+table(wtr_data$is_news_gond, wtr_data$is_news_webtrackR)
+
+
+cat("=== What is the share of news visits in the data? ===\n")
+prop.table(table(wtr_data$is_news_gond))
+```
+
+
+```{r most-common-news-domains}
+cat("=== Most common news domains (first 20 rows) ===\n")
+wtr_data %>% 
+  filter(is_news_gond==1) %>% 
+  count(domain, sort = TRUE) %>% 
+  head(20)
+```
+
+```{r most-common-news-domains}
+cat("=== Compare GOND news classification and category ===\n")
+table(wtr_data$is_news_gond, wtr_data$category)
+
+wtr_data %>% 
+  dplyr::filter(is_news_gond==1) %>% 
+  dplyr::filter(category=='Search') %>% 
+  distinct(domain)
+``` 
+
+```{r update category classification}
+wtr_data = wtr_data %>% 
+  mutate(category_updated = if_else(domain %in% gond$domain, 'News' , wtr_data$category))
+
+table(wtr_data$category, wtr_data$category_updated)
+``` 
+
+**Try it yourself:** Can you subdivide news visits into subcategories (politics, sports, culture) using the `path` column? Hint: use `str_detect(path, "politik|political")` patterns on the path component.
 
 
 
 ## Aggregation and summary statistics
 
-<!-- TODO -->
+Once visits are cleaned and classified, we usually want to aggregate the data to a meaningful unit of analysis that matches your research question.. In panel studies, this is often the panelist level (e.g., total number of news visits per person).
+
+We focus on the **Panelist-level** (each row = one person) → good for between-person differences (“who consumes more news?”). But there are also other options:
+
+**Event-level** (each row = one visit) → good for sequences, timing, within-person dynamics.
+
+**Panelist × category** (each row = person-category pair) → good for composition (“what share is politics vs sports?”).
+
+Sometimes it is easier to aggregate by category and format the data to the wide format (one row per panelist, one column per category) afterwards.
 
 ```{r aggregate-data}
-# TODO
+# Aggregate visits per panelist and category
+panelist_summary <- wtr_data %>%
+  group_by(panelist_id, category_updated) %>%
+  summarise(
+    visits = n(),
+    total_time = sum(duration, na.rm = TRUE),
+    .groups = "drop"
+  )
+
+cat("=== Panelist-Level Summary (first 20 rows) ===\n")
+panelist_summary %>%
+  arrange(panelist_id) %>%
+  head(20) %>%
+  print()
+>>>>>>> Stashed changes
+```
+
+Now let's aggregate the data to a wide-format.
+
+```{r aggregate-data-wide}
+panelist_summary_wide <- panelist_summary %>%
+  dplyr::select(panelist_id, category_updated, visits) %>%
+  tidyr::pivot_wider(
+    names_from = category_updated,
+    values_from = visits,
+    values_fill = 0,
+    names_glue  = "{category_updated}_visits"
+  )
+
+cat("=== Wide Format (first 10 rows) ===\n")
+head(panelist_wide, 10)
 ```
 
 
-## Quick survey integration
+Something is still missing. We should also include the total number of visits per person. This variable serves as a baseline measure of overall online activity. Without accounting for it, we risk mistaking general internet use for the effect of our variable of interest. For example, people with higher political interest might simply browse more overall — not necessarily allocate more of their browsing to news.
 
-<!-- TODO  -->
+```{r aggregate-data}
+df_ind <- wtr_data %>% 
+  group_by(panelist_id) %>% 
+  summarise(
+    n_visits = n(),
+    total_time = sum(duration, na.rm = TRUE),
+    total_news_time = sum(duration[is_news_gond == 1], na.rm = TRUE),
+    .groups = "drop"
+  )
+
+# join the data
+df_ind = df_ind %>% 
+  left_join(panelist_summary_wide)
+```
+
+
+
+A key advantage of panel web tracking studies such as the GESIS panel (Campusfile: ZA5670) is that browsing data can be linked to survey responses.
+
+For demonstration purposes, we merge the corresponding survey file that contains panelist-level variables such as age, gender, and political interest.
 
 ```{r join-survey}
+# Example: Load survey data (synthetic demo file)
+survey_data <- read.csv2("data/ZA5670_survey_data.csv")
 
-load_survey_data()
+cat("=== Survey Data Structure ===\n")
+glimpse(survey_data)
 
-# TODO
+# select basic demograhpics
+survey_data <- survey_data %>% 
+  dplyr::select(panelist_id, da119a_sex, da120a_ybrth, da127a_seduc, ca110a_polin) %>% 
+  mutate(
+    # Gender → binary 0/1
+    da119a_sex = case_when(
+      da119a_sex == "male"   ~ 1,
+      da119a_sex == "female" ~ 0,
+      TRUE ~ NA_real_
+    ),
+
+    # Age groups
+    da120a_ybrth = factor(
+      da120a_ybrth,
+      levels = c("18-29", "30-44", "45-59", "60+"),
+      #ordered = TRUE
+    ),
+    da120a_ybrth_num = as.numeric(da120a_ybrth),
+
+    # Education
+    da127a_seduc = factor(
+      da127a_seduc,
+      levels = c("low", "medium", "high"),
+      #ordered = TRUE
+    ),
+    da127a_seduc_num = as.numeric(da127a_seduc),
+    
+    political_interest = factor(
+      ca110a_polin,
+      levels = c(5, 4, 3, 2, 1),
+      labels = c("Very Low", "Low", "Medium", "High", "Very High"),
+      #ordered = TRUE
+    ),
+    political_interest_num = as.numeric(political_interest)
+  )
+
+
+# Merge aggregated web tracking data with survey responses
+analysis_data <- df_ind %>%
+  left_join(survey_data, by = "panelist_id")
+
+cat("\n=== Merged Dataset (first 10 rows) ===\n")
+head(analysis_data, 10)
 ```
 
+
+
+
+Now we can examine relationships between browsing behavior and survey variables.
+
+For example: Is political interest associated with more visits to news websites?
+
+
+```{r correlations}
+# correlation matrix
+analysis_data %>%
+  select(-panelist_id, -da119a_sex, -da120a_ybrth, -da127a_seduc, -political_interest) %>%
+  cor(method = "spearman", use = "pairwise.complete.obs")
+```
+
+
+```{r}
+analysis_data %>%
+  group_by(political_interest) %>%
+  summarise(mean_news_visits = mean(News_visits, na.rm = TRUE)) %>%
+  ggplot(aes(x = political_interest, y = mean_news_visits)) +
+  geom_col(fill = "steelblue") +
+  labs(
+    title = "Average News Visits by Political Interest",
+    x = "Political Interest",
+    y = "Mean Number of News Visits"
+  ) +
+  theme_minimal()
+```
+
+
+```{r}
+analysis_data %>%
+  group_by(da120a_ybrth) %>%
+  summarise(mean_news_visits = mean(News_visits, na.rm = TRUE)) %>%
+  ggplot(aes(x = da120a_ybrth, y = mean_news_visits)) +
+  geom_col(fill = "steelblue") +
+  labs(
+    title = "Average News Visits by Age Group",
+    x = "Age Group",
+    y = "Mean Number of News Visits"
+  ) +
+  theme_minimal()
+```
+
+
+
+```{r}
+analysis_data %>%
+  filter(!is.na(da127a_seduc)) %>% 
+  group_by(da127a_seduc) %>%
+  summarise(mean_news_visits = mean(News_visits, na.rm = TRUE)) %>%
+  ggplot(aes(x = da127a_seduc, y = mean_news_visits)) +
+  geom_col(fill = "steelblue") +
+  labs(
+    title = "Average News Visits by Education",
+    x = "Education",
+    y = "Mean Number of News Visits"
+  ) +
+  theme_minimal()
+```
 
 ## Wrap-up and next steps
 
-<!-- TODO -->
+In this tutorial, we walked through the essential preprocessing steps for web tracking data:
+
+✔ Loading and inspecting raw tracking data
+✔ Parsing and extracting URL components
+✔ Cleaning artifacts and deduplicating visits
+✔ Classifying visits into meaningful categories
+✔ Aggregating browsing behavior at the panelist level
+✔ Linking behavioral data with survey responses
+
+What comes next? Depending on your research question, you might:
+
+- Detect sessions and browsing sequences
+
+- Study media diets and exposure diversity
+
+- Analyze temporal dynamics (e.g., reactions to events)
+
+- Model behavioral outcomes using regression or multilevel models
+
+**Reminder: Always run sanity checks after data cleaning, merging, and transformation steps to verify that everything worked as expected.**
+
+
+# Outlook: Modeling
+
+We can also build some models.
+
+```{r}
+library(glmmTMB)
+
+model <- glmmTMB::glmmTMB(
+  News_visits ~ 
+    political_interest_num + 
+    da119a_sex + da120a_ybrth + da127a_seduc +
+    offset(log(pmax(n_visits, 1))) + 
+    (1 | panelist_id),
+  family = nbinom2,
+  data = analysis_data %>%
+    drop_na(News_visits, political_interest_num, 
+            da119a_sex, da120a_ybrth, da127a_seduc, n_visits, panelist_id)
+)
+
+summary(model)
+
+analysis_data %>% 
+  summarise(across(c(News_visits, ca110a_polin, da119a_sex, da120a_ybrth, da127a_seduc), ~ sum(is.na(.))))
+```
+
+
+
 
 
 
@@ -784,7 +1070,6 @@ Test if browsing behavior (total visits, category preferences) correlates with d
 # then compare groups (e.g., boxplot of news visits by education level)
 
 ```
-
 
 
 
