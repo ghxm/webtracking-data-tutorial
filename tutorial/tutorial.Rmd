@@ -88,22 +88,21 @@ cat("✓ Setup complete!\n\n")
 # Introduction
 
 In this code along, we will work with the demo Web Tracking data from the GESIS panel.dbd (Campusfile: [ZA5670](https://search.gesis.org/research_data/ZA5670)). Note that the data has been augmented with synthetic full-URLs for demonstration purposes. The original dataset contains only host level visit information. The enhanced dataset includes synthetic full URLs for all entries to allow us to practice URL parsing and classification.
-We will cover data loading, cleaning, and basic analysis using R. This tutorial focuses on **preprocessing web tracking data**, i.e., the essential steps you need before any analysis. We'll learn how to parse URLs, clean messy data, classify visits, and aggregate browsing behavior.
+We will cover data loading, cleaning, and basic analysis using R. This tutorial focuses on **preprocessing web tracking data**, i.e., the essential steps you need before any analysis. The raw records in web tracking data are **traces**, i.e., individual logged URL hits that include browser artifacts, redirects, and duplicates. A key preprocessing goal is transforming these traces into meaningful **visits** through deduplication and cleaning. We'll learn how to parse URLs, clean messy data, classify visits, and aggregate browsing behavior.
 
 **What we'll cover:**
 
 - Loading and understanding web tracking data structure
 - Parsing URL components (domain, path, query parameters)
-- Cleaning and deduplicating consecutive visits
+- Turning raw traces into visits through deduplication
 - Classifying visits into meaningful categories
 - Aggregating visit statistics by panelist
 - Linking web tracking data with survey responses
 
 **What we won't cover**:
 
-- Session detection and boundaries
 - Statistical modeling (regression, etc.)
-- Advanced sequence analysis
+- Sequence analysis
 
 Make sure you have downloaded the data and placed it in the `data/` folder as per the setup instructions.
 
@@ -146,36 +145,36 @@ cat("Duration:",
 
 ```
 
-Now let's examine our panelists and visits in more detail. We'll count the total number of visits, unique panelists, and look at the distribution of visits per panelist. We'll also check the time range of the data to understand how long the tracking period is. Finally, we'll look at the distribution of visits per day per panelist to see if there are any temporal patterns in the data.
+Now let's examine our panelists and traces in more detail. We'll count the total number of traces, unique panelists, and look at the distribution of traces per panelist. We'll also check the time range of the data to understand how long the tracking period is. Finally, we'll look at the distribution of traces per day per panelist to see if there are any temporal patterns in the data.
 
 ```{r}
 
 # Count unique panelists
 n_panelists <- n_distinct(wt_data$panelist_id)
 cat("\n=== Basic Statistics ===\n")
-cat("Total visits:", format(nrow(wt_data), big.mark = ","), "\n")
+cat("Total traces:", format(nrow(wt_data), big.mark = ","), "\n")
 cat("Unique panelists:", n_panelists, "\n")
 
-# Show visits per panelist (summary statistics)
-cat("\n=== Visits per Panelist ===\n")
+# Show traces per panelist (summary statistics)
+cat("\n=== Traces per Panelist ===\n")
 visits_per_panelist <- wt_data %>%
-  count(panelist_id, name = "visits") %>%
-  pull(visits)
+  count(panelist_id, name = "traces") %>%
+  pull(traces)
 
 cat("Mean:", round(mean(visits_per_panelist), 1), "\n")
 cat("Median:", median(visits_per_panelist), "\n")
 cat("Min:", min(visits_per_panelist), "\n")
 cat("Max:", format(max(visits_per_panelist), big.mark = ","), "\n")
 
-# Show visits per day per panelist
+# Show traces per day per panelist
 wt_data <- wt_data %>%
   mutate(date = as.Date(timestamp))
 
-cat("\n=== Visits per Day per Panelist ===\n")
+cat("\n=== Traces per Day per Panelist ===\n")
 visits_per_day <- wt_data %>%
   group_by(panelist_id, date) %>%
-  summarise(visits = n(), .groups = "drop") %>%
-  pull(visits)
+  summarise(traces = n(), .groups = "drop") %>%
+  pull(traces)
 
 cat("Mean:", round(mean(visits_per_day), 1), "\n")
 cat("Median:", median(visits_per_day), "\n")
@@ -186,20 +185,20 @@ cat("Max:", max(visits_per_day), "\n")
 
 
 
-Of course, we can also visualize this data to get a better sense of the distribution of visits and temporal patterns:
+Of course, we can also visualize this data to get a better sense of the distribution of traces and temporal patterns:
 
 
-```{r visualize-data-visits-per-user, fig.width=8, fig.height=5}
-# Distribution of visits per panelist
-visits_per_user <- wt_data %>%
-  count(panelist_id, name = "visits")
+```{r visualize-data-traces-per-user, fig.width=8, fig.height=5}
+# Distribution of traces per panelist
+traces_per_user <- wt_data %>%
+  count(panelist_id, name = "traces")
 
-ggplot(visits_per_user, aes(x = visits)) +
+ggplot(traces_per_user, aes(x = traces)) +
   geom_histogram(bins = 50, fill = "steelblue", color = "white") +
   scale_x_continuous(labels = function(x) format(x, big.mark = ",", scientific = FALSE)) +
   labs(
-    title = "Distribution of Visits per Panelist",
-    x = "Number of Visits",
+    title = "Distribution of Traces per Panelist",
+    x = "Number of Traces",
     y = "Number of Panelists"
   ) +
   theme_minimal()
@@ -208,59 +207,59 @@ ggplot(visits_per_user, aes(x = visits)) +
 
 
 
-```{r visualize-data-visits-over-time, fig.width=10, fig.height=5}
-# Visits over time (daily counts)
-visits_over_time <- wt_data %>%
-  count(date, name = "visits")
+```{r visualize-data-traces-over-time, fig.width=10, fig.height=5}
+# Traces over time (daily counts)
+traces_over_time <- wt_data %>%
+  count(date, name = "traces")
 
-ggplot(visits_over_time, aes(x = date, y = visits)) +
+ggplot(traces_over_time, aes(x = date, y = traces)) +
   geom_col(fill = "steelblue", width = 1) +
   scale_y_continuous(labels = function(x) format(x, big.mark = ",", scientific = FALSE)) +
   labs(
-    title = "Web Tracking Visits Over Time",
+    title = "Web Tracking Traces Over Time",
     x = "Date",
-    y = "Number of Visits"
+    y = "Number of Traces"
   ) +
   theme_minimal() +
   theme(axis.text.x = element_text(angle = 45, hjust = 1))
 ```
 
-```{r visualize-data-visits-day-time, fig.width=10, fig.height=5}
-# Visits by hour of day
-visits_by_hour <- wt_data %>%
+```{r visualize-data-traces-day-time, fig.width=10, fig.height=5}
+# Traces by hour of day
+traces_by_hour <- wt_data %>%
   mutate(hour = as.numeric(format(timestamp, "%H"))) %>%
-  count(hour, name = "visits")
+  count(hour, name = "traces")
 
-ggplot(visits_by_hour, aes(x = hour, y = visits)) +
+ggplot(traces_by_hour, aes(x = hour, y = traces)) +
   geom_col(fill = "steelblue") +
   scale_x_continuous(breaks = 0:23) +
   scale_y_continuous(labels = function(x) format(x, big.mark = ",", scientific = FALSE)) +
   labs(
     title = "Web Tracking Activity by Hour of Day",
     x = "Hour of Day (0-23)",
-    y = "Number of Visits"
+    y = "Number of Traces"
   ) +
   theme_minimal()
 ```
 
-```{r visualize-data-visits-by-weekday, fig.width=8, fig.height=5}
-# Visits by day of week
-visits_by_weekday <- wt_data %>%
+```{r visualize-data-traces-by-weekday, fig.width=8, fig.height=5}
+# Traces by day of week
+traces_by_weekday <- wt_data %>%
   mutate(
     weekday = weekdays(timestamp),
     weekday = factor(weekday,
                      levels = c("Monday", "Tuesday", "Wednesday",
                                "Thursday", "Friday", "Saturday", "Sunday"))
   ) %>%
-  count(weekday, name = "visits")
+  count(weekday, name = "traces")
 
-ggplot(visits_by_weekday, aes(x = weekday, y = visits)) +
+ggplot(traces_by_weekday, aes(x = weekday, y = traces)) +
   geom_col(fill = "steelblue") +
   scale_y_continuous(labels = function(x) format(x, big.mark = ",", scientific = FALSE)) +
   labs(
     title = "Web Tracking Activity by Day of Week",
     x = "Day of Week",
-    y = "Number of Visits"
+    y = "Number of Traces"
   ) +
   theme_minimal() +
   theme(axis.text.x = element_text(angle = 45, hjust = 1))
@@ -268,7 +267,7 @@ ggplot(visits_by_weekday, aes(x = weekday, y = visits)) +
 
 
 
-The data contains not only full URLs but also entries that are just domains or privacy placeholders. This is common in web tracking data due to privacy settings and browser behavior. Understanding this heterogeneity is crucial for preprocessing and analysis. Let's categorize the URLs into types and see how many visits fall into each category. This will help us understand the composition of our dataset and inform our parsing and classification strategies. We'll also show sample URLs from each type to illustrate the differences.
+The data contains not only full URLs but also entries that are just domains or privacy placeholders. This is common in web tracking data due to privacy settings and browser behavior. Understanding this heterogeneity is crucial for preprocessing and analysis. Let's categorize the URLs into types and see how many traces fall into each category. This will help us understand the composition of our dataset and inform our parsing and classification strategies. We'll also show sample URLs from each type to illustrate the differences.
 
 ```{r annotate-url-type}
 
@@ -432,9 +431,9 @@ summary(wtr_data)
 ## Data cleaning and augmentation
 
 
-### Deduplication
+### Deduplication: From traces to visits
 
-Raw web tracking data contains artifacts from browser behavior and the tracking system itself. Consecutive duplicate visits (e.g., from page refreshes or redirects), extremely short visits, and other noise need to be cleaned before analysis. Let's first look at what these artifacts look like in our data.
+Raw web tracking data consists of **traces**, individual logged URL hits that include browser artifacts like page refreshes, redirects, and automatic reloads. These are not meaningful page visits. The goal of deduplication is to transform these raw traces into **visits**, i.e., records that represent intentional navigation to a page. Let's first look at what these artifacts look like in our data.
 
 ```{r show-artifacts}
 # Show consecutive duplicate visits for one panelist
@@ -472,14 +471,14 @@ wtr_data %>%
 
 ```
 
-These are typically browser refreshes, redirects, or tracking artifacts rather than genuine separate visits. Before we can identify and remove these duplicates, we need to know how much time elapsed between consecutive visits.
+These are typically browser refreshes, redirects, or tracking artifacts rather than genuine separate visits. Before we can identify and remove these duplicate traces, we need to know how much time elapsed between consecutive entries.
 
 
 ```{r add-duration}
 # Add visit duration (time until next visit)
 # cutoff = 300 means durations > 300 seconds (5 min) are replaced with NA
 # (the user likely left the browser)
-cat("Records before cleaning:", format(nrow(wtr_data), big.mark = ","), "\n\n")
+cat("Traces before cleaning:", format(nrow(wtr_data), big.mark = ","), "\n\n")
 
 wtr_data <- add_duration(wtr_data, cutoff = 300, replace_by = NA)
 
@@ -506,16 +505,16 @@ wtr_data %>%
   theme_minimal()
 ```
 
-We can see a large spike at very short durations. Many of these are consecutive visits to the same URL -- browser artifacts that we want to remove. The `deduplicate()` function from webtrackR identifies consecutive visits to the same URL within a time window and drops them:
+We can see a large spike at very short durations. Many of these are consecutive traces to the same URL, browser artifacts that we want to remove. The `deduplicate()` function from webtrackR identifies consecutive traces to the same URL within a time window and drops them, turning our raw traces into meaningful visits:
 
 ```{r deduplicate}
 # Drop consecutive visits to the same URL within 3 seconds
 wtr_data <- deduplicate(wtr_data, method = "drop", within = 3)
 
-cat("Records after deduplication:", format(nrow(wtr_data), big.mark = ","), "\n")
+cat("Visits after deduplication:", format(nrow(wtr_data), big.mark = ","), "\n")
 ```
 
-Let's see how much data we removed and how the duration distribution changed after cleaning:
+From here on, our data represents **visits** rather than raw traces. Let's see how the duration distribution changed after cleaning:
 
 ```{r after-cleaning, fig.width=8, fig.height=5}
 # Duration distribution after deduplication
@@ -617,7 +616,7 @@ wtr_data %>%
 
 
 
-**Try it yourself:** What happens if you change the deduplication window from 2 second to 5 seconds? How does it affect the number of records?
+**Try it yourself:** What happens if you change the deduplication window from 3 seconds to 5 seconds? How does it affect the number of visits?
 
 
 
