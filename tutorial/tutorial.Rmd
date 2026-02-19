@@ -95,8 +95,8 @@ We will cover data loading, cleaning, and basic analysis using R. This tutorial 
 - Loading and understanding web tracking data structure
 - Parsing URL components (domain, path, query parameters)
 - Turning raw traces into visits through deduplication
-- Classifying visits into meaningful categories
 - Aggregating visit statistics by panelist
+- Classifying visits into meaningful categories
 - Linking web tracking data with survey responses
 
 **What we won't cover**:
@@ -307,6 +307,10 @@ wt_data %>%
 
 URLs contain rich information encoded in their structure. We'll break them down into components (protocol, host, domain, path, query parameters) and learn how to extract each piece. We'll show both manual tidyverse approaches and webtrackR's built-in functions.
 
+
+![URL anatomy. Source: https://journals.sagepub.com/doi/10.1177/08944393241227868#fig2-08944393241227868](../assets/url_anatomy.jpg)
+
+
 Because the data contains only the hostname / domain for some visits, we'll need to add a protocol to parse the URLs properly. This is a common issue with web tracking data where some entries are just domains without protocol or path for privacy reasons. Therefore, we want to add `https://` to all entries in the `url` column to ensure consistent parsing. This way, we can use URL parsing functions that expect a full URL format.
 
 ```{r add-protocol}
@@ -328,9 +332,6 @@ wt_data <- wt_data %>%
 ```
 
 Now, we can begin dissecting the URLs into their components. While we could use manual string manipulation with regex and tidyverse functions, we'll primarily rely on webtrackR's built-in URL parsing functions for robustness and ease of use. These functions can handle edge cases and inconsistencies in the data more effectively than manual approaches.
-
-
-![URL anatomy. Source: https://journals.sagepub.com/doi/10.1177/08944393241227868#fig2-08944393241227868](../assets/url_anatomy.jpg)
 
 
 ```{r ada-parse}
@@ -370,7 +371,7 @@ cat("\nColumns returned by ada_url_parse():\n")
 cat(paste(names(url_components), collapse = ", "), "\n")
 ```
 
-We can also use `adaR` to check and modify URLs. For more information, see the [adaR documentation](https://gesistsa.github.io/adaR/).
+We can also use `adaR` to check (for components) and modify (components of) URLs. For more information, see the [adaR documentation](https://gesistsa.github.io/adaR/).
 
 
 You can also use the `webtrackR` package to extract specific components. The package automatically takes care of missing protocols and then calls `adaR` under the hood.
@@ -514,6 +515,9 @@ wtr_data <- deduplicate(wtr_data, method = "drop", within = 3)
 cat("Visits after deduplication:", format(nrow(wtr_data), big.mark = ","), "\n")
 ```
 
+**Try it yourself:** What happens if you change the deduplication window from 3 seconds to 5 seconds? How does it affect the number of visits?
+
+
 From here on, our data represents **visits** rather than raw traces. Let's see how the duration distribution changed after cleaning:
 
 ```{r after-cleaning, fig.width=8, fig.height=5}
@@ -570,13 +574,23 @@ cat("Median:", median(sessions_per_day$n_sessions), "\n")
 cat("Max:", max(sessions_per_day$n_sessions), "\n")
 ```
 
+Note: In the above calculation we don't consider days where participants did no browsing at all.
+
+
+We can also take a look at the duration of sessions:
+
 ```{r session-distribution, fig.width=8, fig.height=5}
-ggplot(sessions_per_user, aes(x = n_sessions)) +
+
+sessions_duration <- wtr_data %>%
+  group_by(panelist_id, session) %>%
+  summarise(session_duration_minutes = sum(duration, na.rm = TRUE)/60, .groups = "drop")
+
+ggplot(sessions_duration, aes(x = session_duration_minutes)) +
   geom_histogram(bins = 50, fill = "steelblue", color = "white") +
   labs(
-    title = "Distribution of Sessions per Panelist (30-min cutoff)",
-    x = "Number of Sessions",
-    y = "Number of Panelists"
+    title = "Distribution of Session duration (30-min cutoff)",
+    x = "Session Duration (minutes)",
+    y = "Number of Sessions"
   ) +
   theme_minimal()
 ```
@@ -613,10 +627,6 @@ wtr_data %>%
     print()
 ```
 
-
-
-
-**Try it yourself:** What happens if you change the deduplication window from 3 seconds to 5 seconds? How does it affect the number of visits?
 
 
 
@@ -692,9 +702,6 @@ wtr_data %>%
 ```
 
 Note that `classify_visits()` with `match_by = "domain"` performs exact domain matching. Visits to domains not in our list get `NA`. This is more precise than regex but requires listing each domain explicitly. For a comprehensive classification, you would rely on a larger domain list.
-
-<--- TODO --->
-
 
 
 
