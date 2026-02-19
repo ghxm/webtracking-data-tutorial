@@ -17,6 +17,8 @@ fontfamily: sourcesanspro
 fontsize: 10
 header-includes: |
     \usepackage{relsize}
+    \usepackage{tikz}
+    \usetikzlibrary{arrows.meta, positioning}
     % set the title background
     \pgfdeclareimage[width=\paperwidth,height=\paperheight]{bgtitle}{template/background3.pdf}
     \usebackgroundtemplate{\pgfuseimage{bgtitle}}
@@ -95,8 +97,8 @@ knitr::opts_chunk$set(echo = TRUE)
 
 # What is web tracking data?
 
-- Records of individual-level browsing behavior collected via browser extensions or metering software
-- Each record: **who** visited **what URL** at **what time**
+- Records of individual-level browsing behavior (traces) collected via browser extensions or metering software
+- Each record: **browser** requested **what URL** at **what time**
 - Typically linked with survey data (demographics, attitudes, etc.)
 
 \bigskip
@@ -107,6 +109,34 @@ knitr::opts_chunk$set(echo = TRUE)
 |:------------|:----|:----------|
 | P001 | https://www.spiegel.de/politik/... | 2024-04-15 09:23:45 |
 | P001 | https://www.google.com/search?q=... | 2024-04-15 09:24:12 |
+
+
+# Goal
+
+\begin{center}
+\begin{tikzpicture}[
+  node distance=1.8cm,
+  box/.style={font=\bfseries\large, align=center},
+  arr/.style={-{Stealth[length=3mm]}, thick}
+]
+  % Top row
+  \node[box] (traces) {Traces};
+  \node[box, right=of traces] (visits) {Visits};
+  \node[box, right=of visits] (sequences) {Sequences};
+  \node[box, right=of sequences] (sessions) {Sessions};
+
+  \draw[arr] (traces) -- (visits);
+  \draw[arr] (visits) -- (sequences);
+  \draw[arr] (sequences) -- (sessions);
+
+  % Bottom branch from Visits
+  \node[box, below=1.2cm of visits, draw, dashed, rounded corners, inner sep=4pt] (content) {Content};
+  \node[box, right=of content] (category) {Classification};
+
+  \draw[arr] (visits) -- (content);
+  \draw[arr] (content) -- (category);
+\end{tikzpicture}
+\end{center}
 
 
 
