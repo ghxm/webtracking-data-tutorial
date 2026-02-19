@@ -725,7 +725,7 @@ If you see obviously non-news domains, it’s a sign that the regex-classificati
 news_types = webtrackR::news_types
 
 # load GOND news list
-gond <- openxlsx::read.xlsx("../data/GONDv3_domains.xlsx") %>% 
+gond <- openxlsx::read.xlsx(here::here("data", "GONDv3_domains.xlsx")) %>% 
   dplyr::filter(language=="de") %>% 
   dplyr::select(domain)
 
@@ -845,7 +845,7 @@ For demonstration purposes, we merge the corresponding survey file that contains
 
 ```{r join-survey}
 # Example: Load survey data (synthetic demo file)
-survey_data <- read.csv2("data/ZA5670_survey_data.csv")
+survey_data <- read.csv2(here::here("data", "ZA5670_survey_data.csv"))
 
 cat("=== Survey Data Structure ===\n")
 glimpse(survey_data)
