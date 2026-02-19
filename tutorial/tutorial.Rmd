@@ -77,7 +77,7 @@ if (getRversion() < "4.0.0") {
 
 # Load data functions and create enhanced dataset
 # Use here::here() to find load_data.R from project root (works when knitting)
-source(here::here("load_data.R"))
+source(here::here("scripts", "load_data.R"))
 
 cat("✓ Setup complete!\n\n")
 ```
