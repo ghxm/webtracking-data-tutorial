@@ -408,37 +408,37 @@ n_duplicates <- sum(enhanced_data %>%
 cat(sprintf("  Consecutive duplicate URLs in data: %d (%.1f%%)\n",
             n_duplicates, n_duplicates / nrow(enhanced_data) * 100))
 
-# Check distribution (3 categories matching the tutorial)
-cat("\nURL type distribution:\n")
-enhanced_data %>%
-  mutate(
-    url_type = case_when(
-      url %in% c("blacked_out", "full_deny") ~ "Privacy placeholder",
-      str_detect(url, "^https?://") | str_detect(url, "^[a-z][a-z0-9+.-]*:") ~ "Full URL",
-      TRUE ~ "Domain only"
-    )
-  ) %>%
-  count(url_type) %>%
-  mutate(percentage = scales::percent(n / sum(n))) %>%
-  print()
-
-# Sample URLs from each category
-cat("\nSample URLs by category:\n")
-enhanced_data %>%
-  mutate(category = case_when(
-    str_detect(url, "blacked_out|full_deny") ~ "privacy",
-    str_detect(url, "spiegel|zeit|tagesschau|t-online") ~ "news",
-    str_detect(url, "wikipedia") ~ "wikipedia",
-    str_detect(url, "amazon|ebay|kleinanzeigen") ~ "ecommerce",
-    str_detect(url, "youtube|facebook|instagram") ~ "social_video",
-    str_detect(url, "google|bing|duckduckgo|ecosia") ~ "search",
-    TRUE ~ "other"
-  )) %>%
-  filter(category != "privacy") %>%
-  group_by(category) %>%
-  slice_sample(n = 2) %>%
-  select(category, url) %>%
-  print(n = 20)
+# # Check distribution (3 categories matching the tutorial)
+# cat("\nURL type distribution:\n")
+# enhanced_data %>%
+#   mutate(
+#     url_type = case_when(
+#       url %in% c("blacked_out", "full_deny") ~ "Privacy placeholder",
+#       str_detect(url, "^https?://") | str_detect(url, "^[a-z][a-z0-9+.-]*:") ~ "Full URL",
+#       TRUE ~ "Domain only"
+#     )
+#   ) %>%
+#   count(url_type) %>%
+#   mutate(percentage = scales::percent(n / sum(n))) %>%
+#   print()
+# 
+# # Sample URLs from each category
+# cat("\nSample URLs by category:\n")
+# enhanced_data %>%
+#   mutate(category = case_when(
+#     str_detect(url, "blacked_out|full_deny") ~ "privacy",
+#     str_detect(url, "spiegel|zeit|tagesschau|t-online") ~ "news",
+#     str_detect(url, "wikipedia") ~ "wikipedia",
+#     str_detect(url, "amazon|ebay|kleinanzeigen") ~ "ecommerce",
+#     str_detect(url, "youtube|facebook|instagram") ~ "social_video",
+#     str_detect(url, "google|bing|duckduckgo|ecosia") ~ "search",
+#     TRUE ~ "other"
+#   )) %>%
+#   filter(category != "privacy") %>%
+#   group_by(category) %>%
+#   slice_sample(n = 2) %>%
+#   select(category, url) %>%
+#   print(n = 20)
 
 # Write to CSV
 cat("\nWriting enhanced dataset...\n")
