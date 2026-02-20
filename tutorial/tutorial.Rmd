@@ -800,7 +800,6 @@ panelist_summary %>%
   arrange(panelist_id) %>%
   head(20) %>%
   print()
->>>>>>> Stashed changes
 ```
 
 Now let's aggregate the data to a wide-format.
