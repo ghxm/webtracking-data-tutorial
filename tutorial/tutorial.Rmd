@@ -896,7 +896,7 @@ panelist_summary_wide <- panelist_summary %>%
   )
 
 cat("=== Wide Format (first 10 rows) ===\n")
-head(panelist_wide, 10)
+head(panelist_summary_wide, 10)
 ```
 
 Something is still missing. We should also include the total number of
@@ -1062,9 +1062,21 @@ transformation steps to verify that everything worked as expected.**
 
 # Outlook: Modeling
 
-We can also build some models.
+We can also build some models. For this we need the `glmmTMB` package:
+
+````{r}
+
+if(!('glmmTMB' %in% installed.packages()[,"Package"])){
+
+  install.packages('glmmTMB')
+}
+
+````
+
+
 
 ```{r}
+
 library(glmmTMB)
 
 model <- glmmTMB::glmmTMB(
