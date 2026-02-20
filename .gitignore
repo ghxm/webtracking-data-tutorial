@@ -653,5 +653,5 @@ TSWLatexianTemp*
 #*Notes.bib
 
 /slides/slides.tex
-/tutorial/tutorial.html
-/tutorial.html
+#/tutorial/tutorial.html
+#/tutorial.html
