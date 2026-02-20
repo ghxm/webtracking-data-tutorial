@@ -619,6 +619,9 @@ cat("Median:", median(sessions_per_day$n_sessions), "\n")
 cat("Max:", max(sessions_per_day$n_sessions), "\n")
 ```
 
+Note: The summary statistics don't include days where no browsing sessions took place!
+
+
 ```{r session-distribution, fig.width=8, fig.height=5}
 ggplot(sessions_per_user, aes(x = n_sessions)) +
   geom_histogram(bins = 50, fill = "steelblue", color = "white") +
@@ -630,36 +633,7 @@ ggplot(sessions_per_user, aes(x = n_sessions)) +
   theme_minimal()
 ```
 
-### URL cleaning
 
-We can also clean up URLs by removing query parameters and fragments.
-This is useful for grouping visits to the same page regardless of
-tracking parameters (e.g., `?utm_source=google`):
-
-```{r drop-query}
-# Remove query strings and fragments from URLs
-wtr_data <- drop_query(wtr_data, varname = "url")
-
-# Show before/after
-cat("=== URL Cleaning Examples ===\n")
-wtr_data %>%
-  filter(url != url_noquery) %>%
-  select(url, url_noquery) %>%
-  slice_sample(n = 5) %>%
-  print()
-```
-
-This way we can easily inspect some of the top URLs:
-
-```{r top-urls}
-
-# Show top 20 URLs after cleaning
-cat("=== Top 20 URLs After Cleaning ===\n")
-wtr_data %>%
-    count(url_noquery, sort = TRUE) %>%
-    head(20) %>%
-    print()
-```
 
 ## Basic URL classification
 
@@ -834,9 +808,6 @@ wtr_data = wtr_data %>%
 table(wtr_data$category, wtr_data$category_updated)
 ```
 
-**Try it yourself:** Can you subdivide news visits into subcategories
-(politics, sports, culture) using the `path` column? Hint: use
-`str_detect(path, "politik|political")` patterns on the path component.
 
 ## Aggregation and summary statistics
 
@@ -1153,6 +1124,18 @@ correlates with demographic variables from survey data.
 # then compare groups (e.g., boxplot of news visits by education level)
 
 ```
+
+## 6. Sub-divide paths
+
+Can you subdivide news visits into subcategories
+(politics, sports, culture) using the `path` column? 
+
+```{r exercise-5}
+# Hint:Hint: use `str_detect(path, "politik|political")` patterns on the path component.
+
+```
+
+
 
 # Further resources
 
