@@ -1134,7 +1134,7 @@ correlates with demographic variables from survey data.
 Can you subdivide news visits into subcategories
 (politics, sports, culture) using the `path` column? 
 
-```{r exercise-5}
+```{r exercise-6}
 # Hint:Hint: use `str_detect(path, "politik|political")` patterns on the path component.
 
 ```
