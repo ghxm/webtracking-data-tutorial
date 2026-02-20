@@ -619,8 +619,8 @@ cat("Median:", median(sessions_per_day$n_sessions), "\n")
 cat("Max:", max(sessions_per_day$n_sessions), "\n")
 ```
 
-Note: The summary statistics don't include days where no browsing sessions took place!
-
+Note: The summary statistics don't include days where no browsing
+sessions took place!
 
 ```{r session-distribution, fig.width=8, fig.height=5}
 ggplot(sessions_per_user, aes(x = n_sessions)) +
@@ -632,8 +632,6 @@ ggplot(sessions_per_user, aes(x = n_sessions)) +
   ) +
   theme_minimal()
 ```
-
-
 
 ## Basic URL classification
 
@@ -808,7 +806,6 @@ wtr_data = wtr_data %>%
 table(wtr_data$category, wtr_data$category_updated)
 ```
 
-
 ## Aggregation and summary statistics
 
 Once visits are cleaned and classified, we usually want to aggregate the
@@ -884,8 +881,6 @@ df_ind <- wtr_data %>%
 df_ind = df_ind %>% 
   left_join(panelist_summary_wide)
 ```
-
-
 
 ## Linking survey data
 
@@ -1032,16 +1027,14 @@ transformation steps to verify that everything worked as expected.**
 
 We can also build some models. For this we need the `glmmTMB` package:
 
-````{r eval=FALSE}
+```{r eval=FALSE}
 
 if(!('glmmTMB' %in% installed.packages()[,"Package"])){
 
   install.packages('glmmTMB')
 }
 
-````
-
-
+```
 
 ```{r eval=FALSE}
 
@@ -1131,15 +1124,13 @@ correlates with demographic variables from survey data.
 
 ## 6. Sub-divide paths
 
-Can you subdivide news visits into subcategories
-(politics, sports, culture) using the `path` column? 
+Can you subdivide news visits into subcategories (politics, sports,
+culture) using the `path` column?
 
 ```{r exercise-6}
 # Hint:Hint: use `str_detect(path, "politik|political")` patterns on the path component.
 
 ```
-
-
 
 # Further resources
 
