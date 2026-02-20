@@ -386,13 +386,6 @@ wt_data %>%
   head(20) %>%
   print()
 
-# Get hostname (domain without port)
-cat("\n=== Top 20 Hostnames ===\n")
-wt_data %>%
-  mutate(hostname = ada_get_hostname(url)) %>%
-  count(hostname, sort = TRUE) %>%
-  head(20) %>%
-  print()
 
 # OR: Parse all components at once with ada_url_parse()
 cat("\n=== Sample of Parsed URL Components ===\n")
@@ -1064,7 +1057,7 @@ transformation steps to verify that everything worked as expected.**
 
 We can also build some models. For this we need the `glmmTMB` package:
 
-````{r}
+````{r eval=FALSE}
 
 if(!('glmmTMB' %in% installed.packages()[,"Package"])){
 
@@ -1075,7 +1068,7 @@ if(!('glmmTMB' %in% installed.packages()[,"Package"])){
 
 
 
-```{r}
+```{r eval=FALSE}
 
 library(glmmTMB)
 
