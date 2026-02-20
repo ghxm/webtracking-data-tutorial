@@ -885,6 +885,10 @@ df_ind = df_ind %>%
   left_join(panelist_summary_wide)
 ```
 
+
+
+## Linking survey data
+
 A key advantage of panel web tracking studies such as the GESIS panel
 (Campusfile: ZA5670) is that browsing data can be linked to survey
 responses.
