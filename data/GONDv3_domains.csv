@@ -1,0 +1,1325 @@
+"","domain","type","language","in_list_chatgpt","in_list_hbi","in_list_scharkow","in_list_stier","in_list_w3news"
+"1","10tv.com","commercial broadcaster",NA,FALSE,FALSE,FALSE,TRUE,FALSE
+"2","19vierundachtzig.com","hyperpartisan news","de",FALSE,FALSE,FALSE,FALSE,FALSE
+"3","20min.ch","legacy press","de",FALSE,FALSE,FALSE,TRUE,FALSE
+"4","20minutes.fr","tabloid newspaper","fr",FALSE,FALSE,FALSE,TRUE,FALSE
+"5","20minutos.es","tabloid newspaper","es",FALSE,FALSE,FALSE,TRUE,FALSE
+"6","20mn.fr","tabloid newspaper",NA,FALSE,FALSE,FALSE,TRUE,FALSE
+"7","24chasa.bg","legacy press","bg",TRUE,FALSE,FALSE,FALSE,FALSE
+"8","24economia.com","digital-born news outlet","it",FALSE,FALSE,FALSE,TRUE,FALSE
+"9","24rhein.de","digital-born news outlet","de",TRUE,FALSE,FALSE,FALSE,FALSE
+"10","24vest.de","legacy press","de",FALSE,TRUE,FALSE,FALSE,FALSE
+"11","3sat.de","public broadcaster","de",FALSE,FALSE,FALSE,TRUE,FALSE
+"12","6abc.com","commercial broadcaster","en",FALSE,FALSE,FALSE,TRUE,FALSE
+"13","a-beig.de","legacy press","de",FALSE,FALSE,FALSE,TRUE,FALSE
+"14","aachener-nachrichten.de","legacy press","de",FALSE,TRUE,FALSE,TRUE,TRUE
+"15","aachener-zeitung.de","legacy press","de",FALSE,TRUE,TRUE,TRUE,TRUE
+"16","abc.es","legacy press","es",FALSE,FALSE,FALSE,TRUE,FALSE
+"17","abc.net.au","public broadcaster","en",FALSE,FALSE,FALSE,TRUE,FALSE
+"18","abc13.com","commercial broadcaster","en",FALSE,FALSE,FALSE,TRUE,FALSE
+"19","abc15.com","commercial broadcaster","en",FALSE,FALSE,FALSE,TRUE,FALSE
+"20","abc7.com","commercial broadcaster","en",FALSE,FALSE,FALSE,TRUE,FALSE
+"21","abc7chicago.com","commercial broadcaster","en",FALSE,FALSE,FALSE,TRUE,FALSE
+"22","abc7ny.com","commercial broadcaster","en",FALSE,FALSE,FALSE,TRUE,FALSE
+"23","abcactionnews.com","commercial broadcaster","en",FALSE,FALSE,FALSE,TRUE,FALSE
+"24","abcn.ws","commercial broadcaster","en",FALSE,FALSE,FALSE,TRUE,FALSE
+"25","abendblatt.de","legacy press","de",FALSE,TRUE,TRUE,TRUE,TRUE
+"26","abendblatt.de/hamburg/bergedorf","legacy press","de",FALSE,FALSE,FALSE,FALSE,TRUE
+"27","abendzeitung-muenchen.de","tabloid newspaper","de",FALSE,TRUE,FALSE,TRUE,TRUE
+"28","abgeordneten-check.de","hyperpartisan news","de",TRUE,FALSE,FALSE,FALSE,FALSE
+"29","achgut.com","hyperpartisan news","de",FALSE,FALSE,FALSE,TRUE,FALSE
+"30","actu.fr","legacy press","fr",FALSE,FALSE,FALSE,TRUE,FALSE
+"31","actu.orange.fr","portal",NA,NA,NA,NA,NA,NA
+"32","actualites-la-croix.com","legacy press","ja",FALSE,FALSE,FALSE,TRUE,FALSE
+"33","actuall.com","hyperpartisan news","es",FALSE,FALSE,FALSE,TRUE,FALSE
+"34","ad.nl","tabloid newspaper","it",TRUE,FALSE,FALSE,FALSE,FALSE
+"35","adevarul.ro","legacy press","ro",TRUE,FALSE,FALSE,FALSE,FALSE
+"36","adnkronos.com","legacy press","it",FALSE,FALSE,FALSE,TRUE,FALSE
+"37","aerotelegraph.com","digital-born news outlet","de",TRUE,FALSE,FALSE,FALSE,FALSE
+"38","aerztezeitung.de","legacy press","de",TRUE,TRUE,FALSE,FALSE,TRUE
+"39","affaritaliani.it","digital-born news outlet","en",FALSE,FALSE,FALSE,TRUE,FALSE
+"40","agoravox.fr","digital-born news outlet","fr",FALSE,FALSE,FALSE,TRUE,FALSE
+"41","aichacher-zeitung.de","legacy press","de",FALSE,TRUE,TRUE,FALSE,FALSE
+"42","aichacher-zeitung.de/vorort","legacy press","de",FALSE,FALSE,FALSE,FALSE,TRUE
+"43","aktiv-online.de","legacy press","de",FALSE,FALSE,FALSE,FALSE,TRUE
+"44","alertadigital.com","hyperpartisan news","es",FALSE,FALSE,FALSE,TRUE,FALSE
+"45","alexander-wallasch.de","hyperpartisan news","de",FALSE,FALSE,FALSE,FALSE,FALSE
+"46","alfelder-zeitung.de","legacy press","de",FALSE,TRUE,FALSE,FALSE,FALSE
+"47","aljazeera.com","commercial broadcaster","en",FALSE,FALSE,FALSE,TRUE,FALSE
+"48","aljazeera.net","commercial broadcaster","ar",FALSE,FALSE,FALSE,FALSE,FALSE
+"49","all-in.de","legacy press","de",FALSE,TRUE,TRUE,FALSE,TRUE
+"50","alles-schallundrauch.blogspot.com","hyperpartisan news","de",TRUE,FALSE,FALSE,FALSE,FALSE
+"51","allgaeuer-anzeigeblatt.de","legacy press","de",FALSE,TRUE,FALSE,FALSE,FALSE
+"52","allgaeuer-zeitung.de","legacy press","de",TRUE,FALSE,FALSE,FALSE,FALSE
+"53","allgemeine-zeitung.de","tabloid newspaper","de",TRUE,TRUE,TRUE,FALSE,FALSE
+"54","alpenschau.com","hyperpartisan news","de",FALSE,FALSE,FALSE,FALSE,FALSE
+"55","altermannblog.de","hyperpartisan news","de",FALSE,FALSE,FALSE,FALSE,FALSE
+"56","altkreisblitz.de","digital-born news outlet","de",TRUE,FALSE,FALSE,FALSE,FALSE
+"57","ammerseekurier.de","legacy press",NA,FALSE,TRUE,FALSE,FALSE,FALSE
+"58","anderweltonline.com","hyperpartisan news","de",FALSE,FALSE,FALSE,FALSE,FALSE
+"59","andreas-unterberger.at","hyperpartisan news","de",FALSE,FALSE,FALSE,FALSE,FALSE
+"60","anonymousnews.org","hyperpartisan news","de",TRUE,FALSE,FALSE,FALSE,FALSE
+"61","anonymousnews.ru","hyperpartisan news","de",FALSE,FALSE,FALSE,TRUE,FALSE
+"62","ansa.it","legacy press","it",FALSE,FALSE,FALSE,TRUE,FALSE
+"63","ansage.org","hyperpartisan news","de",FALSE,FALSE,FALSE,FALSE,FALSE
+"64","antaios.de","hyperpartisan news","de",FALSE,FALSE,FALSE,FALSE,FALSE
+"65","antena3.com","commercial broadcaster","es",FALSE,FALSE,FALSE,TRUE,FALSE
+"66","antenne.de","commercial broadcaster","de",TRUE,FALSE,FALSE,FALSE,FALSE
+"67","antenne1.de","commercial broadcaster","de",TRUE,FALSE,FALSE,FALSE,FALSE
+"68","antennethueringen.de","commercial broadcaster","de",TRUE,FALSE,FALSE,FALSE,FALSE
+"69","anti-spiegel.ru","hyperpartisan news","de",TRUE,FALSE,FALSE,FALSE,FALSE
+"70","antilobby.wordpress.com","hyperpartisan news","de",FALSE,FALSE,FALSE,FALSE,FALSE
+"71","aol.co.uk/news","portal",NA,NA,NA,NA,NA,NA
+"72","aol.com","tabloid newspaper","de",TRUE,FALSE,FALSE,FALSE,FALSE
+"73","aol.com/article/news","portal",NA,NA,NA,NA,NA,NA
+"74","aol.com/news","portal",NA,NA,NA,NA,NA,NA
+"75","aol.de/nachrichten","portal",NA,NA,NA,NA,NA,NA
+"76","apnews.com","legacy press","en",FALSE,FALSE,FALSE,TRUE,FALSE
+"77","apolut.net","hyperpartisan news","de",FALSE,FALSE,FALSE,FALSE,FALSE
+"78","app.handelsblatt.com","legacy press","en",FALSE,FALSE,FALSE,TRUE,FALSE
+"79","ara.cat","legacy press","ca",FALSE,FALSE,FALSE,TRUE,FALSE
+"80","arcamax.com","digital-born news outlet","en",FALSE,FALSE,FALSE,TRUE,FALSE
+"81","ard-text.de","public broadcaster","de",FALSE,FALSE,FALSE,TRUE,FALSE
+"82","ard.de","public broadcaster","de",FALSE,FALSE,TRUE,TRUE,FALSE
+"83","ardmediathek.de","public broadcaster","de",FALSE,FALSE,FALSE,TRUE,FALSE
+"84","ardtext.de","public broadcaster","de",TRUE,FALSE,FALSE,FALSE,FALSE
+"85","arte.tv","public broadcaster","en",FALSE,FALSE,FALSE,TRUE,FALSE
+"86","atresplayer.com","commercial broadcaster","es",FALSE,FALSE,FALSE,TRUE,FALSE
+"87","augsburger-allgemeine.de","legacy press","de",FALSE,TRUE,TRUE,TRUE,TRUE
+"88","avvenire.it","legacy press","it",FALSE,FALSE,FALSE,TRUE,FALSE
+"89","az-muenchen.de","tabloid newspaper","de",FALSE,FALSE,TRUE,FALSE,FALSE
+"90","az-online.de","legacy press","de",FALSE,TRUE,TRUE,TRUE,TRUE
+"91","azcentral.com","legacy press","en",TRUE,FALSE,FALSE,FALSE,FALSE
+"92","azonline.de","legacy press","de",FALSE,TRUE,TRUE,FALSE,TRUE
+"93","babenhaeuser-zeitung.de","legacy press","de",FALSE,TRUE,FALSE,FALSE,FALSE
+"94","bad-sodener-zeitung.de","legacy press","de",FALSE,TRUE,FALSE,FALSE,FALSE
+"95","baden-tv.com","commercial broadcaster","de",FALSE,FALSE,FALSE,FALSE,FALSE
+"96","badische-zeitung.de","legacy press","de",FALSE,TRUE,TRUE,TRUE,TRUE
+"97","badisches-tagblatt.de","legacy press","de",FALSE,TRUE,FALSE,FALSE,TRUE
+"98","baltimoresun.com","legacy press","en",FALSE,FALSE,FALSE,TRUE,FALSE
+"99","bams.de","tabloid newspaper","de",FALSE,FALSE,FALSE,TRUE,FALSE
+"100","bayerische-staatszeitung.de","legacy press","de",TRUE,TRUE,FALSE,FALSE,FALSE
+"101","bayern3.de","public broadcaster","de",TRUE,FALSE,FALSE,FALSE,FALSE
+"102","bayernistfrei.com","hyperpartisan news","de",FALSE,FALSE,FALSE,FALSE,FALSE
+"103","bayreuther-tagblatt.de","legacy press","de",TRUE,FALSE,FALSE,FALSE,FALSE
+"104","bbc.co.uk","public broadcaster","en",FALSE,FALSE,FALSE,TRUE,FALSE
+"105","bbc.com","public broadcaster","en",FALSE,FALSE,FALSE,TRUE,FALSE
+"106","bbglive.de","digital-born news outlet","de",FALSE,FALSE,FALSE,FALSE,FALSE
+"107","bbv-net.de","legacy press","de",FALSE,TRUE,TRUE,FALSE,TRUE
+"108","bellingcat.com","digital-born news outlet","en",TRUE,FALSE,FALSE,FALSE,FALSE
+"109","belltower.news","digital-born news outlet","de",TRUE,FALSE,FALSE,FALSE,FALSE
+"110","belta.by","public broadcaster","ru",TRUE,FALSE,FALSE,FALSE,FALSE
+"111","bento.de","digital-born news outlet","de",FALSE,FALSE,TRUE,TRUE,FALSE
+"112","beobachter-online.de","legacy press","de",FALSE,TRUE,FALSE,FALSE,FALSE
+"113","berchtesgadener-anzeiger.de","legacy press","de",FALSE,TRUE,FALSE,FALSE,TRUE
+"114","bergamopost.it","legacy press","it",FALSE,FALSE,FALSE,TRUE,FALSE
+"115","bergedorfer-zeitung.de","legacy press","de",FALSE,TRUE,FALSE,TRUE,FALSE
+"116","berliner-abendblatt.de","legacy press","de",TRUE,FALSE,FALSE,FALSE,FALSE
+"117","berliner-kurier.de","tabloid newspaper","de",FALSE,TRUE,TRUE,TRUE,TRUE
+"118","berliner-lokalnachrichten.de","legacy press","de",TRUE,FALSE,FALSE,FALSE,FALSE
+"119","berliner-rundfunk.de","commercial broadcaster","de",TRUE,FALSE,FALSE,FALSE,FALSE
+"120","berliner-woche.de","legacy press","de",TRUE,FALSE,FALSE,FALSE,FALSE
+"121","berliner-zeitung.de","legacy press","de",FALSE,TRUE,TRUE,TRUE,TRUE
+"122","berlinertageszeitung.de","legacy press","de",FALSE,FALSE,FALSE,FALSE,TRUE
+"123","bewusst.tv","hyperpartisan news","de",TRUE,FALSE,FALSE,FALSE,FALSE
+"124","bfmtv.com","commercial broadcaster","fr",FALSE,FALSE,FALSE,TRUE,FALSE
+"125","bgland24.de","digital-born news outlet","de",FALSE,FALSE,FALSE,TRUE,FALSE
+"126","bhaskar.com","legacy press","hi",TRUE,FALSE,FALSE,FALSE,FALSE
+"127","bietigheimerzeitung.de","legacy press","de",FALSE,TRUE,FALSE,FALSE,FALSE
+"128","bild.de","tabloid newspaper","de",FALSE,TRUE,TRUE,TRUE,FALSE
+"129","bkz-online.de","legacy press","de",FALSE,FALSE,TRUE,TRUE,FALSE
+"130","bkz.de","legacy press","de",FALSE,TRUE,FALSE,FALSE,TRUE
+"131","blackout-news.de","digital-born news outlet","de",TRUE,FALSE,FALSE,FALSE,FALSE
+"132","blaetter.de","legacy press","de",TRUE,FALSE,FALSE,FALSE,FALSE
+"133","blauenarzisse.de","hyperpartisan news","de",FALSE,FALSE,FALSE,FALSE,FALSE
+"134","blic.rs","tabloid newspaper","bs",TRUE,FALSE,FALSE,FALSE,FALSE
+"135","blick-aktuell.de","legacy press",NA,TRUE,FALSE,FALSE,FALSE,FALSE
+"136","blick.ch","tabloid newspaper","de",FALSE,FALSE,FALSE,TRUE,FALSE
+"137","blick.de","tabloid newspaper","de",FALSE,FALSE,FALSE,TRUE,FALSE
+"138","blikk.hu","tabloid newspaper","hu",TRUE,FALSE,FALSE,FALSE,FALSE
+"139","blitzquotidiano.it","digital-born news outlet","it",FALSE,FALSE,FALSE,TRUE,FALSE
+"140","bloomberg.com","legacy press","en",FALSE,FALSE,FALSE,TRUE,FALSE
+"141","bnn.de","legacy press","de",FALSE,TRUE,FALSE,TRUE,FALSE
+"142","bo.de","legacy press","de",FALSE,TRUE,TRUE,TRUE,TRUE
+"143","bocholt-news.de","digital-born news outlet","de",TRUE,FALSE,FALSE,FALSE,FALSE
+"144","boehme-zeitung.de","legacy press","de",FALSE,TRUE,FALSE,FALSE,TRUE
+"145","boerse-online.de","digital-born news outlet","de",FALSE,FALSE,FALSE,FALSE,TRUE
+"146","boersen-zeitung.de","legacy press","en",FALSE,FALSE,FALSE,FALSE,TRUE
+"147","boersennews.de","digital-born news outlet","de",TRUE,FALSE,FALSE,FALSE,FALSE
+"148","borkenerzeitung.de","legacy press","de",FALSE,TRUE,TRUE,FALSE,TRUE
+"149","borkumer-zeitung.de","legacy press","de",FALSE,TRUE,FALSE,FALSE,FALSE
+"150","boston25news.com","commercial broadcaster","en",FALSE,FALSE,FALSE,TRUE,FALSE
+"151","bostonglobe.com","legacy press","en",FALSE,FALSE,FALSE,TRUE,FALSE
+"152","boyens-medien.de","legacy press","de",FALSE,TRUE,FALSE,FALSE,TRUE
+"153","br.de","public broadcaster","de",FALSE,FALSE,TRUE,TRUE,FALSE
+"154","br24.de","public broadcaster","de",TRUE,FALSE,FALSE,FALSE,FALSE
+"155","brandeins.de","legacy press","de",TRUE,FALSE,FALSE,FALSE,FALSE
+"156","braunschweiger-zeitung.de","legacy press","de",TRUE,TRUE,TRUE,FALSE,TRUE
+"157","breaking-news-saarland.de","digital-born news outlet","de",FALSE,FALSE,FALSE,FALSE,FALSE
+"158","breaknotizie.com","digital-born news outlet","ja",FALSE,FALSE,FALSE,TRUE,FALSE
+"159","breitbart.com","hyperpartisan news","en",FALSE,FALSE,FALSE,TRUE,FALSE
+"160","bremeneins.de","public broadcaster","de",TRUE,FALSE,FALSE,FALSE,FALSE
+"161","breuerpresse.de","legacy press","ja",FALSE,TRUE,FALSE,FALSE,FALSE
+"162","brf.be","public broadcaster","de",TRUE,FALSE,FALSE,FALSE,FALSE
+"163","brigitte.de","tabloid newspaper","de",TRUE,FALSE,FALSE,FALSE,FALSE
+"164","brv-zeitung.de","legacy press","en",FALSE,TRUE,FALSE,FALSE,TRUE
+"165","bsaktuell.de","digital-born news outlet",NA,FALSE,FALSE,FALSE,TRUE,FALSE
+"166","buerstaedter-zeitung.de","legacy press","de",FALSE,TRUE,TRUE,FALSE,FALSE
+"167","bunshun.jp","legacy press","ja",TRUE,FALSE,FALSE,FALSE,FALSE
+"168","businessinsider.com","digital-born news outlet","de",FALSE,FALSE,FALSE,TRUE,FALSE
+"169","businessinsider.de","digital-born news outlet","de",FALSE,FALSE,TRUE,TRUE,FALSE
+"170","butenunbinnen.de","public broadcaster","de",FALSE,FALSE,TRUE,FALSE,FALSE
+"171","butzbacher-zeitung.de","legacy press","de",FALSE,TRUE,FALSE,FALSE,FALSE
+"172","buzzfeed.com","digital-born news outlet","en",FALSE,FALSE,TRUE,TRUE,FALSE
+"173","buzzfeed.de","digital-born news outlet","de",TRUE,FALSE,FALSE,FALSE,FALSE
+"174","buzzfeednews.com","digital-born news outlet","pt",FALSE,FALSE,FALSE,TRUE,FALSE
+"175","bw24.de","tabloid newspaper","de",TRUE,FALSE,FALSE,FALSE,FALSE
+"176","bz-berlin.de","tabloid newspaper","de",FALSE,TRUE,TRUE,TRUE,TRUE
+"177","cadenaser.com","commercial broadcaster","es",FALSE,FALSE,FALSE,TRUE,FALSE
+"178","caffeinamagazine.it","digital-born news outlet","it",FALSE,FALSE,FALSE,TRUE,FALSE
+"179","campact.de","hyperpartisan news","de",FALSE,FALSE,FALSE,TRUE,FALSE
+"180","canal-plus.com","commercial broadcaster",NA,FALSE,FALSE,FALSE,TRUE,FALSE
+"181","canal.fr","commercial broadcaster",NA,FALSE,FALSE,FALSE,TRUE,FALSE
+"182","canarias7.es","legacy press","es",FALSE,FALSE,FALSE,TRUE,FALSE
+"183","cancan.ro","tabloid newspaper","ro",TRUE,FALSE,FALSE,FALSE,FALSE
+"184","cannstatter-zeitung.de","legacy press","de",FALSE,TRUE,FALSE,FALSE,FALSE
+"185","capital.fr","legacy press","fr",FALSE,FALSE,FALSE,TRUE,FALSE
+"186","casoaislado.com","hyperpartisan news","es",FALSE,FALSE,FALSE,TRUE,FALSE
+"187","cataniatoday.it","legacy press","it",FALSE,FALSE,FALSE,TRUE,FALSE
+"188","cbc.ca","public broadcaster","en",FALSE,FALSE,FALSE,TRUE,FALSE
+"189","cbs.com","commercial broadcaster","en",FALSE,FALSE,FALSE,TRUE,FALSE
+"190","cbsloc.al","commercial broadcaster","en",FALSE,FALSE,FALSE,TRUE,FALSE
+"191","cbslocal.com","commercial broadcaster","en",FALSE,FALSE,FALSE,TRUE,FALSE
+"192","cbsn.ws","commercial broadcaster","en",FALSE,FALSE,FALSE,TRUE,FALSE
+"193","cbsnews.com","commercial broadcaster","en",FALSE,FALSE,FALSE,TRUE,FALSE
+"194","ccma.cat","public broadcaster","ca",FALSE,FALSE,FALSE,TRUE,FALSE
+"195","cellesche-zeitung.de","legacy press","de",FALSE,TRUE,TRUE,FALSE,FALSE
+"196","challenges.fr","legacy press","fr",FALSE,FALSE,FALSE,TRUE,FALSE
+"197","channel4.com","public broadcaster","en",FALSE,FALSE,FALSE,TRUE,FALSE
+"198","channel7breakingreport.live","commercial broadcaster","en",FALSE,FALSE,FALSE,TRUE,FALSE
+"199","charter97.org","hyperpartisan news","ru",TRUE,FALSE,FALSE,FALSE,FALSE
+"200","chicagotribune.com","legacy press","en",FALSE,FALSE,FALSE,TRUE,FALSE
+"201","chiemgau24.de","tabloid newspaper","de",TRUE,FALSE,FALSE,FALSE,FALSE
+"202","cicero.de","legacy press","de",FALSE,FALSE,TRUE,TRUE,TRUE
+"203","citynews-koeln.de","legacy press","de",TRUE,FALSE,FALSE,FALSE,FALSE
+"204","cnbc.com","commercial broadcaster","en",FALSE,FALSE,FALSE,TRUE,FALSE
+"205","cnews.fr","digital-born news outlet","fr",FALSE,FALSE,FALSE,TRUE,FALSE
+"206","cnn.com","commercial broadcaster","en",FALSE,FALSE,FALSE,TRUE,FALSE
+"207","cnn.it","commercial broadcaster","en",FALSE,FALSE,FALSE,TRUE,FALSE
+"208","cnnturk.com","commercial broadcaster","tr",TRUE,FALSE,FALSE,FALSE,FALSE
+"209","cnv-medien.de","legacy press","de",FALSE,TRUE,FALSE,FALSE,FALSE
+"210","com-magazin.de","digital-born news outlet","de",TRUE,FALSE,FALSE,FALSE,FALSE
+"211","come-on.de","legacy press","de",FALSE,TRUE,FALSE,FALSE,TRUE
+"212","compact-online.de","hyperpartisan news","de",FALSE,FALSE,FALSE,FALSE,FALSE
+"213","computerweekly.com","digital-born news outlet","en",TRUE,FALSE,FALSE,FALSE,FALSE
+"214","conservativebuzz.com","hyperpartisan news",NA,FALSE,FALSE,FALSE,TRUE,FALSE
+"215","conservativedailypost.com","hyperpartisan news","en",FALSE,FALSE,FALSE,TRUE,FALSE
+"216","conservativeinstitute.org","hyperpartisan news","en",FALSE,FALSE,FALSE,TRUE,FALSE
+"217","conservo.wordpress.com","hyperpartisan news","de",FALSE,FALSE,FALSE,FALSE,FALSE
+"218","contra-magazin.com","hyperpartisan news","de",FALSE,FALSE,FALSE,FALSE,FALSE
+"219","cope.es","commercial broadcaster","es",FALSE,FALSE,FALSE,TRUE,FALSE
+"220","corona-blog.net","hyperpartisan news","de",TRUE,FALSE,FALSE,FALSE,FALSE
+"221","correctiv.org","digital-born news outlet","de",TRUE,FALSE,TRUE,FALSE,FALSE
+"222","corriere.it","legacy press","it",FALSE,FALSE,FALSE,TRUE,FALSE
+"223","corriereadriatico.it","legacy press","it",FALSE,FALSE,FALSE,TRUE,FALSE
+"224","courrierdelouest.fr","legacy press",NA,FALSE,FALSE,FALSE,TRUE,FALSE
+"225","courrierinternational.com","legacy press","fr",FALSE,FALSE,FALSE,TRUE,FALSE
+"226","ctxt.es","digital-born news outlet","ja",FALSE,FALSE,FALSE,TRUE,FALSE
+"227","cuatro.com","commercial broadcaster","es",FALSE,FALSE,FALSE,TRUE,FALSE
+"228","currenttime.tv","commercial broadcaster","ru",TRUE,FALSE,FALSE,FALSE,FALSE
+"229","cz.de","legacy press","de",FALSE,FALSE,FALSE,FALSE,TRUE
+"230","da-imnetz.de","legacy press",NA,FALSE,TRUE,FALSE,FALSE,FALSE
+"231","dailyconservative.com","hyperpartisan news","en",FALSE,FALSE,FALSE,TRUE,FALSE
+"232","dailykos.com","hyperpartisan news","en",FALSE,FALSE,FALSE,TRUE,FALSE
+"233","dailymail.co.uk","tabloid newspaper","en",FALSE,FALSE,FALSE,TRUE,FALSE
+"234","dailyrecord.co.uk","tabloid newspaper","en",FALSE,FALSE,FALSE,TRUE,FALSE
+"235","dailystar.co.uk","tabloid newspaper","en",FALSE,FALSE,FALSE,TRUE,FALSE
+"236","dailywire.com","hyperpartisan news",NA,FALSE,FALSE,FALSE,TRUE,FALSE
+"237","dallasnews.com","legacy press","en",FALSE,FALSE,FALSE,TRUE,FALSE
+"238","danisch.de","hyperpartisan news","de",FALSE,FALSE,FALSE,FALSE,FALSE
+"239","das-parlament.de","legacy press","de",FALSE,TRUE,FALSE,FALSE,FALSE
+"240","daserste.de","public broadcaster","de",FALSE,FALSE,FALSE,TRUE,FALSE
+"241","daserste.ndr.de","public broadcaster","ja",FALSE,FALSE,FALSE,TRUE,FALSE
+"242","dattelner-morgenpost.de","legacy press","de",FALSE,FALSE,TRUE,FALSE,FALSE
+"243","dawn.com","legacy press","en",TRUE,FALSE,FALSE,FALSE,FALSE
+"244","daytondailynews.com","legacy press","en",FALSE,FALSE,FALSE,TRUE,FALSE
+"245","ddbnews.wordpress.com","hyperpartisan news","de",FALSE,FALSE,FALSE,FALSE,FALSE
+"246","de.euronews.com","commercial broadcaster","de",FALSE,FALSE,FALSE,FALSE,FALSE
+"247","de.europenews.dk","hyperpartisan news","de",FALSE,FALSE,FALSE,FALSE,FALSE
+"248","de.gatestoneinstitute.org","hyperpartisan news","de",FALSE,FALSE,FALSE,FALSE,FALSE
+"249","de.nachrichten.yahoo.com","portal",NA,NA,NA,NA,NA,NA
+"250","de.news-front.info","hyperpartisan news","de",FALSE,FALSE,FALSE,FALSE,FALSE
+"251","de.rt.com","hyperpartisan news",NA,FALSE,FALSE,FALSE,TRUE,FALSE
+"252","de.sott.net","hyperpartisan news","de",FALSE,FALSE,FALSE,FALSE,FALSE
+"253","de.sputniknews.com","hyperpartisan news","de",FALSE,FALSE,FALSE,FALSE,FALSE
+"254","de.yahoo.com","portal",NA,FALSE,FALSE,FALSE,FALSE,FALSE
+"255","de.yahoo.com/nachrichten","portal",NA,NA,NA,NA,NA,NA
+"256","de24live.de","hyperpartisan news","de",FALSE,FALSE,FALSE,FALSE,FALSE
+"257","deister-echo.de","digital-born news outlet","de",TRUE,FALSE,FALSE,FALSE,FALSE
+"258","dekoder.org","digital-born news outlet","de",TRUE,FALSE,FALSE,FALSE,FALSE
+"259","delmagyar.hu","legacy press","hu",TRUE,FALSE,FALSE,FALSE,FALSE
+"260","democratandchronicle.com","legacy press","en",FALSE,FALSE,FALSE,TRUE,FALSE
+"261","denverpost.com","legacy press","en",FALSE,FALSE,FALSE,TRUE,FALSE
+"262","der-kleine-akif.de","hyperpartisan news","de",FALSE,FALSE,FALSE,FALSE,FALSE
+"263","der-postillon.com","digital-born news outlet","de",FALSE,FALSE,FALSE,TRUE,TRUE
+"264","derbytelegraph.co.uk","legacy press","en",FALSE,FALSE,FALSE,TRUE,FALSE
+"265","derpatriot.de","legacy press","de",FALSE,TRUE,TRUE,FALSE,FALSE
+"266","derstandard.at","legacy press","de",FALSE,FALSE,FALSE,TRUE,FALSE
+"267","derstandard.de","legacy press","de",TRUE,FALSE,FALSE,FALSE,FALSE
+"268","derwaechter.net","hyperpartisan news","de",FALSE,FALSE,FALSE,FALSE,FALSE
+"269","derwesten.de","digital-born news outlet","de",FALSE,TRUE,TRUE,TRUE,TRUE
+"270","detektor.fm","commercial broadcaster","de",TRUE,FALSE,FALSE,FALSE,FALSE
+"271","deutsch.rt.com","hyperpartisan news",NA,FALSE,FALSE,FALSE,TRUE,FALSE
+"272","deutsche-mittelstands-nachrichten.de","hyperpartisan news","de",FALSE,FALSE,FALSE,FALSE,FALSE
+"273","deutsche-stimme.de","hyperpartisan news","de",FALSE,FALSE,FALSE,FALSE,FALSE
+"274","deutsche-wirtschafts-nachrichten.de","hyperpartisan news","de",FALSE,FALSE,FALSE,TRUE,FALSE
+"275","deutschland-kurier.org","hyperpartisan news","de",FALSE,FALSE,FALSE,FALSE,FALSE
+"276","deutschlandfunk.de","public broadcaster","de",FALSE,FALSE,TRUE,TRUE,FALSE
+"277","deutschlandfunkkultur.de","public broadcaster","de",FALSE,FALSE,TRUE,TRUE,FALSE
+"278","deutschlandfunknova.de","public broadcaster","de",TRUE,FALSE,TRUE,FALSE,FALSE
+"279","deutschlandradio.de","public broadcaster","de",FALSE,FALSE,TRUE,TRUE,FALSE
+"280","dewezet.de","legacy press","de",FALSE,TRUE,TRUE,TRUE,TRUE
+"281","diaridegirona.cat","legacy press","ca",FALSE,FALSE,FALSE,TRUE,FALSE
+"282","diaridetarragona.com","legacy press","es",FALSE,FALSE,FALSE,TRUE,FALSE
+"283","diariocordoba.com","legacy press","es",FALSE,FALSE,FALSE,TRUE,FALSE
+"284","diariodeibiza.es","legacy press","es",FALSE,FALSE,FALSE,TRUE,FALSE
+"285","diariodeleon.es","legacy press","es",FALSE,FALSE,FALSE,TRUE,FALSE
+"286","diariodemallorca.es","legacy press","es",FALSE,FALSE,FALSE,TRUE,FALSE
+"287","diariodenavarra.es","legacy press","es",FALSE,FALSE,FALSE,TRUE,FALSE
+"288","diariodesevilla.es","legacy press","es",FALSE,FALSE,FALSE,TRUE,FALSE
+"289","diarioinformacion.com","legacy press",NA,FALSE,FALSE,FALSE,TRUE,FALSE
+"290","diariojaen.es","legacy press",NA,FALSE,FALSE,FALSE,TRUE,FALSE
+"291","diariolibre.com","legacy press","es",FALSE,FALSE,FALSE,TRUE,FALSE
+"292","diariosur.es","legacy press","es",FALSE,FALSE,FALSE,TRUE,FALSE
+"293","diariovasco.com","legacy press","es",FALSE,FALSE,FALSE,TRUE,FALSE
+"294","die-glocke.de","legacy press","de",FALSE,TRUE,TRUE,FALSE,TRUE
+"295","die-tagespost.de","legacy press","de",FALSE,TRUE,FALSE,FALSE,FALSE
+"296","dieharke.de","legacy press","de",FALSE,TRUE,FALSE,FALSE,TRUE
+"297","diepresse.com","legacy press","de",FALSE,FALSE,FALSE,TRUE,FALSE
+"298","dieunbestechlichen.com","hyperpartisan news","de",FALSE,FALSE,FALSE,FALSE,FALSE
+"299","digi24.ro","commercial broadcaster","ro",TRUE,FALSE,FALSE,FALSE,FALSE
+"300","digitalcourage.de","digital-born news outlet","de",TRUE,FALSE,FALSE,FALSE,FALSE
+"301","digitalsevilla.com","hyperpartisan news","es",FALSE,FALSE,FALSE,TRUE,FALSE
+"302","dnn.de","legacy press","de",FALSE,TRUE,TRUE,TRUE,TRUE
+"303","donau-ries-aktuell.de","digital-born news outlet","de",TRUE,FALSE,FALSE,FALSE,FALSE
+"304","donaukurier.de","legacy press","de",FALSE,TRUE,TRUE,TRUE,TRUE
+"305","dorstenerzeitung.de","legacy press","de",FALSE,TRUE,FALSE,FALSE,FALSE
+"306","dortmund24.de","digital-born news outlet",NA,FALSE,FALSE,FALSE,TRUE,FALSE
+"307","dpa-news.de","digital-born news outlet","en",FALSE,FALSE,FALSE,TRUE,FALSE
+"308","drudgereport.com","hyperpartisan news","en",FALSE,FALSE,FALSE,TRUE,FALSE
+"309","dtj-online.de","digital-born news outlet","de",TRUE,FALSE,FALSE,FALSE,FALSE
+"310","dushanwegner.com","hyperpartisan news","de",FALSE,FALSE,FALSE,FALSE,FALSE
+"311","dw.com","public broadcaster","en",FALSE,FALSE,FALSE,TRUE,FALSE
+"312","dzen.ru","digital-born news outlet","ja",TRUE,FALSE,FALSE,FALSE,FALSE
+"313","dzonline.de","legacy press","de",FALSE,TRUE,FALSE,FALSE,TRUE
+"314","e-zeitung.ruhrnachrichten.de","legacy press","de",FALSE,FALSE,FALSE,FALSE,FALSE
+"315","eberbacher-zeitung.de","legacy press","de",FALSE,TRUE,FALSE,FALSE,FALSE
+"316","echo-online.de","legacy press","de",TRUE,TRUE,TRUE,FALSE,TRUE
+"317","echo24.de","digital-born news outlet","de",FALSE,FALSE,TRUE,TRUE,FALSE
+"318","ecodibergamo.it","legacy press","it",FALSE,FALSE,FALSE,TRUE,FALSE
+"319","economiadigital.es","digital-born news outlet","es",FALSE,FALSE,FALSE,TRUE,FALSE
+"320","economist.com","legacy press","en",FALSE,FALSE,FALSE,TRUE,FALSE
+"321","ef-magazin.de","hyperpartisan news","de",FALSE,FALSE,FALSE,FALSE,FALSE
+"322","eike-klima-energie.eu","hyperpartisan news","de",FALSE,FALSE,FALSE,FALSE,FALSE
+"323","einbecker-morgenpost.de","legacy press","de",FALSE,TRUE,FALSE,FALSE,TRUE
+"324","einprozent.de","hyperpartisan news","de",FALSE,FALSE,FALSE,FALSE,FALSE
+"325","einwanderungskritik.de","hyperpartisan news","de",FALSE,FALSE,FALSE,FALSE,FALSE
+"326","ejz.de","legacy press","de",FALSE,TRUE,TRUE,FALSE,TRUE
+"327","el-nacional.com","legacy press","es",FALSE,FALSE,FALSE,TRUE,FALSE
+"328","elboletin.com","digital-born news outlet","es",FALSE,FALSE,FALSE,TRUE,FALSE
+"329","elcomercio.es","legacy press","es",FALSE,FALSE,FALSE,TRUE,FALSE
+"330","elconfidencial.com","digital-born news outlet","es",FALSE,FALSE,FALSE,TRUE,FALSE
+"331","elconfidencialdigital.com","digital-born news outlet","es",FALSE,FALSE,FALSE,TRUE,FALSE
+"332","elcorreo.com","legacy press","es",FALSE,FALSE,FALSE,TRUE,FALSE
+"333","elcorreodemadrid.com","hyperpartisan news",NA,FALSE,FALSE,FALSE,TRUE,FALSE
+"334","elcorreogallego.es","legacy press",NA,FALSE,FALSE,FALSE,TRUE,FALSE
+"335","elcorreoweb.es","legacy press","es",FALSE,FALSE,FALSE,TRUE,FALSE
+"336","eldia.es","legacy press","es",FALSE,FALSE,FALSE,TRUE,FALSE
+"337","eldiario.es","digital-born news outlet","es",FALSE,FALSE,FALSE,TRUE,FALSE
+"338","eldiariomontanes.es","legacy press","es",FALSE,FALSE,FALSE,TRUE,FALSE
+"339","eldigitalcastillalamancha.es","digital-born news outlet","es",FALSE,FALSE,FALSE,TRUE,FALSE
+"340","eleconomista.es","legacy press","es",FALSE,FALSE,FALSE,TRUE,FALSE
+"341","electrive.net","digital-born news outlet","de",TRUE,FALSE,FALSE,FALSE,FALSE
+"342","elektroauto-news.net","digital-born news outlet","de",TRUE,FALSE,FALSE,FALSE,FALSE
+"343","elespanol.com","digital-born news outlet","es",FALSE,FALSE,FALSE,TRUE,FALSE
+"344","elle.fr","tabloid newspaper","fr",TRUE,FALSE,FALSE,FALSE,FALSE
+"345","elmundo.es","legacy press","es",FALSE,FALSE,FALSE,TRUE,FALSE
+"346","elnortedecastilla.es","legacy press","es",FALSE,FALSE,FALSE,TRUE,FALSE
+"347","elpais.com","legacy press","es",FALSE,FALSE,FALSE,TRUE,FALSE
+"348","elperiodico.com","legacy press","es",FALSE,FALSE,FALSE,TRUE,FALSE
+"349","elperiodicoextremadura.com","legacy press","es",FALSE,FALSE,FALSE,TRUE,FALSE
+"350","elplural.com","hyperpartisan news","es",FALSE,FALSE,FALSE,TRUE,FALSE
+"351","elpuntavui.cat","legacy press","ca",FALSE,FALSE,FALSE,TRUE,FALSE
+"352","eltiempo.com","legacy press","es",FALSE,FALSE,FALSE,TRUE,FALSE
+"353","emderzeitung.de","legacy press","de",FALSE,TRUE,FALSE,FALSE,FALSE
+"354","ensonhaber.com","digital-born news outlet","tr",TRUE,FALSE,FALSE,FALSE,FALSE
+"355","epochtimes.de","hyperpartisan news","de",FALSE,FALSE,FALSE,TRUE,TRUE
+"356","epochtimes.fr","hyperpartisan news","el",FALSE,FALSE,FALSE,TRUE,FALSE
+"357","eppsteiner-zeitung.de","legacy press","de",FALSE,TRUE,FALSE,FALSE,FALSE
+"358","es.yahoo.com/noticias","portal",NA,NA,NA,NA,NA,NA
+"359","esdiario.com","hyperpartisan news","es",FALSE,FALSE,FALSE,TRUE,FALSE
+"360","esslinger-zeitung.de","legacy press","de",TRUE,TRUE,TRUE,FALSE,TRUE
+"361","estrelladigital.es","digital-born news outlet",NA,FALSE,FALSE,FALSE,TRUE,FALSE
+"362","estrepublicain.fr","legacy press","fr",FALSE,FALSE,FALSE,TRUE,FALSE
+"363","eulenspiegel-zeitschrift.de","legacy press","de",TRUE,FALSE,FALSE,FALSE,FALSE
+"364","euro-actu.fr","legacy press",NA,FALSE,FALSE,FALSE,TRUE,FALSE
+"365","euronews.com","commercial broadcaster","ka",FALSE,FALSE,FALSE,TRUE,FALSE
+"366","europapress.es","legacy press","es",FALSE,FALSE,FALSE,TRUE,FALSE
+"367","europe1.fr","commercial broadcaster","fr",FALSE,FALSE,FALSE,TRUE,FALSE
+"368","europenews.dk","hyperpartisan news","de",FALSE,FALSE,FALSE,FALSE,FALSE
+"369","ev-online.de","legacy press","de",FALSE,TRUE,FALSE,FALSE,FALSE
+"370","eva-herman.net","hyperpartisan news","de",FALSE,FALSE,FALSE,FALSE,FALSE
+"371","eveningtimes.co.uk","tabloid newspaper","en",FALSE,FALSE,FALSE,TRUE,FALSE
+"372","expansion.com","legacy press","es",FALSE,FALSE,FALSE,TRUE,FALSE
+"373","express.co.uk","tabloid newspaper","en",FALSE,FALSE,FALSE,TRUE,FALSE
+"374","express.de","tabloid newspaper","de",FALSE,TRUE,TRUE,TRUE,TRUE
+"375","expressandstar.com","legacy press","en",FALSE,FALSE,FALSE,TRUE,FALSE
+"376","extratipp.com","tabloid newspaper","de",FALSE,FALSE,TRUE,TRUE,FALSE
+"377","extremnews.com","hyperpartisan news","de",FALSE,FALSE,FALSE,FALSE,FALSE
+"378","exxpress.at","hyperpartisan news","de",TRUE,FALSE,FALSE,FALSE,FALSE
+"379","ezeitung.swp.de","legacy press","de",FALSE,TRUE,FALSE,FALSE,FALSE
+"380","fanpage.it","digital-born news outlet","it",FALSE,FALSE,FALSE,TRUE,FALSE
+"381","faz.net","legacy press","de",FALSE,TRUE,TRUE,TRUE,FALSE
+"382","fdesouche.com","hyperpartisan news","fr",FALSE,FALSE,FALSE,TRUE,FALSE
+"383","fdogblog.wordpress.com","hyperpartisan news","de",FALSE,FALSE,FALSE,FALSE,FALSE
+"384","feednews.com","digital-born news outlet","de",TRUE,FALSE,FALSE,FALSE,FALSE
+"385","fehmarn24.de","legacy press","de",FALSE,TRUE,FALSE,FALSE,FALSE
+"386","feynsinn.org","hyperpartisan news","de",FALSE,FALSE,FALSE,FALSE,FALSE
+"387","filstalwelle.de","commercial broadcaster","de",TRUE,FALSE,FALSE,FALSE,FALSE
+"388","finanzen.net","digital-born news outlet",NA,FALSE,FALSE,FALSE,TRUE,FALSE
+"389","finanznachrichten.de","digital-born news outlet","de",FALSE,FALSE,FALSE,FALSE,TRUE
+"390","firstcoastnews.com","commercial broadcaster",NA,FALSE,FALSE,FALSE,TRUE,FALSE
+"391","fivethirtyeight.com","digital-born news outlet","en",FALSE,FALSE,FALSE,TRUE,FALSE
+"392","fla.de","legacy press","da",FALSE,TRUE,FALSE,FALSE,TRUE
+"393","flipboard.com","digital-born news outlet","en",TRUE,FALSE,FALSE,FALSE,FALSE
+"394","flz.de","legacy press","de",FALSE,TRUE,FALSE,FALSE,FALSE
+"395","fnp.de","legacy press","de",FALSE,TRUE,TRUE,TRUE,TRUE
+"396","fnweb.de","legacy press","de",FALSE,TRUE,TRUE,TRUE,TRUE
+"397","focus-magazin.de","legacy press","de",FALSE,FALSE,FALSE,FALSE,FALSE
+"398","focus.de","tabloid newspaper",NA,FALSE,FALSE,TRUE,TRUE,TRUE
+"399","forbes.com","legacy press","en",FALSE,FALSE,FALSE,TRUE,FALSE
+"400","fortune.com","legacy press","en",FALSE,FALSE,FALSE,TRUE,FALSE
+"401","fox.com","commercial broadcaster","en",FALSE,FALSE,FALSE,TRUE,FALSE
+"402","fox13news.com","commercial broadcaster","en",FALSE,FALSE,FALSE,TRUE,FALSE
+"403","fox13now.com","commercial broadcaster","en",FALSE,FALSE,FALSE,TRUE,FALSE
+"404","fox2now.com","commercial broadcaster",NA,FALSE,FALSE,FALSE,TRUE,FALSE
+"405","fox4kc.com","commercial broadcaster",NA,FALSE,FALSE,FALSE,TRUE,FALSE
+"406","fox59.com","commercial broadcaster",NA,FALSE,FALSE,FALSE,TRUE,FALSE
+"407","fox6now.com","commercial broadcaster","en",FALSE,FALSE,FALSE,TRUE,FALSE
+"408","fox8.com","commercial broadcaster",NA,FALSE,FALSE,FALSE,TRUE,FALSE
+"409","fox9.com","commercial broadcaster","en",FALSE,FALSE,FALSE,TRUE,FALSE
+"410","foxbusiness.com","commercial broadcaster","en",FALSE,FALSE,FALSE,TRUE,FALSE
+"411","foxla.com","commercial broadcaster","en",FALSE,FALSE,FALSE,TRUE,FALSE
+"412","foxnews.com","commercial broadcaster","en",FALSE,FALSE,FALSE,TRUE,FALSE
+"413","fr-online.de","legacy press","de",FALSE,FALSE,TRUE,FALSE,FALSE
+"414","fr.de","legacy press","de",FALSE,TRUE,TRUE,TRUE,FALSE
+"415","fragdenstaat.de","digital-born news outlet","de",TRUE,FALSE,FALSE,FALSE,FALSE
+"416","france.tv","public broadcaster","fr",FALSE,FALSE,FALSE,TRUE,FALSE
+"417","france24.com","public broadcaster","en",FALSE,FALSE,FALSE,TRUE,FALSE
+"418","france3.fr","public broadcaster",NA,FALSE,FALSE,FALSE,TRUE,FALSE
+"419","francebleu.fr","public broadcaster","fr",FALSE,FALSE,FALSE,TRUE,FALSE
+"420","franceculture.fr","public broadcaster","fr",FALSE,FALSE,FALSE,TRUE,FALSE
+"421","franceinter.fr","public broadcaster","fr",FALSE,FALSE,FALSE,TRUE,FALSE
+"422","francesoir.fr","digital-born news outlet","fr",FALSE,FALSE,FALSE,TRUE,FALSE
+"423","francetelevisions.fr","public broadcaster","fr",FALSE,FALSE,FALSE,TRUE,FALSE
+"424","francetv.fr","public broadcaster","fr",FALSE,FALSE,FALSE,TRUE,FALSE
+"425","francetvinfo.fr","public broadcaster","fr",FALSE,FALSE,FALSE,TRUE,FALSE
+"426","frankenpost.de","legacy press","de",TRUE,TRUE,TRUE,FALSE,TRUE
+"427","frankjordanblog.wordpress.com","hyperpartisan news","de",FALSE,FALSE,FALSE,FALSE,FALSE
+"428","free21.org","hyperpartisan news","de",FALSE,FALSE,FALSE,FALSE,FALSE
+"429","freenet.de","portal",NA,FALSE,FALSE,FALSE,FALSE,FALSE
+"430","freenet.de/nachrichten","portal",NA,NA,NA,NA,NA,NA
+"431","freie-presse.net","hyperpartisan news","de",FALSE,FALSE,FALSE,FALSE,FALSE
+"432","freiepresse.de","legacy press","de",FALSE,TRUE,TRUE,TRUE,TRUE
+"433","freiesnachrichtenblatt.com","hyperpartisan news","de",FALSE,FALSE,FALSE,FALSE,FALSE
+"434","freiewelt.net","hyperpartisan news","de",FALSE,FALSE,FALSE,TRUE,FALSE
+"435","freiezeiten.net","hyperpartisan news","de",FALSE,FALSE,FALSE,FALSE,FALSE
+"436","freitag.de","legacy press","de",FALSE,TRUE,TRUE,FALSE,TRUE
+"437","freitags-anzeiger.de","legacy press","de",FALSE,TRUE,FALSE,FALSE,FALSE
+"438","freitum.de","hyperpartisan news","de",FALSE,FALSE,FALSE,FALSE,FALSE
+"439","ft.com","legacy press","en",FALSE,FALSE,FALSE,TRUE,FALSE
+"440","fuldaerzeitung.de","legacy press","de",TRUE,TRUE,FALSE,FALSE,TRUE
+"441","futurezone.at","digital-born news outlet","de",TRUE,FALSE,FALSE,FALSE,FALSE
+"442","ga-online.de","legacy press","de",FALSE,TRUE,TRUE,FALSE,FALSE
+"443","ga.de","legacy press","de",FALSE,FALSE,FALSE,FALSE,FALSE
+"444","gaceta.es","hyperpartisan news","es",FALSE,FALSE,FALSE,TRUE,FALSE
+"445","gaeubote.de","legacy press",NA,FALSE,TRUE,TRUE,FALSE,TRUE
+"446","gandersheimer-kreisblatt.de","legacy press","de",FALSE,TRUE,FALSE,FALSE,FALSE
+"447","gandul.ro","digital-born news outlet","ro",TRUE,FALSE,FALSE,FALSE,FALSE
+"448","gasteizhoy.com","digital-born news outlet","es",FALSE,FALSE,FALSE,TRUE,FALSE
+"449","gatestoneinstitute.org","hyperpartisan news","de",FALSE,FALSE,FALSE,FALSE,FALSE
+"450","gazeta.ru","hyperpartisan news","ru",TRUE,FALSE,FALSE,FALSE,FALSE
+"451","gazetalubuska.pl","legacy press","pl",TRUE,FALSE,FALSE,FALSE,FALSE
+"452","gazzettadelsud.it","legacy press","it",FALSE,FALSE,FALSE,TRUE,FALSE
+"453","gazzettadiparma.it","legacy press",NA,FALSE,FALSE,FALSE,TRUE,FALSE
+"454","gea.de","legacy press","de",FALSE,TRUE,TRUE,FALSE,TRUE
+"455","general-anzeiger-bonn.de","legacy press","de",FALSE,TRUE,FALSE,FALSE,FALSE
+"456","geolitico.de","hyperpartisan news","de",FALSE,FALSE,FALSE,FALSE,FALSE
+"457","giessener-allgemeine.de","legacy press","de",FALSE,TRUE,TRUE,TRUE,TRUE
+"458","giessener-anzeiger.de","tabloid newspaper","de",TRUE,TRUE,TRUE,FALSE,TRUE
+"459","gifhorner-rundschau.de","legacy press","de",FALSE,TRUE,FALSE,FALSE,FALSE
+"460","giornaledibrescia.it","legacy press","it",FALSE,FALSE,FALSE,TRUE,FALSE
+"461","giornaledilecco.it","legacy press","it",FALSE,FALSE,FALSE,TRUE,FALSE
+"462","giornaledimonza.it","legacy press","it",FALSE,FALSE,FALSE,TRUE,FALSE
+"463","giornaletrentino.it","legacy press","it",FALSE,FALSE,FALSE,TRUE,FALSE
+"464","giornalone.it","legacy press","it",FALSE,FALSE,FALSE,TRUE,FALSE
+"465","globo.com","commercial broadcaster","pt",FALSE,FALSE,FALSE,TRUE,FALSE
+"466","gmuender-tagespost.de","legacy press","de",FALSE,TRUE,TRUE,FALSE,TRUE
+"467","gmx.de","portal",NA,FALSE,FALSE,FALSE,FALSE,FALSE
+"468","gmx.net","portal",NA,FALSE,FALSE,FALSE,FALSE,FALSE
+"469","gmx.net/magazine","portal",NA,NA,NA,NA,NA,NA
+"470","gmx.net/magazine/panorama","portal",NA,NA,NA,NA,NA,NA
+"471","gmx.net/magazine/politik","portal",NA,NA,NA,NA,NA,NA
+"472","gn-online.de","legacy press","de",TRUE,TRUE,FALSE,FALSE,TRUE
+"473","gnz.de","legacy press","de",FALSE,TRUE,TRUE,FALSE,TRUE
+"474","goettinger-tageblatt.de","legacy press","de",FALSE,TRUE,TRUE,TRUE,TRUE
+"475","golem.de","digital-born news outlet","de",TRUE,FALSE,FALSE,FALSE,FALSE
+"476","goodmorningamerica.com","commercial broadcaster","en",FALSE,FALSE,FALSE,TRUE,FALSE
+"477","goodnews4.de","digital-born news outlet","de",TRUE,FALSE,FALSE,FALSE,FALSE
+"478","goslarsche.de","legacy press","de",FALSE,TRUE,TRUE,FALSE,TRUE
+"479","granadahoy.com","legacy press","es",FALSE,FALSE,FALSE,TRUE,FALSE
+"480","grenzwissenschaft-aktuell.de","digital-born news outlet","de",TRUE,FALSE,FALSE,FALSE,FALSE
+"481","griesheimeranzeiger.de","legacy press","de",FALSE,TRUE,FALSE,FALSE,FALSE
+"482","guidograndt.de","hyperpartisan news","de",FALSE,FALSE,FALSE,FALSE,FALSE
+"483","haber7.com","digital-born news outlet","tr",TRUE,FALSE,FALSE,FALSE,FALSE
+"484","haberler.com","digital-born news outlet","tr",TRUE,FALSE,FALSE,FALSE,FALSE
+"485","haberturk.com","legacy press","tr",TRUE,FALSE,FALSE,FALSE,FALSE
+"486","haller-kreisblatt.de","legacy press","de",TRUE,TRUE,TRUE,FALSE,TRUE
+"487","hallo-muenchen.de","tabloid newspaper","de",FALSE,FALSE,FALSE,TRUE,FALSE
+"488","hallo24.de","digital-born news outlet","de",TRUE,FALSE,FALSE,FALSE,FALSE
+"489","halternerzeitung.de","legacy press","de",FALSE,TRUE,FALSE,FALSE,FALSE
+"490","hamburg-magazin.de","tabloid newspaper","de",TRUE,FALSE,FALSE,FALSE,FALSE
+"491","hanauer.de","legacy press","de",FALSE,TRUE,FALSE,FALSE,TRUE
+"492","handelsblatt.com","legacy press","en",FALSE,TRUE,FALSE,TRUE,FALSE
+"493","handelsblatt.de","legacy press","en",FALSE,FALSE,TRUE,FALSE,FALSE
+"494","harburg-aktuell.de","digital-born news outlet","de",TRUE,FALSE,FALSE,FALSE,FALSE
+"495","harlinger.de","legacy press","de",FALSE,TRUE,FALSE,FALSE,FALSE
+"496","harzkurier.de","legacy press","de",TRUE,TRUE,FALSE,FALSE,FALSE
+"497","hasepost.de","digital-born news outlet","de",TRUE,FALSE,FALSE,FALSE,FALSE
+"498","haunebu7.wordpress.com","hyperpartisan news","de",FALSE,FALSE,FALSE,FALSE,FALSE
+"499","haz.de","legacy press","de",FALSE,TRUE,TRUE,TRUE,TRUE
+"500","heidelberg24.de","digital-born news outlet","de",FALSE,FALSE,FALSE,TRUE,FALSE
+"501","heimat-kurier.at","hyperpartisan news","de",FALSE,FALSE,FALSE,FALSE,FALSE
+"502","heimatbote-verlag.de","legacy press","de",FALSE,TRUE,FALSE,FALSE,FALSE
+"503","heise.de","digital-born news outlet","de",FALSE,FALSE,FALSE,TRUE,FALSE
+"504","hellwegeranzeiger.de","legacy press","de",FALSE,TRUE,FALSE,FALSE,TRUE
+"505","heraldo.es","legacy press","es",FALSE,FALSE,FALSE,TRUE,FALSE
+"506","hersfelder-zeitung.de","legacy press","de",FALSE,TRUE,TRUE,FALSE,TRUE
+"507","hertener-allgemeine.de","legacy press","de",FALSE,FALSE,TRUE,TRUE,FALSE
+"508","hessenschau.de","public broadcaster","de",FALSE,FALSE,TRUE,TRUE,FALSE
+"509","heute.at","tabloid newspaper","de",FALSE,FALSE,FALSE,TRUE,FALSE
+"510","heute.de","public broadcaster","de",FALSE,FALSE,TRUE,TRUE,FALSE
+"511","hildesheimer-allgemeine.de","legacy press","de",TRUE,TRUE,TRUE,FALSE,TRUE
+"512","hintermbusch.wordpress.com","hyperpartisan news","de",FALSE,FALSE,FALSE,FALSE,FALSE
+"513","hna.de","legacy press","de",FALSE,TRUE,TRUE,TRUE,TRUE
+"514","hochheimer-zeitung.de","legacy press","de",FALSE,TRUE,TRUE,FALSE,FALSE
+"515","hofheimer-zeitung.de","legacy press","de",FALSE,TRUE,TRUE,FALSE,FALSE
+"516","holsteiner-allgemeine.de","legacy press","de",FALSE,FALSE,TRUE,FALSE,FALSE
+"517","hoy.es","legacy press","es",FALSE,FALSE,FALSE,TRUE,FALSE
+"518","hr-fernsehen.de","public broadcaster","de",FALSE,FALSE,TRUE,TRUE,FALSE
+"519","hr-inforadio.de","public broadcaster","de",FALSE,FALSE,TRUE,FALSE,FALSE
+"520","hr-online.de","public broadcaster","de",FALSE,FALSE,FALSE,TRUE,FALSE
+"521","hr.de","public broadcaster","de",FALSE,FALSE,FALSE,FALSE,FALSE
+"522","hr1.de","public broadcaster","de",FALSE,FALSE,TRUE,FALSE,FALSE
+"523","hr2.de","public broadcaster","de",FALSE,FALSE,TRUE,FALSE,FALSE
+"524","hr3.de","public broadcaster","de",FALSE,FALSE,TRUE,TRUE,FALSE
+"525","hr4.de","public broadcaster","de",FALSE,FALSE,TRUE,FALSE,FALSE
+"526","huelvainformacion.es","legacy press","es",FALSE,FALSE,FALSE,TRUE,FALSE
+"527","huffingtonpost.co.uk","digital-born news outlet","en",FALSE,FALSE,FALSE,TRUE,FALSE
+"528","huffingtonpost.com","digital-born news outlet","en",FALSE,FALSE,FALSE,TRUE,FALSE
+"529","huffingtonpost.de","digital-born news outlet","en",FALSE,FALSE,TRUE,TRUE,FALSE
+"530","huffingtonpost.es","digital-born news outlet","es",FALSE,FALSE,FALSE,TRUE,FALSE
+"531","huffingtonpost.fr","digital-born news outlet","fr",FALSE,FALSE,FALSE,TRUE,FALSE
+"532","huffingtonpost.it","digital-born news outlet","it",FALSE,FALSE,FALSE,TRUE,FALSE
+"533","huffpost.com","digital-born news outlet","en",FALSE,FALSE,FALSE,TRUE,FALSE
+"534","hulldailymail.co.uk","tabloid newspaper","en",FALSE,FALSE,FALSE,TRUE,FALSE
+"535","humanite.fr","legacy press","fr",FALSE,FALSE,FALSE,TRUE,FALSE
+"536","hurriyet.com.tr","legacy press","tr",TRUE,FALSE,FALSE,FALSE,FALSE
+"537","hurriyet.de","legacy press","de",FALSE,TRUE,FALSE,FALSE,FALSE
+"538","hz.de","legacy press","en",FALSE,TRUE,FALSE,FALSE,FALSE
+"539","ideal.es","legacy press","es",FALSE,FALSE,FALSE,TRUE,FALSE
+"540","idnes.cz","legacy press","cs",TRUE,FALSE,FALSE,FALSE,FALSE
+"541","idowa.de","legacy press","de",FALSE,TRUE,TRUE,FALSE,TRUE
+"542","ihre-az.de","legacy press","de",FALSE,FALSE,FALSE,FALSE,TRUE
+"543","ikz-online.de","legacy press","de",FALSE,TRUE,TRUE,FALSE,FALSE
+"544","ilcorrieredellacitta.com","legacy press","it",FALSE,FALSE,FALSE,TRUE,FALSE
+"545","ilfattoquotidiano.it","legacy press","it",FALSE,FALSE,FALSE,TRUE,FALSE
+"546","ilfoglio.it","legacy press","it",FALSE,FALSE,FALSE,TRUE,FALSE
+"547","ilgazzettino.it","legacy press","it",FALSE,FALSE,FALSE,TRUE,FALSE
+"548","ilgiornale.it","legacy press",NA,FALSE,FALSE,FALSE,TRUE,FALSE
+"549","ilgiorno.it","legacy press","it",FALSE,FALSE,FALSE,TRUE,FALSE
+"550","ilmanifesto.it","legacy press","it",FALSE,FALSE,FALSE,TRUE,FALSE
+"551","ilmattino.it","legacy press","it",FALSE,FALSE,FALSE,TRUE,FALSE
+"552","ilmessaggero.it","legacy press","it",FALSE,FALSE,FALSE,TRUE,FALSE
+"553","ilprimatonazionale.it","hyperpartisan news",NA,FALSE,FALSE,FALSE,TRUE,FALSE
+"554","ilrestodelcarlino.it","tabloid newspaper","it",FALSE,FALSE,FALSE,TRUE,FALSE
+"555","ilsecoloxix.it","legacy press","it",FALSE,FALSE,FALSE,TRUE,FALSE
+"556","ilsole24ore.com","legacy press","it",FALSE,FALSE,FALSE,TRUE,FALSE
+"557","iltempo.it","legacy press","it",FALSE,FALSE,FALSE,TRUE,FALSE
+"558","independent.co.uk","legacy press","en",FALSE,FALSE,FALSE,TRUE,FALSE
+"559","indexexpurgatorius.wordpress.com","hyperpartisan news","de",FALSE,FALSE,FALSE,FALSE,FALSE
+"560","indiatimes.com","legacy press","en",FALSE,FALSE,FALSE,TRUE,FALSE
+"561","inews.co.uk","legacy press","en",FALSE,FALSE,FALSE,TRUE,FALSE
+"562","info-direkt.eu","hyperpartisan news","de",FALSE,FALSE,FALSE,FALSE,FALSE
+"563","infolibre.es","digital-born news outlet","es",FALSE,FALSE,FALSE,TRUE,FALSE
+"564","inforadio.de","public broadcaster","de",FALSE,FALSE,TRUE,FALSE,FALSE
+"565","informazione.it","hyperpartisan news","it",FALSE,FALSE,FALSE,TRUE,FALSE
+"566","infranken.de","legacy press","de",FALSE,TRUE,TRUE,TRUE,FALSE
+"567","inge09.blog","hyperpartisan news","de",FALSE,FALSE,FALSE,FALSE,FALSE
+"568","innsalzach24.de","digital-born news outlet","de",FALSE,FALSE,FALSE,TRUE,FALSE
+"569","insideedition.com","commercial broadcaster","en",FALSE,FALSE,FALSE,TRUE,FALSE
+"570","insuedthueringen.de","legacy press","de",FALSE,TRUE,TRUE,TRUE,TRUE
+"571","interaktiv.morgenpost.de","legacy press","de",FALSE,FALSE,FALSE,TRUE,FALSE
+"572","interaktiv.tagesspiegel.de","legacy press","de",FALSE,FALSE,FALSE,TRUE,FALSE
+"573","interia.pl","digital-born news outlet","pl",TRUE,FALSE,FALSE,FALSE,FALSE
+"574","internazionale.it","legacy press","it",FALSE,FALSE,FALSE,TRUE,FALSE
+"575","isar-anzeiger.de","legacy press","de",FALSE,TRUE,FALSE,FALSE,FALSE
+"576","islamiq.de","digital-born news outlet","de",TRUE,FALSE,FALSE,FALSE,FALSE
+"577","it.notizie.yahoo.com","portal",NA,NA,NA,NA,NA,NA
+"578","it.yahoo.com/notizie","portal",NA,NA,NA,NA,NA,NA
+"579","itv.com","commercial broadcaster",NA,FALSE,FALSE,FALSE,TRUE,FALSE
+"580","ivz-aktuell.de","legacy press","de",TRUE,FALSE,TRUE,FALSE,TRUE
+"581","jacobin.de","hyperpartisan news","de",TRUE,FALSE,FALSE,FALSE,FALSE
+"582","jetzt.de","legacy press","de",TRUE,FALSE,TRUE,FALSE,FALSE
+"583","jeversches-wochenblatt.de","legacy press","de",FALSE,TRUE,TRUE,FALSE,FALSE
+"584","journaldemontreal.com","tabloid newspaper","fr",FALSE,FALSE,FALSE,TRUE,FALSE
+"585","journalistenwatch.com","hyperpartisan news","de",TRUE,FALSE,FALSE,FALSE,FALSE
+"586","jpost.com","legacy press","en",FALSE,FALSE,FALSE,TRUE,FALSE
+"587","juedische-allgemeine.de","legacy press","de",TRUE,TRUE,FALSE,FALSE,FALSE
+"588","juergenfritz.com","hyperpartisan news","de",FALSE,FALSE,FALSE,FALSE,FALSE
+"589","jungefreiheit.de","hyperpartisan news","de",FALSE,FALSE,FALSE,TRUE,FALSE
+"590","jungewelt.de","hyperpartisan news","de",FALSE,TRUE,FALSE,TRUE,TRUE
+"591","ka-news.de","legacy press","de",FALSE,FALSE,TRUE,TRUE,FALSE
+"592","kabeleins.de","commercial broadcaster","de",FALSE,FALSE,FALSE,TRUE,FALSE
+"593","kath.net","hyperpartisan news","de",TRUE,FALSE,FALSE,FALSE,FALSE
+"594","katholisches.info","hyperpartisan news","de",TRUE,FALSE,FALSE,FALSE,FALSE
+"595","kayserihaber.com.tr","hyperpartisan news","tr",TRUE,FALSE,FALSE,FALSE,FALSE
+"596","kenfm.de","hyperpartisan news","de",FALSE,FALSE,FALSE,FALSE,FALSE
+"597","kentonline.co.uk","digital-born news outlet","en",FALSE,FALSE,FALSE,TRUE,FALSE
+"598","kieler-nachrichten.de","legacy press",NA,FALSE,FALSE,FALSE,TRUE,FALSE
+"599","kinzig.news","digital-born news outlet","de",TRUE,FALSE,FALSE,FALSE,FALSE
+"600","klamm.de","digital-born news outlet","de",TRUE,FALSE,FALSE,FALSE,FALSE
+"601","kleinezeitung.at","legacy press","de",FALSE,FALSE,FALSE,TRUE,FALSE
+"602","klimareporter.de","hyperpartisan news","de",TRUE,FALSE,FALSE,FALSE,FALSE
+"603","kn-online.de","legacy press","de",FALSE,TRUE,FALSE,TRUE,TRUE
+"604","komonews.com","commercial broadcaster","en",FALSE,FALSE,FALSE,TRUE,FALSE
+"605","kopp-report.de","hyperpartisan news","de",FALSE,FALSE,FALSE,TRUE,FALSE
+"606","kopp-verlag.de","hyperpartisan news","de",FALSE,FALSE,FALSE,FALSE,FALSE
+"607","kornwestheimer-zeitung.de","legacy press","de",FALSE,TRUE,FALSE,FALSE,FALSE
+"608","korrektheiten.com","hyperpartisan news","de",FALSE,FALSE,FALSE,FALSE,FALSE
+"609","kp.ru","hyperpartisan news","ru",TRUE,FALSE,FALSE,FALSE,FALSE
+"610","kpkrause.de","hyperpartisan news","de",FALSE,FALSE,FALSE,FALSE,FALSE
+"611","krass-und-konkret.de","hyperpartisan news","de",TRUE,FALSE,FALSE,FALSE,FALSE
+"612","krautreporter.de","digital-born news outlet","de",TRUE,FALSE,TRUE,FALSE,FALSE
+"613","kreis-anzeiger.de","legacy press","de",FALSE,TRUE,TRUE,FALSE,TRUE
+"614","kreiszeitung-wesermarsch.de","legacy press",NA,FALSE,TRUE,FALSE,FALSE,TRUE
+"615","kreiszeitung-wochenblatt.de","legacy press","de",FALSE,FALSE,FALSE,TRUE,FALSE
+"616","kreiszeitung.de","legacy press","de",FALSE,TRUE,TRUE,TRUE,FALSE
+"617","krone.at","tabloid newspaper","de",FALSE,FALSE,FALSE,TRUE,FALSE
+"618","krzbb.de","legacy press","de",FALSE,TRUE,FALSE,FALSE,TRUE
+"619","ksta.de","legacy press","de",FALSE,TRUE,TRUE,TRUE,TRUE
+"620","kulturradio.de","public broadcaster","de",FALSE,FALSE,TRUE,FALSE,FALSE
+"621","kurier.at","digital-born news outlet","de",TRUE,FALSE,FALSE,FALSE,FALSE
+"622","kurier.de","legacy press","de",TRUE,TRUE,FALSE,FALSE,TRUE
+"623","kurir.rs","tabloid newspaper","bs",TRUE,FALSE,FALSE,FALSE,FALSE
+"624","la-croix.com","legacy press","fr",FALSE,FALSE,FALSE,TRUE,FALSE
+"625","lagacetadesalamanca.es","legacy press","es",FALSE,FALSE,FALSE,TRUE,FALSE
+"626","lagazzettadelmezzogiorno.it","legacy press","it",FALSE,FALSE,FALSE,TRUE,FALSE
+"627","lahrer-zeitung.de","legacy press","de",FALSE,TRUE,FALSE,FALSE,TRUE
+"628","lainformacion.com","digital-born news outlet","es",FALSE,FALSE,FALSE,TRUE,FALSE
+"629","lamarea.com","legacy press","es",FALSE,FALSE,FALSE,TRUE,FALSE
+"630","lampertheimer-zeitung.de","legacy press","de",FALSE,TRUE,TRUE,FALSE,FALSE
+"631","lanazione.it","tabloid newspaper","it",FALSE,FALSE,FALSE,TRUE,FALSE
+"632","landeszeitung.de","legacy press","de",TRUE,TRUE,FALSE,FALSE,TRUE
+"633","lanouvellerepublique.fr","legacy press",NA,FALSE,FALSE,FALSE,TRUE,FALSE
+"634","lanuevacronica.com","legacy press","es",FALSE,FALSE,FALSE,TRUE,FALSE
+"635","laopinioncoruna.es","legacy press","es",FALSE,FALSE,FALSE,TRUE,FALSE
+"636","laopiniondemalaga.es","legacy press","es",FALSE,FALSE,FALSE,TRUE,FALSE
+"637","laopiniondemurcia.es","legacy press","es",FALSE,FALSE,FALSE,TRUE,FALSE
+"638","laopiniondezamora.es","legacy press","es",FALSE,FALSE,FALSE,TRUE,FALSE
+"639","lapresse.ca","legacy press","fr",FALSE,FALSE,FALSE,TRUE,FALSE
+"640","lapresse.it","digital-born news outlet","it",FALSE,FALSE,FALSE,TRUE,FALSE
+"641","laprovence.com","legacy press","fr",FALSE,FALSE,FALSE,TRUE,FALSE
+"642","laprovincia.es","legacy press","es",FALSE,FALSE,FALSE,TRUE,FALSE
+"643","larazon.es","legacy press","es",FALSE,FALSE,FALSE,TRUE,FALSE
+"644","larepublica.pe","legacy press","es",FALSE,FALSE,FALSE,TRUE,FALSE
+"645","larioja.com","legacy press","es",FALSE,FALSE,FALSE,TRUE,FALSE
+"646","lasexta.com","commercial broadcaster","es",FALSE,FALSE,FALSE,TRUE,FALSE
+"647","lasprovincias.es","legacy press","es",FALSE,FALSE,FALSE,TRUE,FALSE
+"648","lastampa.it","legacy press","it",FALSE,FALSE,FALSE,TRUE,FALSE
+"649","latimes.com","legacy press","en",FALSE,FALSE,FALSE,TRUE,FALSE
+"650","latribunadeespana.com","hyperpartisan news","de",FALSE,FALSE,FALSE,TRUE,FALSE
+"651","latribune.fr","legacy press","fr",FALSE,FALSE,FALSE,TRUE,FALSE
+"652","lausitznews.de","tabloid newspaper","de",TRUE,FALSE,FALSE,FALSE,FALSE
+"653","lauterbacher-anzeiger.de","legacy press","de",FALSE,TRUE,TRUE,FALSE,TRUE
+"654","lavanguardia.com","legacy press","es",FALSE,FALSE,FALSE,TRUE,FALSE
+"655","laverdad.es","legacy press","es",FALSE,FALSE,FALSE,TRUE,FALSE
+"656","lavoixdunord.fr","legacy press",NA,FALSE,FALSE,FALSE,TRUE,FALSE
+"657","lavozdegalicia.es","legacy press","es",FALSE,FALSE,FALSE,TRUE,FALSE
+"658","lavozdelsur.es","digital-born news outlet","es",FALSE,FALSE,FALSE,TRUE,FALSE
+"659","lavozdigital.es","legacy press","es",FALSE,FALSE,FALSE,TRUE,FALSE
+"660","lbc.co.uk","commercial broadcaster","en",FALSE,FALSE,FALSE,TRUE,FALSE
+"661","ledauphine.com","legacy press","fr",FALSE,FALSE,FALSE,TRUE,FALSE
+"662","lefigaro.fr","legacy press","fr",FALSE,FALSE,FALSE,TRUE,FALSE
+"663","leggioggi.it","digital-born news outlet","it",FALSE,FALSE,FALSE,TRUE,FALSE
+"664","leggo.it","tabloid newspaper","it",FALSE,FALSE,FALSE,TRUE,FALSE
+"665","legitim.ch","hyperpartisan news","de",FALSE,FALSE,FALSE,FALSE,FALSE
+"666","leinetal24.de","legacy press","de",FALSE,TRUE,FALSE,FALSE,FALSE
+"667","lemonde.fr","legacy press","fr",FALSE,FALSE,FALSE,TRUE,FALSE
+"668","lenta.ru","digital-born news outlet","ru",TRUE,FALSE,FALSE,FALSE,FALSE
+"669","leonberger-kreiszeitung.de","legacy press","de",FALSE,TRUE,FALSE,FALSE,TRUE
+"670","lep.co.uk","legacy press","en",FALSE,FALSE,FALSE,TRUE,FALSE
+"671","leparisien.fr","tabloid newspaper","fr",FALSE,FALSE,FALSE,TRUE,FALSE
+"672","lepenseur-lepenseur.blogspot.de","hyperpartisan news","de",FALSE,FALSE,FALSE,FALSE,FALSE
+"673","lepoint.fr","legacy press","fr",FALSE,FALSE,FALSE,TRUE,FALSE
+"674","lepopulaire.fr","legacy press","fr",FALSE,FALSE,FALSE,TRUE,FALSE
+"675","lesechos.fr","legacy press","fr",FALSE,FALSE,FALSE,TRUE,FALSE
+"676","lettoquotidiano.it","digital-born news outlet","it",FALSE,FALSE,FALSE,TRUE,FALSE
+"677","lexpress.fr","legacy press","fr",FALSE,FALSE,FALSE,TRUE,FALSE
+"678","liberation.fr","legacy press","fr",FALSE,FALSE,FALSE,TRUE,FALSE
+"679","liberoquotidiano.it","legacy press","it",FALSE,FALSE,FALSE,TRUE,FALSE
+"680","libertaddigital.com","digital-born news outlet","es",FALSE,FALSE,FALSE,TRUE,FALSE
+"681","lincolnshirelive.co.uk","legacy press","en",FALSE,FALSE,FALSE,TRUE,FALSE
+"682","linternaute.com","digital-born news outlet","fr",FALSE,FALSE,FALSE,TRUE,FALSE
+"683","linternaute.fr","digital-born news outlet","fr",FALSE,FALSE,FALSE,TRUE,FALSE
+"684","live.daserste.de","public broadcaster","ja",FALSE,FALSE,FALSE,TRUE,FALSE
+"685","live.handelsblatt.com","legacy press","de",FALSE,FALSE,FALSE,FALSE,FALSE
+"686","livenewsnow.com","digital-born news outlet","en",FALSE,FALSE,FALSE,TRUE,FALSE
+"687","livesicilia.it","digital-born news outlet","it",FALSE,FALSE,FALSE,TRUE,FALSE
+"688","lkz.de","legacy press","de",FALSE,TRUE,FALSE,FALSE,TRUE
+"689","ln-online.de","legacy press","de",FALSE,TRUE,TRUE,TRUE,TRUE
+"690","lne.es","legacy press","es",FALSE,FALSE,FALSE,TRUE,FALSE
+"691","local10.com","commercial broadcaster","en",FALSE,FALSE,FALSE,TRUE,FALSE
+"692","local12.com","commercial broadcaster","en",FALSE,FALSE,FALSE,TRUE,FALSE
+"693","lok-report.de","legacy press","de",TRUE,FALSE,FALSE,FALSE,FALSE
+"694","lokal26.de","legacy press","de",FALSE,TRUE,FALSE,FALSE,FALSE
+"695","lokalkompass.de","digital-born news outlet","de",TRUE,FALSE,TRUE,FALSE,FALSE
+"696","lokalo.de","digital-born news outlet","de",TRUE,FALSE,FALSE,FALSE,FALSE
+"697","lr-online.de","legacy press","de",FALSE,TRUE,TRUE,TRUE,TRUE
+"698","ludwigshafen24.de","digital-born news outlet","de",TRUE,FALSE,FALSE,FALSE,FALSE
+"699","luegenpresse2.wordpress.com","hyperpartisan news","de",FALSE,FALSE,FALSE,FALSE,FALSE
+"700","luettringhauser-anzeiger.de","legacy press","de",FALSE,TRUE,FALSE,FALSE,FALSE
+"701","lvz.de","legacy press","de",FALSE,TRUE,TRUE,TRUE,TRUE
+"702","lz.de","legacy press","de",TRUE,TRUE,TRUE,FALSE,TRUE
+"703","m.tagesspiegel.de","legacy press","de",FALSE,FALSE,FALSE,TRUE,FALSE
+"704","magyarhirlap.hu","legacy press",NA,TRUE,FALSE,FALSE,FALSE,FALSE
+"705","mail.com/int/news","portal",NA,NA,NA,NA,NA,NA
+"706","main-echo.de","legacy press","de",FALSE,TRUE,FALSE,TRUE,TRUE
+"707","main-spitze.de","legacy press","de",FALSE,TRUE,TRUE,FALSE,FALSE
+"708","mainecho.de","legacy press","de",TRUE,FALSE,FALSE,FALSE,FALSE
+"709","mainpost.de","legacy press","de",TRUE,TRUE,TRUE,FALSE,TRUE
+"710","malagahoy.es","legacy press","es",FALSE,FALSE,FALSE,TRUE,FALSE
+"711","mallorcazeitung.es","digital-born news outlet","de",TRUE,FALSE,FALSE,FALSE,FALSE
+"712","man-tau.com","hyperpartisan news","de",FALSE,FALSE,FALSE,FALSE,FALSE
+"713","manager-magazin.de","legacy press","de",FALSE,FALSE,TRUE,TRUE,FALSE
+"714","mannheim24.de","digital-born news outlet","de",FALSE,FALSE,FALSE,TRUE,FALSE
+"715","mannheimer-morgen.de","legacy press","de",TRUE,FALSE,FALSE,FALSE,TRUE
+"716","marbacher-zeitung.de","legacy press","de",TRUE,TRUE,FALSE,FALSE,FALSE
+"717","marbec14.wordpress.com","hyperpartisan news","de",FALSE,FALSE,FALSE,FALSE,FALSE
+"718","marbuch-verlag.de","legacy press",NA,FALSE,FALSE,TRUE,FALSE,FALSE
+"719","marianne.net","legacy press","fr",FALSE,FALSE,FALSE,TRUE,FALSE
+"720","marler-zeitung.de","legacy press","de",TRUE,FALSE,TRUE,FALSE,FALSE
+"721","maz-online.de","legacy press","de",FALSE,TRUE,TRUE,TRUE,TRUE
+"722","mdr.de","public broadcaster","de",FALSE,FALSE,TRUE,TRUE,FALSE
+"723","mediapart.fr","digital-born news outlet","fr",FALSE,FALSE,FALSE,TRUE,FALSE
+"724","mediaset.it","commercial broadcaster","it",FALSE,FALSE,FALSE,TRUE,FALSE
+"725","medical-tribune.de","legacy press","de",FALSE,TRUE,FALSE,FALSE,FALSE
+"726","mediterraneodigital.com","hyperpartisan news","es",FALSE,FALSE,FALSE,TRUE,FALSE
+"727","meduza.io","digital-born news outlet","ru",TRUE,FALSE,FALSE,FALSE,FALSE
+"728","meinanzeiger.de","legacy press","de",FALSE,FALSE,TRUE,FALSE,FALSE
+"729","mena-watch.com","digital-born news outlet","de",TRUE,FALSE,FALSE,FALSE,FALSE
+"730","mercurynews.com","legacy press","en",FALSE,FALSE,FALSE,TRUE,FALSE
+"731","merkur.de","legacy press","de",FALSE,TRUE,TRUE,TRUE,TRUE
+"732","merkurist.de","digital-born news outlet","en",TRUE,FALSE,FALSE,FALSE,FALSE
+"733","meta.tagesschau.de","public broadcaster","de",FALSE,FALSE,FALSE,TRUE,FALSE
+"734","metro.co.uk","tabloid newspaper","en",FALSE,FALSE,FALSE,TRUE,FALSE
+"735","metro.it","tabloid newspaper",NA,FALSE,FALSE,FALSE,TRUE,FALSE
+"736","miamiherald.com","legacy press",NA,FALSE,FALSE,FALSE,TRUE,FALSE
+"737","michael-klonovsky.de","hyperpartisan news","de",FALSE,FALSE,FALSE,FALSE,FALSE
+"738","michael-mannheimer.net","hyperpartisan news","de",FALSE,FALSE,FALSE,TRUE,FALSE
+"739","michaelgrandt.de","hyperpartisan news","de",FALSE,FALSE,FALSE,FALSE,FALSE
+"740","milanotoday.it","legacy press","it",FALSE,FALSE,FALSE,TRUE,FALSE
+"741","mirror.co.uk","tabloid newspaper","en",FALSE,FALSE,FALSE,TRUE,FALSE
+"742","mittelbayerische.de","legacy press","de",FALSE,TRUE,TRUE,TRUE,FALSE
+"743","mittelhessen.de","legacy press","de",TRUE,TRUE,FALSE,FALSE,TRUE
+"744","mmnews.de","digital-born news outlet","de",TRUE,FALSE,FALSE,FALSE,FALSE
+"745","moin.de","digital-born news outlet","de",TRUE,FALSE,FALSE,FALSE,FALSE
+"746","mopo.de","tabloid newspaper","de",FALSE,TRUE,TRUE,TRUE,TRUE
+"747","morgenpost.de","legacy press","de",FALSE,TRUE,TRUE,TRUE,TRUE
+"748","morgenweb.de","legacy press","de",FALSE,TRUE,TRUE,TRUE,FALSE
+"749","moshpitscorner.wordpress.com","hyperpartisan news","de",FALSE,FALSE,FALSE,FALSE,FALSE
+"750","motherjones.com","legacy press","en",FALSE,FALSE,FALSE,TRUE,FALSE
+"751","moz.de","legacy press","de",FALSE,TRUE,TRUE,TRUE,TRUE
+"752","mrn-news.de","digital-born news outlet","de",TRUE,FALSE,FALSE,FALSE,FALSE
+"753","msn.com","portal",NA,FALSE,FALSE,FALSE,FALSE,FALSE
+"754","msn.com/de-de/finanzen","portal",NA,NA,NA,NA,NA,NA
+"755","msn.com/de-de/nachrichten","portal",NA,NA,NA,NA,NA,NA
+"756","msn.com/de-de/unterhaltung","portal",NA,NA,NA,NA,NA,NA
+"757","msn.com/en-gb/news","portal",NA,NA,NA,NA,NA,NA
+"758","msn.com/en-us/news","portal",NA,NA,NA,NA,NA,NA
+"759","msn.com/es-es/noticias","portal",NA,NA,NA,NA,NA,NA
+"760","msn.com/fr-fr/actualite","portal",NA,NA,NA,NA,NA,NA
+"761","msn.com/it-it/notizie","portal",NA,NA,NA,NA,NA,NA
+"762","msnbc.com","commercial broadcaster","en",FALSE,FALSE,FALSE,TRUE,FALSE
+"763","mt-news.de","legacy press","de",FALSE,TRUE,FALSE,FALSE,FALSE
+"764","mt.de","legacy press","de",FALSE,TRUE,TRUE,FALSE,TRUE
+"765","muehlacker-tagblatt.de","legacy press","de",FALSE,TRUE,TRUE,FALSE,TRUE
+"766","muensterlandzeitung.de","legacy press","de",FALSE,TRUE,FALSE,FALSE,FALSE
+"767","muensterschezeitung.de","legacy press","de",FALSE,TRUE,TRUE,FALSE,TRUE
+"768","murrhardter-zeitung.de","legacy press","de",FALSE,TRUE,FALSE,FALSE,FALSE
+"769","mv-online.de","legacy press","de",TRUE,TRUE,TRUE,FALSE,FALSE
+"770","mynet.com","digital-born news outlet","tr",TRUE,FALSE,FALSE,FALSE,FALSE
+"771","mz-web.de","legacy press","de",FALSE,TRUE,TRUE,TRUE,FALSE
+"772","mz.de","legacy press","de",FALSE,FALSE,FALSE,FALSE,TRUE
+"773","n-joy.de","public broadcaster","de",FALSE,FALSE,TRUE,FALSE,FALSE
+"774","n-land.de","legacy press","de",FALSE,TRUE,TRUE,FALSE,FALSE
+"775","n-tv.de","commercial broadcaster","de",FALSE,FALSE,TRUE,TRUE,FALSE
+"776","n23tv.wordpress.com","hyperpartisan news","de",FALSE,FALSE,FALSE,FALSE,FALSE
+"777","n24.de","legacy press","de",FALSE,FALSE,TRUE,FALSE,FALSE
+"778","n8waechter.info","hyperpartisan news",NA,FALSE,FALSE,FALSE,TRUE,FALSE
+"779","nachdenkseiten.de","hyperpartisan news","de",FALSE,FALSE,FALSE,TRUE,FALSE
+"780","nachrichten.posthaven.com","hyperpartisan news","de",FALSE,FALSE,FALSE,FALSE,FALSE
+"781","nachrichtenspiegel.de","hyperpartisan news","de",FALSE,FALSE,FALSE,FALSE,FALSE
+"782","naciodigital.cat","digital-born news outlet","ca",FALSE,FALSE,FALSE,TRUE,FALSE
+"783","naiz.eus","legacy press","eu",FALSE,FALSE,FALSE,TRUE,FALSE
+"784","naszemiasto.pl","tabloid newspaper","pl",TRUE,FALSE,FALSE,FALSE,FALSE
+"785","nation24.de","hyperpartisan news","de",FALSE,FALSE,FALSE,FALSE,FALSE
+"786","nationalgeographic.de","legacy press","de",TRUE,FALSE,FALSE,FALSE,FALSE
+"787","nationalreview.com","legacy press","ja",FALSE,FALSE,FALSE,TRUE,FALSE
+"788","nature.com","legacy press","en",TRUE,FALSE,FALSE,FALSE,FALSE
+"789","naumburger-tageblatt.de","legacy press","de",FALSE,TRUE,TRUE,FALSE,FALSE
+"790","nbc.com","commercial broadcaster",NA,FALSE,FALSE,FALSE,TRUE,FALSE
+"791","nbcchicago.com","commercial broadcaster","en",FALSE,FALSE,FALSE,TRUE,FALSE
+"792","nbcdfw.com","commercial broadcaster","en",FALSE,FALSE,FALSE,TRUE,FALSE
+"793","nbclosangeles.com","commercial broadcaster","en",FALSE,FALSE,FALSE,TRUE,FALSE
+"794","nbcnews.com","commercial broadcaster","en",FALSE,FALSE,FALSE,TRUE,FALSE
+"795","nbcnews.to","commercial broadcaster","en",FALSE,FALSE,FALSE,TRUE,FALSE
+"796","nbcnewyork.com","commercial broadcaster","en",FALSE,FALSE,FALSE,TRUE,FALSE
+"797","nd-aktuell.de","legacy press","de",TRUE,FALSE,FALSE,FALSE,TRUE
+"798","ndr.de","public broadcaster","de",FALSE,FALSE,TRUE,TRUE,FALSE
+"799","ndtv.com","commercial broadcaster","en",FALSE,FALSE,FALSE,TRUE,FALSE
+"800","ndz.de","legacy press","de",FALSE,TRUE,TRUE,FALSE,FALSE
+"801","neckar-chronik.de","legacy press","de",FALSE,TRUE,FALSE,FALSE,FALSE
+"802","neopresse.com","hyperpartisan news","de",FALSE,FALSE,FALSE,TRUE,FALSE
+"803","nepszava.hu","legacy press",NA,TRUE,FALSE,FALSE,FALSE,FALSE
+"804","netzpolitik.org","digital-born news outlet","de",TRUE,FALSE,TRUE,FALSE,FALSE
+"805","neuepresse.de","legacy press","de",TRUE,TRUE,TRUE,FALSE,TRUE
+"806","neues-deutschland.de","legacy press","de",FALSE,TRUE,TRUE,TRUE,FALSE
+"807","neues-gera.de","digital-born news outlet","de",TRUE,FALSE,FALSE,FALSE,FALSE
+"808","neuste.news","digital-born news outlet","en",FALSE,FALSE,FALSE,TRUE,FALSE
+"809","news-des-tages.com","digital-born news outlet",NA,TRUE,FALSE,FALSE,FALSE,FALSE
+"810","news-mondo.it","digital-born news outlet","ja",FALSE,FALSE,FALSE,TRUE,FALSE
+"811","news-net.fr","hyperpartisan news",NA,FALSE,FALSE,FALSE,TRUE,FALSE
+"812","news-und-nachrichten.de","digital-born news outlet","de",FALSE,FALSE,TRUE,TRUE,FALSE
+"813","news.at","tabloid newspaper","de",FALSE,FALSE,FALSE,TRUE,FALSE
+"814","news.bg","digital-born news outlet","bg",TRUE,FALSE,FALSE,FALSE,FALSE
+"815","news.com.au","digital-born news outlet",NA,FALSE,FALSE,FALSE,TRUE,FALSE
+"816","news.de","digital-born news outlet","de",FALSE,FALSE,TRUE,TRUE,FALSE
+"817","news.google.com","portal",NA,FALSE,FALSE,FALSE,FALSE,FALSE
+"818","news.orange.fr","portal",NA,NA,NA,NA,NA,NA
+"819","news.yahoo.com","portal",NA,NA,NA,NA,NA,NA
+"820","news12.com","commercial broadcaster","en",FALSE,FALSE,FALSE,TRUE,FALSE
+"821","news38.de","tabloid newspaper","de",FALSE,FALSE,TRUE,TRUE,FALSE
+"822","news4jax.com","commercial broadcaster","en",FALSE,FALSE,FALSE,TRUE,FALSE
+"823","news5cleveland.com","commercial broadcaster","en",FALSE,FALSE,FALSE,TRUE,FALSE
+"824","news64.info","digital-born news outlet","de",TRUE,FALSE,FALSE,FALSE,FALSE
+"825","news64.net","digital-born news outlet","de",FALSE,FALSE,FALSE,TRUE,FALSE
+"826","newsbk.de","digital-born news outlet","de",TRUE,FALSE,FALSE,FALSE,FALSE
+"827","newsbreak24.de","digital-born news outlet","de",FALSE,FALSE,FALSE,TRUE,FALSE
+"828","newsbreakapp.com","digital-born news outlet","en",FALSE,FALSE,FALSE,TRUE,FALSE
+"829","newsday.com","legacy press","en",FALSE,FALSE,FALSE,TRUE,FALSE
+"830","newser.com","digital-born news outlet","en",FALSE,FALSE,FALSE,TRUE,FALSE
+"831","newsflash24.de","digital-born news outlet","de",FALSE,FALSE,FALSE,TRUE,FALSE
+"832","newshub360.de","digital-born news outlet","de",TRUE,FALSE,FALSE,FALSE,FALSE
+"833","newsmondo.it","digital-born news outlet","it",FALSE,FALSE,FALSE,TRUE,FALSE
+"834","newsner.com","tabloid newspaper","sv",TRUE,FALSE,FALSE,FALSE,FALSE
+"835","newsnow.co.uk","digital-born news outlet","en",FALSE,FALSE,FALSE,TRUE,FALSE
+"836","newsok.com","legacy press","en",FALSE,FALSE,FALSE,TRUE,FALSE
+"837","newspunch.com","hyperpartisan news","en",FALSE,FALSE,FALSE,TRUE,FALSE
+"838","newsru.co.il","digital-born news outlet",NA,TRUE,FALSE,FALSE,FALSE,FALSE
+"839","newstopaktuell.wordpress.com","hyperpartisan news","de",FALSE,FALSE,FALSE,FALSE,FALSE
+"840","newsweek.com","legacy press","en",FALSE,FALSE,FALSE,TRUE,FALSE
+"841","newyorker.com","legacy press","en",FALSE,FALSE,FALSE,TRUE,FALSE
+"842","nextquotidiano.it","digital-born news outlet","it",FALSE,FALSE,FALSE,TRUE,FALSE
+"843","niederlausitz-aktuell.de","legacy press","de",FALSE,FALSE,FALSE,TRUE,FALSE
+"844","niederrhein-nachrichten.de","legacy press","de",TRUE,FALSE,FALSE,FALSE,FALSE
+"845","nius.de","hyperpartisan news","de",FALSE,FALSE,FALSE,FALSE,FALSE
+"846","nixgut.wordpress.com","hyperpartisan news","de",FALSE,FALSE,FALSE,FALSE,FALSE
+"847","nknews.org","digital-born news outlet","en",TRUE,FALSE,FALSE,FALSE,FALSE
+"848","nnn.de","legacy press","de",FALSE,TRUE,FALSE,FALSE,TRUE
+"849","nnz-online.de","legacy press","de",FALSE,FALSE,FALSE,TRUE,FALSE
+"850","noizz.de","tabloid newspaper","pl",FALSE,FALSE,TRUE,FALSE,FALSE
+"851","norberthaering.de","hyperpartisan news","de",TRUE,FALSE,FALSE,FALSE,FALSE
+"852","nord24.de","digital-born news outlet","de",TRUE,FALSE,FALSE,FALSE,FALSE
+"853","nordbayern.de","legacy press","de",TRUE,TRUE,TRUE,FALSE,TRUE
+"854","nordbayern.de/region","legacy press","de",FALSE,FALSE,FALSE,FALSE,TRUE
+"855","norderneyer-badezeitung.de","legacy press","de",FALSE,TRUE,FALSE,FALSE,FALSE
+"856","nordkurier.de","legacy press","de",FALSE,TRUE,TRUE,TRUE,TRUE
+"857","nordsee-zeitung.de","legacy press",NA,TRUE,TRUE,FALSE,FALSE,TRUE
+"858","noticias.yahoo.com","portal",NA,NA,NA,NA,NA,NA
+"859","noticias24.com","digital-born news outlet",NA,FALSE,FALSE,FALSE,TRUE,FALSE
+"860","notizie.it","digital-born news outlet","it",FALSE,FALSE,FALSE,TRUE,FALSE
+"861","notizie.libero.it","portal",NA,NA,NA,NA,NA,NA
+"862","notizie.virgilio.it","portal",NA,NA,NA,NA,NA,NA
+"863","nouvelobs.com","legacy press","fr",FALSE,FALSE,FALSE,TRUE,FALSE
+"864","noz.de","legacy press","de",FALSE,TRUE,TRUE,TRUE,TRUE
+"865","np-coburg.de","legacy press","de",FALSE,TRUE,TRUE,FALSE,FALSE
+"866","nporadio1.nl","public broadcaster","nl",TRUE,FALSE,FALSE,FALSE,FALSE
+"867","npr.org","public broadcaster",NA,FALSE,FALSE,FALSE,TRUE,FALSE
+"868","nq-online.de","legacy press","de",FALSE,TRUE,FALSE,FALSE,FALSE
+"869","nr-kurier.de","digital-born news outlet","de",TRUE,FALSE,FALSE,FALSE,FALSE
+"870","nrwz.de","tabloid newspaper","en",TRUE,FALSE,FALSE,FALSE,FALSE
+"871","nrz.de","legacy press","de",FALSE,TRUE,TRUE,FALSE,FALSE
+"872","ntv.de","commercial broadcaster","de",FALSE,FALSE,FALSE,TRUE,FALSE
+"873","ntz.de","legacy press","de",FALSE,TRUE,TRUE,FALSE,FALSE
+"874","nw.de","legacy press","de",FALSE,TRUE,TRUE,TRUE,TRUE
+"875","nwzmedien.de","legacy press","ig",TRUE,FALSE,FALSE,FALSE,FALSE
+"876","nwzonline.de","legacy press","de",FALSE,TRUE,TRUE,TRUE,TRUE
+"877","nydailynews.com","tabloid newspaper","en",FALSE,FALSE,FALSE,TRUE,FALSE
+"878","nymag.com","legacy press","en",FALSE,FALSE,FALSE,TRUE,FALSE
+"879","nypost.com","tabloid newspaper","en",FALSE,FALSE,FALSE,TRUE,FALSE
+"880","nytimes.com","legacy press","en",FALSE,FALSE,FALSE,TRUE,FALSE
+"881","nzz.ch","legacy press","de",FALSE,FALSE,FALSE,TRUE,FALSE
+"882","oberberg-nachrichten.de","digital-born news outlet","de",TRUE,FALSE,FALSE,FALSE,FALSE
+"883","oberhessische-zeitung.de","legacy press","de",FALSE,TRUE,TRUE,FALSE,FALSE
+"884","obermain.de","legacy press",NA,FALSE,TRUE,FALSE,FALSE,TRUE
+"885","observer-reporter.com","legacy press","en",FALSE,FALSE,FALSE,TRUE,FALSE
+"886","odenwalddruck.de","legacy press","de",FALSE,TRUE,FALSE,FALSE,FALSE
+"887","oe24.at","tabloid newspaper","de",TRUE,FALSE,FALSE,FALSE,FALSE
+"888","oeffentlicher-dienst-news.de","digital-born news outlet","de",TRUE,FALSE,FALSE,FALSE,FALSE
+"889","oggitreviso.it","legacy press","it",FALSE,FALSE,FALSE,TRUE,FALSE
+"890","okdiario.com","hyperpartisan news","es",FALSE,FALSE,FALSE,TRUE,FALSE
+"891","oldenburgische-volkszeitung.de","legacy press","de",FALSE,TRUE,TRUE,FALSE,FALSE
+"892","oliverjanich.de","hyperpartisan news","de",FALSE,FALSE,FALSE,FALSE,FALSE
+"893","on-online.de","legacy press","de",FALSE,TRUE,TRUE,FALSE,FALSE
+"894","ondacero.es","commercial broadcaster","es",FALSE,FALSE,FALSE,TRUE,FALSE
+"895","onedaily.com","digital-born news outlet","en",TRUE,FALSE,FALSE,FALSE,FALSE
+"896","onet.pl","digital-born news outlet","pl",TRUE,FALSE,FALSE,FALSE,FALSE
+"897","onetz.de","tabloid newspaper","de",TRUE,TRUE,TRUE,FALSE,TRUE
+"898","onlinehaendler-news.de","digital-born news outlet","de",TRUE,FALSE,FALSE,FALSE,FALSE
+"899","op-marburg.de","legacy press","de",FALSE,TRUE,TRUE,FALSE,TRUE
+"900","op-online.de","legacy press","de",FALSE,TRUE,TRUE,TRUE,TRUE
+"901","opposition24.com","hyperpartisan news","de",FALSE,FALSE,FALSE,FALSE,FALSE
+"902","oregonlive.com","legacy press","en",FALSE,FALSE,FALSE,TRUE,FALSE
+"903","orf.at","public broadcaster","de",FALSE,FALSE,FALSE,TRUE,FALSE
+"904","orlandosentinel.com","legacy press","en",FALSE,FALSE,FALSE,TRUE,FALSE
+"905","ostfriesischer-kurier.de","legacy press","de",FALSE,TRUE,FALSE,FALSE,FALSE
+"906","osthessen-news.de","digital-born news outlet","de",FALSE,FALSE,TRUE,TRUE,FALSE
+"907","ostsee-zeitung.de","legacy press","de",FALSE,TRUE,TRUE,TRUE,TRUE
+"908","otz.de","legacy press","de",FALSE,TRUE,TRUE,FALSE,TRUE
+"909","ouest-france.fr","legacy press",NA,FALSE,FALSE,FALSE,TRUE,FALSE
+"910","ovb-heimatzeitungen.de","legacy press","de",TRUE,FALSE,FALSE,FALSE,FALSE
+"911","ovb-online.de","legacy press","de",FALSE,TRUE,TRUE,TRUE,TRUE
+"912","oz-online.de","legacy press","de",FALSE,TRUE,TRUE,FALSE,FALSE
+"913","panorama.it","legacy press","it",FALSE,FALSE,FALSE,TRUE,FALSE
+"914","paris-normandie.fr","legacy press",NA,FALSE,FALSE,FALSE,TRUE,FALSE
+"915","parismatch.com","tabloid newspaper","fr",FALSE,FALSE,FALSE,TRUE,FALSE
+"916","patriotnewsalerts.com","hyperpartisan news","en",FALSE,FALSE,FALSE,TRUE,FALSE
+"917","paz-online.de","legacy press","de",TRUE,TRUE,TRUE,FALSE,TRUE
+"918","paz.de","hyperpartisan news","de",FALSE,FALSE,FALSE,FALSE,FALSE
+"919","pboehringer.de","hyperpartisan news","de",FALSE,FALSE,FALSE,FALSE,FALSE
+"920","pbs.org","public broadcaster","en",FALSE,FALSE,FALSE,TRUE,FALSE
+"921","periodistadigital.com","hyperpartisan news","es",FALSE,FALSE,FALSE,TRUE,FALSE
+"922","peymani.de","hyperpartisan news","de",FALSE,FALSE,FALSE,FALSE,FALSE
+"923","pfaelzischer-merkur.de","legacy press","de",FALSE,TRUE,FALSE,FALSE,FALSE
+"924","philosophia-perennis.com","hyperpartisan news","de",FALSE,FALSE,FALSE,FALSE,FALSE
+"925","phoenix.de","public broadcaster",NA,FALSE,FALSE,TRUE,TRUE,FALSE
+"926","pi-news.net","hyperpartisan news","de",FALSE,FALSE,FALSE,TRUE,FALSE
+"927","pieschen-aktuell.de","digital-born news outlet","de",TRUE,FALSE,FALSE,FALSE,FALSE
+"928","pirmasenser-zeitung.de","legacy press","de",FALSE,TRUE,FALSE,FALSE,FALSE
+"929","pleiteticker.de","hyperpartisan news","de",TRUE,FALSE,FALSE,FALSE,FALSE
+"930","plymouthherald.co.uk","legacy press","en",FALSE,FALSE,FALSE,TRUE,FALSE
+"931","pnn.de","legacy press","de",FALSE,TRUE,FALSE,TRUE,FALSE
+"932","pnp.de","legacy press","de",FALSE,TRUE,TRUE,TRUE,TRUE
+"933","politaia.org","hyperpartisan news","de",FALSE,FALSE,FALSE,FALSE,FALSE
+"934","politic-news.space","digital-born news outlet","en",TRUE,FALSE,FALSE,FALSE,FALSE
+"935","politico.com","digital-born news outlet","en",FALSE,FALSE,FALSE,TRUE,FALSE
+"936","politico.eu","legacy press","en",TRUE,FALSE,FALSE,FALSE,FALSE
+"937","politikstube.com","hyperpartisan news","de",FALSE,FALSE,FALSE,TRUE,FALSE
+"938","politikversagen.net","hyperpartisan news","de",FALSE,FALSE,FALSE,TRUE,FALSE
+"939","politonline.ch","hyperpartisan news","de",FALSE,FALSE,FALSE,FALSE,FALSE
+"940","polskatimes.pl","tabloid newspaper","pl",TRUE,FALSE,FALSE,FALSE,FALSE
+"941","post-gazette.com","legacy press",NA,FALSE,FALSE,FALSE,TRUE,FALSE
+"942","prabelsblog.de","hyperpartisan news","de",FALSE,FALSE,FALSE,FALSE,FALSE
+"943","pravda-tv.com","hyperpartisan news",NA,TRUE,FALSE,FALSE,FALSE,FALSE
+"944","pravda.com.ua","digital-born news outlet","vi",TRUE,FALSE,FALSE,FALSE,FALSE
+"945","pressa.ru","digital-born news outlet","ru",TRUE,FALSE,FALSE,FALSE,FALSE
+"946","presseportal.de","digital-born news outlet","de",FALSE,FALSE,FALSE,TRUE,FALSE
+"947","preussische-allgemeine.de","hyperpartisan news","de",FALSE,FALSE,FALSE,FALSE,FALSE
+"948","primocanale.it","commercial broadcaster","it",FALSE,FALSE,FALSE,TRUE,FALSE
+"949","probsteier-herold.de","legacy press",NA,FALSE,TRUE,FALSE,FALSE,FALSE
+"950","projekte.sueddeutsche.de","legacy press","de",FALSE,FALSE,FALSE,TRUE,FALSE
+"951","propagandaschau.wordpress.com","hyperpartisan news","de",FALSE,FALSE,FALSE,FALSE,FALSE
+"952","proplanta.de","digital-born news outlet",NA,TRUE,FALSE,FALSE,FALSE,FALSE
+"953","prosieben.at","commercial broadcaster","de",FALSE,FALSE,FALSE,TRUE,FALSE
+"954","prosieben.de","commercial broadcaster","de",FALSE,FALSE,FALSE,TRUE,FALSE
+"955","publico.es","digital-born news outlet","es",FALSE,FALSE,FALSE,TRUE,FALSE
+"956","publicomag.com","hyperpartisan news","de",FALSE,FALSE,FALSE,FALSE,FALSE
+"957","pv-magazine.de","digital-born news outlet","de",TRUE,FALSE,FALSE,FALSE,FALSE
+"958","pz-news.de","legacy press","de",FALSE,TRUE,TRUE,TRUE,TRUE
+"959","que.es","tabloid newspaper","es",FALSE,FALSE,FALSE,TRUE,FALSE
+"960","quifinanza.it","digital-born news outlet","it",FALSE,FALSE,FALSE,TRUE,FALSE
+"961","quotenqueen.wordpress.com","hyperpartisan news","de",FALSE,FALSE,FALSE,FALSE,FALSE
+"962","quotidiano.net","legacy press","it",FALSE,FALSE,FALSE,TRUE,FALSE
+"963","quotidianodipuglia.it","legacy press","it",FALSE,FALSE,FALSE,TRUE,FALSE
+"964","quotidianodiragusa.it","digital-born news outlet","it",FALSE,FALSE,FALSE,TRUE,FALSE
+"965","quotidianopiemontese.it","legacy press","it",FALSE,FALSE,FALSE,TRUE,FALSE
+"966","rac1.cat","commercial broadcaster","ca",FALSE,FALSE,FALSE,TRUE,FALSE
+"967","racocatala.cat","digital-born news outlet","ca",FALSE,FALSE,FALSE,TRUE,FALSE
+"968","radio-mk.de","commercial broadcaster","de",FALSE,FALSE,FALSE,TRUE,FALSE
+"969","radio-utopie.de","hyperpartisan news","de",FALSE,FALSE,FALSE,FALSE,FALSE
+"970","radio912.de","commercial broadcaster",NA,TRUE,FALSE,FALSE,FALSE,FALSE
+"971","radiobremen.de","public broadcaster","de",FALSE,FALSE,TRUE,FALSE,FALSE
+"972","radioclassique.fr","commercial broadcaster","fr",FALSE,FALSE,FALSE,TRUE,FALSE
+"973","radiodresden.de","commercial broadcaster","de",TRUE,FALSE,FALSE,FALSE,FALSE
+"974","radioeins.com","commercial broadcaster","de",TRUE,FALSE,FALSE,FALSE,FALSE
+"975","radioeins.de","public broadcaster","de",TRUE,FALSE,TRUE,FALSE,FALSE
+"976","radiohochstift.de","commercial broadcaster","de",FALSE,FALSE,FALSE,TRUE,FALSE
+"977","radioitalia.it","commercial broadcaster","it",FALSE,FALSE,FALSE,TRUE,FALSE
+"978","radiosaw.de","commercial broadcaster","de",TRUE,FALSE,FALSE,FALSE,FALSE
+"979","radiozet.pl","commercial broadcaster","pl",TRUE,FALSE,FALSE,FALSE,FALSE
+"980","radiozwickau.de","commercial broadcaster","de",TRUE,FALSE,FALSE,FALSE,FALSE
+"981","rai.it","public broadcaster",NA,FALSE,FALSE,FALSE,TRUE,FALSE
+"982","rainews.it","public broadcaster",NA,FALSE,FALSE,FALSE,TRUE,FALSE
+"983","raiplay.it","public broadcaster",NA,FALSE,FALSE,FALSE,TRUE,FALSE
+"984","raiplayradio.it","public broadcaster",NA,FALSE,FALSE,FALSE,TRUE,FALSE
+"985","rambler.ru","digital-born news outlet","ru",TRUE,FALSE,FALSE,FALSE,FALSE
+"986","rapefugees.net","hyperpartisan news","de",FALSE,FALSE,FALSE,FALSE,FALSE
+"987","rbb-online.de","public broadcaster","de",FALSE,FALSE,TRUE,TRUE,FALSE
+"988","rbb24.de","public broadcaster","de",TRUE,FALSE,TRUE,FALSE,FALSE
+"989","rbb888.de","public broadcaster","de",FALSE,FALSE,TRUE,FALSE,FALSE
+"990","realclearpolitics.com","digital-born news outlet",NA,FALSE,FALSE,FALSE,TRUE,FALSE
+"991","recklinghaeuser-zeitung.de","legacy press","de",FALSE,FALSE,TRUE,FALSE,FALSE
+"992","redstate.com","hyperpartisan news",NA,FALSE,FALSE,FALSE,TRUE,FALSE
+"993","refcrime.info","hyperpartisan news","pl",FALSE,FALSE,FALSE,TRUE,FALSE
+"994","regio7.cat","legacy press","ca",FALSE,FALSE,FALSE,TRUE,FALSE
+"995","regionalheute.de","digital-born news outlet","de",TRUE,FALSE,TRUE,FALSE,FALSE
+"996","reitschuster.de","hyperpartisan news","de",FALSE,FALSE,FALSE,TRUE,FALSE
+"997","remszeitung.de","legacy press","de",FALSE,TRUE,FALSE,FALSE,FALSE
+"998","report24.news","hyperpartisan news","de",TRUE,FALSE,FALSE,FALSE,FALSE
+"999","reporter-24.com","legacy press",NA,FALSE,FALSE,TRUE,FALSE,FALSE
+"1000","repubblica.it","legacy press","it",FALSE,FALSE,FALSE,TRUE,FALSE
+"1001","republica.com","digital-born news outlet","es",FALSE,FALSE,FALSE,TRUE,FALSE
+"1002","republicain-lorrain.fr","legacy press","fr",FALSE,FALSE,FALSE,TRUE,FALSE
+"1003","republik.ch","digital-born news outlet","de",TRUE,FALSE,FALSE,FALSE,FALSE
+"1004","resistancerepublicaine.eu","hyperpartisan news",NA,FALSE,FALSE,FALSE,TRUE,FALSE
+"1005","reuters.com","legacy press",NA,FALSE,FALSE,FALSE,TRUE,FALSE
+"1006","reuters.tv","digital-born news outlet",NA,FALSE,FALSE,FALSE,TRUE,FALSE
+"1007","revolutionpermanente.fr","hyperpartisan news","fr",FALSE,FALSE,FALSE,TRUE,FALSE
+"1008","rfi.fr","public broadcaster","fr",TRUE,FALSE,FALSE,FALSE,FALSE
+"1009","rga.de","legacy press","de",FALSE,TRUE,TRUE,FALSE,FALSE
+"1010","rheiderland.de","legacy press","de",FALSE,TRUE,FALSE,FALSE,FALSE
+"1011","rhein-zeitung.de","legacy press","de",FALSE,TRUE,TRUE,TRUE,FALSE
+"1012","rheinneckarblog.de","hyperpartisan news","de",FALSE,FALSE,FALSE,FALSE,FALSE
+"1013","rheinpfalz.de","legacy press","de",FALSE,TRUE,TRUE,TRUE,TRUE
+"1014","rhoenkanal.de","digital-born news outlet","de",FALSE,FALSE,FALSE,FALSE,FALSE
+"1015","rhoenundsaalepost.de","legacy press","de",FALSE,TRUE,TRUE,FALSE,FALSE
+"1016","rhoenundstreubote.de","legacy press","de",FALSE,TRUE,FALSE,FALSE,FALSE
+"1017","ria.ru","public broadcaster","ru",TRUE,FALSE,FALSE,FALSE,FALSE
+"1018","riffreporter.de","digital-born news outlet","de",TRUE,FALSE,FALSE,FALSE,FALSE
+"1019","rightwingtribune.com","hyperpartisan news","en",FALSE,FALSE,FALSE,TRUE,FALSE
+"1020","riminitoday.it","legacy press","it",FALSE,FALSE,FALSE,TRUE,FALSE
+"1021","rinteln-aktuell.de","digital-born news outlet","de",TRUE,FALSE,FALSE,FALSE,FALSE
+"1022","ripostelaique.com","hyperpartisan news","fr",FALSE,FALSE,FALSE,TRUE,FALSE
+"1023","rnd-news.de","legacy press","de",FALSE,FALSE,TRUE,FALSE,FALSE
+"1024","rnd.de","legacy press","de",FALSE,FALSE,FALSE,TRUE,FALSE
+"1025","rnf.de","commercial broadcaster",NA,FALSE,FALSE,FALSE,TRUE,FALSE
+"1026","rnz.de","legacy press","de",FALSE,TRUE,TRUE,TRUE,FALSE
+"1027","rollingstone.de","legacy press","de",FALSE,FALSE,FALSE,TRUE,FALSE
+"1028","romatoday.it","legacy press","it",FALSE,FALSE,FALSE,TRUE,FALSE
+"1029","rosenheim24.de","digital-born news outlet","de",FALSE,FALSE,FALSE,TRUE,FALSE
+"1030","roughlyexplained.com","digital-born news outlet","en",FALSE,FALSE,FALSE,TRUE,FALSE
+"1031","royanews.tv","digital-born news outlet","ar",TRUE,FALSE,FALSE,FALSE,FALSE
+"1032","rp-online.de","legacy press","de",FALSE,TRUE,TRUE,TRUE,FALSE
+"1033","rpr1.de","commercial broadcaster","de",TRUE,FALSE,FALSE,FALSE,FALSE
+"1034","rt.com","hyperpartisan news",NA,FALSE,FALSE,FALSE,TRUE,FALSE
+"1035","rt.ru","hyperpartisan news",NA,TRUE,FALSE,FALSE,FALSE,FALSE
+"1036","rtbf.be","public broadcaster","fr",FALSE,FALSE,FALSE,TRUE,FALSE
+"1037","rtde.live","hyperpartisan news","de",FALSE,FALSE,FALSE,FALSE,FALSE
+"1038","rte.ie","public broadcaster","en",FALSE,FALSE,FALSE,TRUE,FALSE
+"1039","rtl.com","commercial broadcaster","de",TRUE,FALSE,FALSE,FALSE,FALSE
+"1040","rtl.de","commercial broadcaster","de",FALSE,FALSE,TRUE,TRUE,FALSE
+"1041","rtl.fr","commercial broadcaster","fr",FALSE,FALSE,FALSE,TRUE,FALSE
+"1042","rtl.lu","commercial broadcaster","lb",TRUE,FALSE,FALSE,FALSE,FALSE
+"1043","rtl2.de","commercial broadcaster","de",FALSE,FALSE,FALSE,TRUE,FALSE
+"1044","rtlnord.de","tabloid newspaper","de",FALSE,FALSE,TRUE,FALSE,FALSE
+"1045","rtlradio.de","tabloid newspaper",NA,FALSE,FALSE,TRUE,FALSE,FALSE
+"1046","rts.ch","public broadcaster","fr",TRUE,FALSE,FALSE,FALSE,FALSE
+"1047","rtve.es","public broadcaster","es",FALSE,FALSE,FALSE,TRUE,FALSE
+"1048","rubikon.news","hyperpartisan news",NA,FALSE,FALSE,FALSE,TRUE,FALSE
+"1049","ruhr24.de","digital-born news outlet","de",FALSE,FALSE,FALSE,TRUE,FALSE
+"1050","ruhrnachrichten.de","legacy press","de",FALSE,FALSE,FALSE,TRUE,TRUE
+"1051","rundertischdgf.wordpress.com","hyperpartisan news","de",FALSE,FALSE,FALSE,FALSE,FALSE
+"1052","rundschau-online.de","legacy press","de",FALSE,TRUE,TRUE,TRUE,TRUE
+"1053","s chsische.de","legacy press",NA,FALSE,FALSE,FALSE,FALSE,FALSE
+"1054","saarbruecker-zeitung.de","legacy press","de",FALSE,TRUE,FALSE,TRUE,FALSE
+"1055","saartext.de","public broadcaster","de",TRUE,FALSE,FALSE,FALSE,FALSE
+"1056","sabah.com.tr","legacy press","tr",TRUE,FALSE,FALSE,FALSE,FALSE
+"1057","sachsen-fernsehen.de","commercial broadcaster",NA,TRUE,FALSE,FALSE,FALSE,FALSE
+"1058","saechsische.de","legacy press","de",FALSE,TRUE,TRUE,TRUE,TRUE
+"1059","salon.com","digital-born news outlet","en",FALSE,FALSE,FALSE,TRUE,FALSE
+"1060","salzgitter-zeitung.de","legacy press","de",FALSE,TRUE,FALSE,FALSE,FALSE
+"1061","sat1.de","commercial broadcaster","de",FALSE,FALSE,FALSE,TRUE,FALSE
+"1062","sauerlandkurier.de","legacy press","de",TRUE,FALSE,FALSE,FALSE,TRUE
+"1063","sbs.com.au","public broadcaster","en",FALSE,FALSE,FALSE,TRUE,FALSE
+"1064","schifferstadter-tagblatt.de","legacy press","de",FALSE,TRUE,FALSE,FALSE,FALSE
+"1065","schluesselkindblog.com","hyperpartisan news","de",FALSE,FALSE,FALSE,FALSE,FALSE
+"1066","schwaebische-post.de","legacy press","de",FALSE,TRUE,TRUE,FALSE,TRUE
+"1067","schwaebische.de","legacy press","de",FALSE,TRUE,TRUE,TRUE,TRUE
+"1068","schwarzwaelder-bote.de","legacy press","de",FALSE,TRUE,TRUE,TRUE,TRUE
+"1069","schwarzwaelder-post.de","legacy press","de",FALSE,TRUE,FALSE,FALSE,FALSE
+"1070","schweizer-illustrierte.ch","tabloid newspaper","de",TRUE,FALSE,FALSE,FALSE,FALSE
+"1071","sciencefiles.org","hyperpartisan news","de",FALSE,FALSE,FALSE,FALSE,FALSE
+"1072","seattletimes.com","legacy press","en",FALSE,FALSE,FALSE,TRUE,FALSE
+"1073","secoloditalia.it","hyperpartisan news","it",FALSE,FALSE,FALSE,TRUE,FALSE
+"1074","seidwalkwordpresscom.wordpress.com","hyperpartisan news","de",FALSE,FALSE,FALSE,FALSE,FALSE
+"1075","serbske-nowiny.de","legacy press","pl",FALSE,FALSE,FALSE,FALSE,TRUE
+"1076","sezession.de","hyperpartisan news","de",FALSE,FALSE,FALSE,FALSE,FALSE
+"1077","sfgate.com","legacy press","en",FALSE,FALSE,FALSE,TRUE,FALSE
+"1078","shz.de","legacy press","de",FALSE,TRUE,TRUE,TRUE,FALSE
+"1079","shz.de/lokales/barmstedter-zeitung","legacy press","de",FALSE,FALSE,FALSE,FALSE,TRUE
+"1080","shz.de/lokales/flensburger-tageblatt","legacy press","de",FALSE,FALSE,FALSE,FALSE,TRUE
+"1081","sichtplatz.de","hyperpartisan news","de",FALSE,FALSE,FALSE,FALSE,FALSE
+"1082","siegener-zeitung.de","legacy press","de",FALSE,TRUE,TRUE,FALSE,TRUE
+"1083","signal-online.de","hyperpartisan news","de",FALSE,FALSE,FALSE,FALSE,FALSE
+"1084","sky.com","commercial broadcaster","en",FALSE,FALSE,FALSE,TRUE,FALSE
+"1085","sky.it","commercial broadcaster","it",FALSE,FALSE,FALSE,TRUE,FALSE
+"1086","skytg24news.it","commercial broadcaster",NA,FALSE,FALSE,FALSE,TRUE,FALSE
+"1087","slate.com","digital-born news outlet","en",FALSE,FALSE,FALSE,TRUE,FALSE
+"1088","slate.fr","digital-born news outlet","fr",FALSE,FALSE,FALSE,TRUE,FALSE
+"1089","sn-online.de","legacy press","de",FALSE,TRUE,TRUE,FALSE,TRUE
+"1090","sn.at","legacy press","de",FALSE,FALSE,FALSE,TRUE,FALSE
+"1091","soester-anzeiger.de","legacy press","de",TRUE,TRUE,FALSE,FALSE,TRUE
+"1092","solinger-tageblatt.de","legacy press","de",FALSE,TRUE,TRUE,FALSE,TRUE
+"1093","sonntagsblatt.de","hyperpartisan news","de",TRUE,FALSE,FALSE,FALSE,FALSE
+"1094","sott.net","hyperpartisan news","de",FALSE,FALSE,FALSE,FALSE,FALSE
+"1095","sozcu.com.tr","hyperpartisan news","tr",TRUE,FALSE,FALSE,FALSE,FALSE
+"1096","spektrum.de","legacy press","de",TRUE,FALSE,FALSE,FALSE,FALSE
+"1097","speyer-kurier.de","legacy press","de",TRUE,FALSE,FALSE,FALSE,FALSE
+"1098","spiegel.de","legacy press","de",FALSE,FALSE,TRUE,TRUE,TRUE
+"1099","spiegel.tv","commercial broadcaster","de",FALSE,FALSE,FALSE,TRUE,FALSE
+"1100","spiesser.de","tabloid newspaper","de",TRUE,FALSE,FALSE,FALSE,FALSE
+"1101","splinternews.com","hyperpartisan news","en",FALSE,FALSE,FALSE,TRUE,FALSE
+"1102","spoekenkiekerei.wordpress.com","hyperpartisan news","de",FALSE,FALSE,FALSE,FALSE,FALSE
+"1103","sputniknews.com","hyperpartisan news","en",FALSE,FALSE,FALSE,TRUE,FALSE
+"1104","sr.de","public broadcaster","de",FALSE,FALSE,TRUE,FALSE,FALSE
+"1105","srf.ch","public broadcaster","de",FALSE,FALSE,FALSE,TRUE,FALSE
+"1106","standard.co.uk","tabloid newspaper","en",FALSE,FALSE,FALSE,TRUE,FALSE
+"1107","startribune.com","legacy press","en",FALSE,FALSE,FALSE,TRUE,FALSE
+"1108","steinhoefel.com","hyperpartisan news","de",FALSE,FALSE,FALSE,FALSE,FALSE
+"1109","stern.de","tabloid newspaper","de",FALSE,FALSE,TRUE,TRUE,TRUE
+"1110","sterntv.de","commercial broadcaster","de",TRUE,FALSE,FALSE,FALSE,FALSE
+"1111","stimberg-zeitung.de","legacy press","de",TRUE,FALSE,TRUE,FALSE,FALSE
+"1112","stimme.de","legacy press","de",FALSE,TRUE,TRUE,TRUE,TRUE
+"1113","strettoweb.com","digital-born news outlet","it",FALSE,FALSE,FALSE,TRUE,FALSE
+"1114","stuttgarter-nachrichten.de","legacy press","de",FALSE,TRUE,TRUE,TRUE,TRUE
+"1115","stuttgarter-zeitung.de","legacy press","de",FALSE,TRUE,TRUE,TRUE,TRUE
+"1116","sudinfo.be","legacy press",NA,FALSE,FALSE,FALSE,TRUE,FALSE
+"1117","sudouest.fr","legacy press","fr",FALSE,FALSE,FALSE,TRUE,FALSE
+"1118","sueddeutsche.de","legacy press","de",FALSE,TRUE,TRUE,TRUE,FALSE
+"1119","suedkurier.de","legacy press","de",FALSE,TRUE,TRUE,TRUE,TRUE
+"1120","suedost-news.de","legacy press","de",FALSE,FALSE,TRUE,FALSE,FALSE
+"1121","sun-sentinel.com","legacy press","en",FALSE,FALSE,FALSE,TRUE,FALSE
+"1122","suntimes.com","tabloid newspaper","en",FALSE,FALSE,FALSE,TRUE,FALSE
+"1123","svz.de","legacy press","de",FALSE,TRUE,TRUE,FALSE,TRUE
+"1124","swp.de","legacy press","de",FALSE,TRUE,TRUE,TRUE,FALSE
+"1125","swr.de","public broadcaster","de",FALSE,FALSE,TRUE,TRUE,FALSE
+"1126","swr3.de","public broadcaster","de",FALSE,FALSE,TRUE,TRUE,FALSE
+"1127","swrfernsehen.de","public broadcaster","de",FALSE,FALSE,FALSE,TRUE,FALSE
+"1128","sz-online.de","legacy press","de",FALSE,FALSE,TRUE,TRUE,FALSE
+"1129","szbz.de","legacy press","de",FALSE,TRUE,TRUE,FALSE,FALSE
+"1130","szlz.de","legacy press","de",FALSE,TRUE,TRUE,TRUE,FALSE
+"1131","t-online.de","portal","de",FALSE,FALSE,TRUE,FALSE,FALSE
+"1132","t-online.de/finanzen","portal",NA,NA,NA,NA,NA,NA
+"1133","t-online.de/nachrichten","portal",NA,NA,NA,NA,NA,NA
+"1134","t-online.de/region","portal",NA,NA,NA,NA,NA,NA
+"1135","t-online.de/tv/news","portal",NA,NA,NA,NA,NA,NA
+"1136","tag24.de","digital-born news outlet","de",FALSE,TRUE,TRUE,TRUE,FALSE
+"1137","tagblatt.de","legacy press","de",TRUE,TRUE,TRUE,FALSE,FALSE
+"1138","tageblatt.de","legacy press","de",FALSE,TRUE,FALSE,TRUE,TRUE
+"1139","tagesanzeiger.ch","legacy press","de",TRUE,FALSE,FALSE,FALSE,FALSE
+"1140","tagesereignis.de","hyperpartisan news","de",FALSE,FALSE,FALSE,FALSE,FALSE
+"1141","tagesschau.de","public broadcaster","de",FALSE,FALSE,TRUE,TRUE,FALSE
+"1142","tagesspiegel.de","legacy press","de",FALSE,TRUE,TRUE,TRUE,FALSE
+"1143","tah.de","legacy press","de",FALSE,TRUE,FALSE,FALSE,FALSE
+"1144","tarnkappe.info","digital-born news outlet","de",TRUE,FALSE,FALSE,FALSE,FALSE
+"1145","tass.com","public broadcaster","no",TRUE,FALSE,FALSE,FALSE,FALSE
+"1146","tass.ru","public broadcaster","ru",TRUE,FALSE,FALSE,FALSE,FALSE
+"1147","taz.de","legacy press","de",FALSE,TRUE,TRUE,TRUE,FALSE
+"1148","teckbote.de","legacy press","de",FALSE,TRUE,TRUE,FALSE,TRUE
+"1149","telecinco.es","commercial broadcaster","es",FALSE,FALSE,FALSE,TRUE,FALSE
+"1150","telegraaf.nl","legacy press","nl",TRUE,FALSE,FALSE,FALSE,FALSE
+"1151","telegraph.co.uk","legacy press","en",FALSE,FALSE,FALSE,TRUE,FALSE
+"1152","telemundo.com","commercial broadcaster","es",FALSE,FALSE,FALSE,TRUE,FALSE
+"1153","tempi.it","digital-born news outlet","it",FALSE,FALSE,FALSE,TRUE,FALSE
+"1154","teneriffa-news.com","digital-born news outlet","de",TRUE,FALSE,FALSE,FALSE,FALSE
+"1155","terminegegenmerkel.wordpress.com","hyperpartisan news","de",FALSE,FALSE,FALSE,FALSE,FALSE
+"1156","termometropolitico.it","digital-born news outlet","it",FALSE,FALSE,FALSE,TRUE,FALSE
+"1157","terra-kurrier.de","hyperpartisan news","de",FALSE,FALSE,FALSE,FALSE,FALSE
+"1158","tf1.fr","commercial broadcaster","fr",FALSE,FALSE,FALSE,TRUE,FALSE
+"1159","tgcom24.it","commercial broadcaster","it",FALSE,FALSE,FALSE,TRUE,FALSE
+"1160","theatlantic.com","legacy press","en",FALSE,FALSE,FALSE,TRUE,FALSE
+"1161","theblaze.com","hyperpartisan news","en",FALSE,FALSE,FALSE,TRUE,FALSE
+"1162","theconversation.com","digital-born news outlet","en",FALSE,FALSE,FALSE,TRUE,FALSE
+"1163","thedailybeast.com","digital-born news outlet","en",FALSE,FALSE,FALSE,TRUE,FALSE
+"1164","thedailyfranz.at","hyperpartisan news","de",FALSE,FALSE,FALSE,FALSE,FALSE
+"1165","theepochtimes.com","hyperpartisan news","en",FALSE,FALSE,FALSE,TRUE,FALSE
+"1166","theeuropean.de","legacy press","de",FALSE,FALSE,TRUE,FALSE,FALSE
+"1167","thefederalist.com","hyperpartisan news","en",FALSE,FALSE,FALSE,TRUE,FALSE
+"1168","thegatewaypundit.com","hyperpartisan news","en",FALSE,FALSE,FALSE,TRUE,FALSE
+"1169","theguardian.com","legacy press","en",FALSE,FALSE,FALSE,TRUE,FALSE
+"1170","thehill.com","legacy press","en",FALSE,FALSE,FALSE,TRUE,FALSE
+"1171","theperspective.com","digital-born news outlet","en",FALSE,FALSE,FALSE,TRUE,FALSE
+"1172","thepioneer.de","digital-born news outlet","de",TRUE,FALSE,FALSE,FALSE,FALSE
+"1173","thesun.co.uk","tabloid newspaper","en",FALSE,FALSE,FALSE,TRUE,FALSE
+"1174","thetelegraphandargus.co.uk","legacy press","en",FALSE,FALSE,FALSE,TRUE,FALSE
+"1175","thetimes.co.uk","legacy press","en",FALSE,FALSE,FALSE,TRUE,FALSE
+"1176","thueringen24.de","digital-born news outlet","de",TRUE,FALSE,TRUE,FALSE,FALSE
+"1177","thueringer-allgemeine.de","legacy press","de",FALSE,TRUE,TRUE,TRUE,FALSE
+"1178","tichyseinblick.de","hyperpartisan news","de",FALSE,FALSE,FALSE,TRUE,FALSE
+"1179","time.com","legacy press","en",FALSE,FALSE,FALSE,TRUE,FALSE
+"1180","timesofisrael.com","digital-born news outlet","en",FALSE,FALSE,FALSE,TRUE,FALSE
+"1181","tip-berlin.de","legacy press","de",FALSE,FALSE,FALSE,FALSE,TRUE
+"1182","tirolerin.at","tabloid newspaper","de",TRUE,FALSE,FALSE,FALSE,FALSE
+"1183","titanic-magazin.de","digital-born news outlet","de",FALSE,FALSE,FALSE,TRUE,FALSE
+"1184","tlz.de","legacy press","de",FALSE,TRUE,TRUE,FALSE,FALSE
+"1185","torgauerzeitung.com","legacy press","de",FALSE,TRUE,TRUE,FALSE,FALSE
+"1186","torinotoday.it","legacy press","it",FALSE,FALSE,FALSE,TRUE,FALSE
+"1187","traunsteiner-tagblatt.de","legacy press","de",TRUE,TRUE,FALSE,FALSE,FALSE
+"1188","trevisotoday.it","legacy press","it",FALSE,FALSE,FALSE,TRUE,FALSE
+"1189","trinitymirror-news.co.uk","tabloid newspaper",NA,FALSE,FALSE,FALSE,TRUE,FALSE
+"1190","trtdeutsch.com","public broadcaster","de",TRUE,FALSE,FALSE,FALSE,FALSE
+"1191","trthaber.com","public broadcaster","tr",TRUE,FALSE,FALSE,FALSE,FALSE
+"1192","truth24.net","hyperpartisan news","de",FALSE,FALSE,FALSE,FALSE,FALSE
+"1193","tuerkismagazin.com","digital-born news outlet","de",TRUE,FALSE,FALSE,FALSE,FALSE
+"1194","turkiyegazetesi.com.tr","legacy press","tr",TRUE,FALSE,FALSE,FALSE,FALSE
+"1195","tv-mittelrhein.de","commercial broadcaster","de",TRUE,FALSE,FALSE,FALSE,FALSE
+"1196","tv5monde.com","public broadcaster",NA,FALSE,FALSE,FALSE,TRUE,FALSE
+"1197","tvo.de","commercial broadcaster","de",FALSE,FALSE,FALSE,FALSE,FALSE
+"1198","tz-online.de","tabloid newspaper","de",FALSE,FALSE,FALSE,TRUE,FALSE
+"1199","tz.de","tabloid newspaper","de",FALSE,TRUE,TRUE,TRUE,FALSE
+"1200","udinetoday.it","legacy press","it",FALSE,FALSE,FALSE,TRUE,FALSE
+"1201","uebermedien.de","digital-born news outlet","de",TRUE,FALSE,FALSE,FALSE,FALSE
+"1202","ukrinform.de","public broadcaster","de",TRUE,FALSE,FALSE,FALSE,FALSE
+"1203","uktv.co.uk","public broadcaster","en",FALSE,FALSE,FALSE,TRUE,FALSE
+"1204","uncut-news.ch","hyperpartisan news","de",FALSE,FALSE,FALSE,FALSE,FALSE
+"1205","uncutnews.ch","hyperpartisan news","de",TRUE,FALSE,FALSE,FALSE,FALSE
+"1206","unian.net","digital-born news outlet","ru",TRUE,FALSE,FALSE,FALSE,FALSE
+"1207","unser-mitteleuropa.com","hyperpartisan news","de",FALSE,FALSE,FALSE,FALSE,FALSE
+"1208","unz.de","legacy press",NA,FALSE,TRUE,FALSE,FALSE,FALSE
+"1209","unzensuriert.at","hyperpartisan news","de",FALSE,FALSE,FALSE,FALSE,FALSE
+"1210","unzensuriert.de","hyperpartisan news","de",FALSE,FALSE,FALSE,FALSE,FALSE
+"1211","uol.com.br","digital-born news outlet","pt",FALSE,FALSE,FALSE,TRUE,FALSE
+"1212","upday.com","digital-born news outlet","de",TRUE,FALSE,FALSE,FALSE,FALSE
+"1213","usatoday.com","tabloid newspaper","en",FALSE,FALSE,FALSE,TRUE,FALSE
+"1214","usinger-anzeiger.de","legacy press","de",FALSE,TRUE,TRUE,FALSE,FALSE
+"1215","usnews.com","legacy press",NA,FALSE,FALSE,FALSE,TRUE,FALSE
+"1216","valenciaplaza.com","digital-born news outlet","es",FALSE,FALSE,FALSE,TRUE,FALSE
+"1217","valeursactuelles.com","legacy press","fr",FALSE,FALSE,FALSE,TRUE,FALSE
+"1218","vaticannews.va","digital-born news outlet","af",TRUE,FALSE,FALSE,FALSE,FALSE
+"1219","vdi-nachrichten.com","legacy press","de",FALSE,TRUE,FALSE,FALSE,FALSE
+"1220","ventidicronaca.it","digital-born news outlet","it",TRUE,FALSE,FALSE,FALSE,FALSE
+"1221","vera-lengsfeld.de","hyperpartisan news","de",FALSE,FALSE,FALSE,FALSE,FALSE
+"1222","verlag-dreisbach.de","legacy press","de",FALSE,TRUE,FALSE,FALSE,FALSE
+"1223","verlagshaus-jaumann.de","legacy press","de",FALSE,TRUE,FALSE,FALSE,FALSE
+"1224","vice.com","digital-born news outlet","de",FALSE,FALSE,FALSE,TRUE,FALSE
+"1225","vilaweb.cat","digital-born news outlet","ca",FALSE,FALSE,FALSE,TRUE,FALSE
+"1226","vinnews.com","hyperpartisan news",NA,TRUE,FALSE,FALSE,FALSE,FALSE
+"1227","vkz.de","legacy press","de",FALSE,TRUE,TRUE,FALSE,FALSE
+"1228","voanews.com","public broadcaster","en",FALSE,FALSE,FALSE,TRUE,FALSE
+"1229","vogtland-anzeiger.de","legacy press","de",FALSE,TRUE,FALSE,FALSE,FALSE
+"1230","volksfreund.de","legacy press","de",FALSE,TRUE,FALSE,FALSE,FALSE
+"1231","volksstimme.de","legacy press","de",FALSE,TRUE,TRUE,TRUE,FALSE
+"1232","volksverpetzer.de","hyperpartisan news","de",FALSE,FALSE,FALSE,TRUE,FALSE
+"1233","vorsprung-online.de","legacy press","de",FALSE,FALSE,TRUE,FALSE,FALSE
+"1234","vox.com","digital-born news outlet","en",FALSE,FALSE,FALSE,TRUE,FALSE
+"1235","vox.de","commercial broadcaster","de",FALSE,FALSE,FALSE,TRUE,FALSE
+"1236","voxnews.info","hyperpartisan news","it",FALSE,FALSE,FALSE,TRUE,FALSE
+"1237","vozpopuli.com","digital-born news outlet","es",FALSE,FALSE,FALSE,TRUE,FALSE
+"1238","vunv1863.wordpress.com","hyperpartisan news","de",FALSE,FALSE,FALSE,FALSE,FALSE
+"1239","wa.de","legacy press","de",FALSE,TRUE,TRUE,TRUE,FALSE
+"1240","waddische.de","legacy press","de",FALSE,TRUE,FALSE,FALSE,FALSE
+"1241","wahrheitspresse.xyz","hyperpartisan news","de",FALSE,FALSE,FALSE,FALSE,FALSE
+"1242","waltroper-zeitung.de","legacy press","de",FALSE,FALSE,TRUE,FALSE,FALSE
+"1243","washingtonexaminer.com","legacy press","en",FALSE,FALSE,FALSE,TRUE,FALSE
+"1244","washingtonpost.com","legacy press","en",FALSE,FALSE,FALSE,TRUE,FALSE
+"1245","washingtonpress.com","hyperpartisan news","en",FALSE,FALSE,FALSE,TRUE,FALSE
+"1246","washingtontimes.com","legacy press","en",FALSE,FALSE,FALSE,TRUE,FALSE
+"1247","wasserburg24.de","digital-born news outlet","de",FALSE,FALSE,FALSE,FALSE,FALSE
+"1248","wasserburger-stimme.de","tabloid newspaper","de",TRUE,FALSE,FALSE,FALSE,FALSE
+"1249","watergate.tv","hyperpartisan news",NA,FALSE,FALSE,FALSE,TRUE,FALSE
+"1250","watson.ch","digital-born news outlet","de",FALSE,FALSE,FALSE,TRUE,FALSE
+"1251","watson.de","digital-born news outlet","de",FALSE,FALSE,TRUE,TRUE,FALSE
+"1252","waz-online.de","legacy press","de",FALSE,TRUE,TRUE,FALSE,TRUE
+"1253","waz.de","legacy press","de",FALSE,FALSE,TRUE,TRUE,FALSE
+"1254","wdr.de","public broadcaster","de",FALSE,FALSE,FALSE,TRUE,FALSE
+"1255","wdr2.de","public broadcaster","de",FALSE,FALSE,FALSE,TRUE,FALSE
+"1256","weau.com","commercial broadcaster","en",FALSE,FALSE,FALSE,TRUE,FALSE
+"1257","web.de/magazine","portal",NA,NA,NA,NA,NA,NA
+"1258","web.de/magazine/panorama","portal",NA,NA,NA,NA,NA,NA
+"1259","web.de/magazine/politik","portal",NA,NA,NA,NA,NA,NA
+"1260","welt.de","legacy press","de",FALSE,TRUE,TRUE,TRUE,FALSE
+"1261","weltwoche.ch","legacy press","de",TRUE,FALSE,FALSE,FALSE,FALSE
+"1262","werra-rundschau.de","legacy press","de",FALSE,TRUE,TRUE,FALSE,FALSE
+"1263","weser-kurier.de","legacy press","de",TRUE,TRUE,TRUE,FALSE,TRUE
+"1264","westallgaeuer-zeitung.de","legacy press","de",FALSE,TRUE,FALSE,FALSE,FALSE
+"1265","westernjournal.com","hyperpartisan news","en",FALSE,FALSE,FALSE,TRUE,FALSE
+"1266","westfalen-blatt.de","legacy press","de",TRUE,TRUE,TRUE,FALSE,FALSE
+"1267","wetterauer-zeitung.de","legacy press","de",FALSE,TRUE,TRUE,FALSE,FALSE
+"1268","wiesbadener-kurier.de","legacy press","de",FALSE,TRUE,TRUE,FALSE,FALSE
+"1269","wiesbadener-tagblatt.de","legacy press",NA,FALSE,FALSE,TRUE,FALSE,FALSE
+"1270","winsener-anzeiger.info","legacy press",NA,FALSE,TRUE,FALSE,FALSE,FALSE
+"1271","wired.com","legacy press","en",FALSE,FALSE,FALSE,TRUE,FALSE
+"1272","wired.it","digital-born news outlet","it",FALSE,FALSE,FALSE,TRUE,FALSE
+"1273","wirsindeins.org","hyperpartisan news","de",FALSE,FALSE,FALSE,FALSE,FALSE
+"1274","wissensmanufaktur.net","hyperpartisan news","de",FALSE,FALSE,FALSE,FALSE,FALSE
+"1275","wiwo.de","legacy press","de",FALSE,FALSE,TRUE,TRUE,TRUE
+"1276","wlz-online.de","legacy press","de",FALSE,TRUE,TRUE,FALSE,TRUE
+"1277","wn.de","legacy press","de",TRUE,TRUE,TRUE,FALSE,TRUE
+"1278","wnoz.de","legacy press","de",FALSE,TRUE,FALSE,FALSE,FALSE
+"1279","wochenanzeiger.de","tabloid newspaper","de",TRUE,FALSE,FALSE,FALSE,FALSE
+"1280","wochenblatt-dlv.de","legacy press","de",TRUE,FALSE,FALSE,FALSE,FALSE
+"1281","wochenblatt-news.de","legacy press","de",TRUE,FALSE,FALSE,FALSE,FALSE
+"1282","wochenblatt-reporter.de","digital-born news outlet","de",TRUE,FALSE,FALSE,FALSE,FALSE
+"1283","wochenblatt.com","digital-born news outlet","de",TRUE,FALSE,FALSE,FALSE,FALSE
+"1284","wochenblatt.de","tabloid newspaper","de",TRUE,FALSE,TRUE,FALSE,FALSE
+"1285","wochenblatt.net","legacy press","de",FALSE,FALSE,TRUE,FALSE,FALSE
+"1286","wochenblick.at","hyperpartisan news","de",FALSE,FALSE,FALSE,FALSE,FALSE
+"1287","wochenendspiegel.de","tabloid newspaper","de",TRUE,FALSE,FALSE,FALSE,FALSE
+"1288","wochenspiegellive.de","legacy press","de",TRUE,FALSE,FALSE,FALSE,FALSE
+"1289","wochenspiegelonline.de","legacy press",NA,FALSE,FALSE,TRUE,FALSE,FALSE
+"1290","wolfenbuetteler-zeitung.de","legacy press","de",FALSE,TRUE,FALSE,FALSE,FALSE
+"1291","wolfsburger-nachrichten.de","legacy press","de",FALSE,TRUE,FALSE,FALSE,FALSE
+"1292","worldisraelnews.com","hyperpartisan news",NA,TRUE,FALSE,FALSE,FALSE,FALSE
+"1293","worldjusticenews.com","digital-born news outlet","en",FALSE,FALSE,FALSE,TRUE,FALSE
+"1294","wormser-zeitung.de","legacy press","de",FALSE,TRUE,TRUE,FALSE,FALSE
+"1295","wp.de","legacy press","de",TRUE,TRUE,TRUE,FALSE,FALSE
+"1296","wp.pl","tabloid newspaper","pl",TRUE,FALSE,FALSE,FALSE,FALSE
+"1297","wpxi.com","commercial broadcaster","en",FALSE,FALSE,FALSE,TRUE,FALSE
+"1298","wr.de","legacy press","de",FALSE,TRUE,TRUE,FALSE,FALSE
+"1299","wsbtv.com","commercial broadcaster","en",FALSE,FALSE,FALSE,TRUE,FALSE
+"1300","wsj.com","legacy press","en",FALSE,FALSE,FALSE,TRUE,FALSE
+"1301","wuppertaler-rundschau.de","tabloid newspaper","de",TRUE,FALSE,FALSE,FALSE,FALSE
+"1302","ww-kurier.de","digital-born news outlet","de",TRUE,FALSE,FALSE,FALSE,FALSE
+"1303","www1.wdr.de","public broadcaster","de",FALSE,FALSE,TRUE,FALSE,FALSE
+"1304","wxyz.com","commercial broadcaster","en",FALSE,FALSE,FALSE,TRUE,FALSE
+"1305","wz-net.de","legacy press","de",FALSE,TRUE,FALSE,FALSE,FALSE
+"1306","wz.de","legacy press","de",TRUE,TRUE,TRUE,FALSE,TRUE
+"1307","wzonline.de","legacy press",NA,FALSE,FALSE,TRUE,TRUE,FALSE
+"1308","yahoo.com","digital-born news outlet","de",TRUE,FALSE,FALSE,FALSE,FALSE
+"1309","yahoo.com/news","portal",NA,NA,NA,NA,NA,NA
+"1310","yoice.net","hyperpartisan news","de",FALSE,FALSE,FALSE,FALSE,FALSE
+"1311","yomiuri.co.jp","legacy press","ja",TRUE,FALSE,FALSE,FALSE,FALSE
+"1312","you-fm.de","public broadcaster","de",FALSE,FALSE,TRUE,FALSE,FALSE
+"1313","zak.de","legacy press","de",FALSE,TRUE,FALSE,FALSE,TRUE
+"1314","zaronews.world","hyperpartisan news","de",FALSE,FALSE,FALSE,FALSE,FALSE
+"1315","zdf.de","public broadcaster","de",FALSE,FALSE,FALSE,TRUE,FALSE
+"1316","ze.tt","legacy press","de",FALSE,FALSE,TRUE,FALSE,FALSE
+"1317","zeit.de","legacy press","de",FALSE,TRUE,TRUE,TRUE,FALSE
+"1318","zettelsraum.blogspot.de","hyperpartisan news","de",FALSE,FALSE,FALSE,FALSE,FALSE
+"1319","zevener-zeitung.de","legacy press",NA,FALSE,TRUE,FALSE,FALSE,FALSE
+"1320","zlive-news.de","digital-born news outlet","de",TRUE,FALSE,FALSE,FALSE,FALSE
+"1321","zuercherin.com","hyperpartisan news","de",FALSE,FALSE,FALSE,FALSE,FALSE
+"1322","zuerst.de","hyperpartisan news","de",FALSE,FALSE,FALSE,FALSE,FALSE
+"1323","zukunft-ch.ch","hyperpartisan news","de",FALSE,FALSE,FALSE,FALSE,FALSE
+"1324","zvw.de","legacy press","de",FALSE,TRUE,TRUE,FALSE,FALSE
