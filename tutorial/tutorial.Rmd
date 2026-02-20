@@ -10,30 +10,36 @@ output:
     toc_float: true
     code_folding: show
     theme: cosmo
+editor_options: 
+  markdown: 
+    wrap: 72
 ---
 
 # Setup and Prerequisites
 
+For this tutorial to work properly, you must open the **project from the
+repository root folder** in RStudio or your IDE.
 
-For this tutorial to work properly, you must open the **project from the repository root folder** in RStudio or your IDE.
+-   [x] Correct: Open the project from
+    `/path/to/webtracking-data-tutorial/`
+-   ✗ Incorrect: Opening files individually or from subdirectories
 
-- ✓ Correct: Open the project from `/path/to/webtracking-data-tutorial/`
-- ✗ Incorrect: Opening files individually or from subdirectories
-
-This ensures all relative paths (to data files, helper scripts, etc.) work correctly.
-
+This ensures all relative paths (to data files, helper scripts, etc.)
+work correctly.
 
 **Before running the code below, make sure you have:**
 
-1. Opened the project from the repository root folder (see above)
-2. Downloaded the Web Tracking data (Campusfile) from [ZA5670](https://search.gesis.org/research_data/ZA5670)
-3. Placed the data files in the `data/` folder:
-   - `ZA5670_webtracking_data.csv`
-   - `ZA5670_survey_data.csv`
+1.  Opened the project from the repository root folder (see above)
+2.  Downloaded the Web Tracking data (Campusfile) from
+    [ZA5670](https://search.gesis.org/research_data/ZA5670)
+3.  Placed the data files in the `data/` folder:
+    -   `ZA5670_webtracking_data.csv`
+    -   `ZA5670_survey_data.csv`
 
 ## Install and Load Packages
 
-Run this chunk to install (if needed) and load all required packages. This may take a few minutes on first run.
+Run this chunk to install (if needed) and load all required packages.
+This may take a few minutes on first run.
 
 ```{r install-packages, message=TRUE}
 # Required packages
@@ -65,7 +71,9 @@ cat("✓ All packages loaded\n\n")
 
 ## Setup Data
 
-The GESIS Web Tracking data contains only host-level information. We'll create an enhanced dataset with synthetic full URLs to practice URL parsing and classification. This takes 2-3 minutes on the first run.
+The GESIS Web Tracking data contains only host-level information. We'll
+create an enhanced dataset with synthetic full URLs to practice URL
+parsing and classification. This takes 2-3 minutes on the first run.
 
 ```{r setup, include=TRUE, message=TRUE}
 knitr::opts_chunk$set(echo = TRUE, warning = FALSE, message = FALSE, results = "hold")
@@ -82,37 +90,47 @@ source(here::here("scripts", "load_data.R"))
 cat("✓ Setup complete!\n\n")
 ```
 
-
-
-
 # Introduction
 
-In this code along, we will work with the demo Web Tracking data from the GESIS panel.dbd (Campusfile: [ZA5670](https://search.gesis.org/research_data/ZA5670)). Note that the data has been augmented with synthetic full-URLs for demonstration purposes. The original dataset contains only host level visit information. The enhanced dataset includes synthetic full URLs for all entries to allow us to practice URL parsing and classification.
-We will cover data loading, cleaning, and basic analysis using R. This tutorial focuses on **preprocessing web tracking data**, i.e., the essential steps you need before any analysis. The raw records in web tracking data are **traces**, i.e., individual logged URL hits that include browser artifacts, redirects, and duplicates. A key preprocessing goal is transforming these traces into meaningful **visits** through deduplication and cleaning. We'll learn how to parse URLs, clean messy data, classify visits, and aggregate browsing behavior.
+In this code along, we will work with the demo Web Tracking data from
+the GESIS panel.dbd (Campusfile:
+[ZA5670](https://search.gesis.org/research_data/ZA5670)). Note that the
+data has been augmented with synthetic full-URLs for demonstration
+purposes. The original dataset contains only host level visit
+information. The enhanced dataset includes synthetic full URLs for all
+entries to allow us to practice URL parsing and classification. We will
+cover data loading, cleaning, and basic analysis using R. This tutorial
+focuses on **preprocessing web tracking data**, i.e., the essential
+steps you need before any analysis. The raw records in web tracking data
+are **traces**, i.e., individual logged URL hits that include browser
+artifacts, redirects, and duplicates. A key preprocessing goal is
+transforming these traces into meaningful **visits** through
+deduplication and cleaning. We'll learn how to parse URLs, clean messy
+data, classify visits, and aggregate browsing behavior.
 
 **What we'll cover:**
 
-- Loading and understanding web tracking data structure
-- Parsing URL components (domain, path, query parameters)
-- Turning raw traces into visits through deduplication
-- Classifying visits into meaningful categories
-- Aggregating visit statistics by panelist
-- Linking web tracking data with survey responses
+-   Loading and understanding web tracking data structure
+-   Parsing URL components (domain, path, query parameters)
+-   Turning raw traces into visits through deduplication
+-   Classifying visits into meaningful categories
+-   Aggregating visit statistics by panelist
+-   Linking web tracking data with survey responses
 
 **What we won't cover**:
 
-- Statistical modeling (regression, etc.)
-- Sequence analysis
+-   Statistical modeling (regression, etc.)
+-   Sequence analysis
 
-Make sure you have downloaded the data and placed it in the `data/` folder as per the setup instructions.
-
+Make sure you have downloaded the data and placed it in the `data/`
+folder as per the setup instructions.
 
 # Working with web tracking data
 
 ## Loading and understanding the dataset
 
-We'll take a look at the enhanced web tracking dataset and explore its structure.
-
+We'll take a look at the enhanced web tracking dataset and explore its
+structure.
 
 ```{r examine-data}
 # Examine data structure
@@ -145,7 +163,12 @@ cat("Duration:",
 
 ```
 
-Now let's examine our panelists and traces in more detail. We'll count the total number of traces, unique panelists, and look at the distribution of traces per panelist. We'll also check the time range of the data to understand how long the tracking period is. Finally, we'll look at the distribution of traces per day per panelist to see if there are any temporal patterns in the data.
+Now let's examine our panelists and traces in more detail. We'll count
+the total number of traces, unique panelists, and look at the
+distribution of traces per panelist. We'll also check the time range of
+the data to understand how long the tracking period is. Finally, we'll
+look at the distribution of traces per day per panelist to see if there
+are any temporal patterns in the data.
 
 ```{r}
 
@@ -183,10 +206,8 @@ cat("Max:", max(visits_per_day), "\n")
 
 ```
 
-
-
-Of course, we can also visualize this data to get a better sense of the distribution of traces and temporal patterns:
-
+Of course, we can also visualize this data to get a better sense of the
+distribution of traces and temporal patterns:
 
 ```{r visualize-data-traces-per-user, fig.width=8, fig.height=5}
 # Distribution of traces per panelist
@@ -203,9 +224,6 @@ ggplot(traces_per_user, aes(x = traces)) +
   ) +
   theme_minimal()
 ```
-
-
-
 
 ```{r visualize-data-traces-over-time, fig.width=10, fig.height=5}
 # Traces over time (daily counts)
@@ -265,9 +283,14 @@ ggplot(traces_by_weekday, aes(x = weekday, y = traces)) +
   theme(axis.text.x = element_text(angle = 45, hjust = 1))
 ```
 
-
-
-The data contains not only full URLs but also entries that are just domains or privacy placeholders. This is common in web tracking data due to privacy settings and browser behavior. Understanding this heterogeneity is crucial for preprocessing and analysis. Let's categorize the URLs into types and see how many traces fall into each category. This will help us understand the composition of our dataset and inform our parsing and classification strategies. We'll also show sample URLs from each type to illustrate the differences.
+The data contains not only full URLs but also entries that are just
+domains or privacy placeholders. This is common in web tracking data due
+to privacy settings and browser behavior. Understanding this
+heterogeneity is crucial for preprocessing and analysis. Let's
+categorize the URLs into types and see how many traces fall into each
+category. This will help us understand the composition of our dataset
+and inform our parsing and classification strategies. We'll also show
+sample URLs from each type to illustrate the differences.
 
 ```{r annotate-url-type}
 
@@ -301,13 +324,20 @@ wt_data %>%
   print(n = 15)
 ```
 
-
-
 ## URL anatomy and parsing
 
-URLs contain rich information encoded in their structure. We'll break them down into components (protocol, host, domain, path, query parameters) and learn how to extract each piece. We'll show both manual tidyverse approaches and webtrackR's built-in functions.
+URLs contain rich information encoded in their structure. We'll break
+them down into components (protocol, host, domain, path, query
+parameters) and learn how to extract each piece. We'll show both manual
+tidyverse approaches and webtrackR's built-in functions.
 
-Because the data contains only the hostname / domain for some visits, we'll need to add a protocol to parse the URLs properly. This is a common issue with web tracking data where some entries are just domains without protocol or path for privacy reasons. Therefore, we want to add `https://` to all entries in the `url` column to ensure consistent parsing. This way, we can use URL parsing functions that expect a full URL format.
+Because the data contains only the hostname / domain for some visits,
+we'll need to add a protocol to parse the URLs properly. This is a
+common issue with web tracking data where some entries are just domains
+without protocol or path for privacy reasons. Therefore, we want to add
+`https://` to all entries in the `url` column to ensure consistent
+parsing. This way, we can use URL parsing functions that expect a full
+URL format.
 
 ```{r add-protocol}
 # Add http:// protocol to URLs that don't have one for consistent parsing
@@ -327,11 +357,14 @@ wt_data <- wt_data %>%
 
 ```
 
-Now, we can begin dissecting the URLs into their components. While we could use manual string manipulation with regex and tidyverse functions, we'll primarily rely on webtrackR's built-in URL parsing functions for robustness and ease of use. These functions can handle edge cases and inconsistencies in the data more effectively than manual approaches.
+Now, we can begin dissecting the URLs into their components. While we
+could use manual string manipulation with regex and tidyverse functions,
+we'll primarily rely on webtrackR's built-in URL parsing functions for
+robustness and ease of use. These functions can handle edge cases and
+inconsistencies in the data more effectively than manual approaches.
 
-
-![URL anatomy. Source: https://journals.sagepub.com/doi/10.1177/08944393241227868#fig2-08944393241227868](../assets/url_anatomy.jpg)
-
+![URL anatomy. Source:
+<https://journals.sagepub.com/doi/10.1177/08944393241227868#fig2-08944393241227868>](../assets/url_anatomy.jpg)
 
 ```{r ada-parse}
 # Using adaR to parse URL components
@@ -370,10 +403,12 @@ cat("\nColumns returned by ada_url_parse():\n")
 cat(paste(names(url_components), collapse = ", "), "\n")
 ```
 
-We can also use `adaR` to check and modify URLs. For more information, see the [adaR documentation](https://gesistsa.github.io/adaR/).
+We can also use `adaR` to check and modify URLs. For more information,
+see the [adaR documentation](https://gesistsa.github.io/adaR/).
 
-
-You can also use the `webtrackR` package to extract specific components. The package automatically takes care of missing protocols and then calls `adaR` under the hood.
+You can also use the `webtrackR` package to extract specific components.
+The package automatically takes care of missing protocols and then calls
+`adaR` under the hood.
 
 ```{r webtrackr-parse}
 # Using webtrackR to extract URL components
@@ -417,8 +452,10 @@ cat("\nNote: webtrackR's extract_domain() returns the 'top private domain',")
 cat("\ne.g., 'mysite.blogspot.com' not 'blogspot.com'\n")
 ```
 
-
-An added benefit of using `webtrackR` is that it allows us to call `summary` on the dataset to get a quick overview of the variables and their distributions. This is a useful way to check that our parsing worked as expected and to understand the composition of our data.
+An added benefit of using `webtrackR` is that it allows us to call
+`summary` on the dataset to get a quick overview of the variables and
+their distributions. This is a useful way to check that our parsing
+worked as expected and to understand the composition of our data.
 
 ```{r webtrackr-summary}
 # Show summary of webtrackR dataset
@@ -426,14 +463,16 @@ cat("=== Summary of webtrackR Dataset ===\n")
 summary(wtr_data)
 ```
 
-
-
 ## Data cleaning and augmentation
-
 
 ### Deduplication: From traces to visits
 
-Raw web tracking data consists of **traces**, individual logged URL hits that include browser artifacts like page refreshes, redirects, and automatic reloads. These are not meaningful page visits. The goal of deduplication is to transform these raw traces into **visits**, i.e., records that represent intentional navigation to a page. Let's first look at what these artifacts look like in our data.
+Raw web tracking data consists of **traces**, individual logged URL hits
+that include browser artifacts like page refreshes, redirects, and
+automatic reloads. These are not meaningful page visits. The goal of
+deduplication is to transform these raw traces into **visits**, i.e.,
+records that represent intentional navigation to a page. Let's first
+look at what these artifacts look like in our data.
 
 ```{r show-artifacts}
 # Show consecutive duplicate visits for one panelist
@@ -471,8 +510,10 @@ wtr_data %>%
 
 ```
 
-These are typically browser refreshes, redirects, or tracking artifacts rather than genuine separate visits. Before we can identify and remove these duplicate traces, we need to know how much time elapsed between consecutive entries.
-
+These are typically browser refreshes, redirects, or tracking artifacts
+rather than genuine separate visits. Before we can identify and remove
+these duplicate traces, we need to know how much time elapsed between
+consecutive entries.
 
 ```{r add-duration}
 # Add visit duration (time until next visit)
@@ -486,9 +527,13 @@ cat("=== Duration Summary (seconds) ===\n")
 summary(wtr_data$duration)
 ```
 
-The `duration` column now tells us how long each visit lasted (in seconds), calculated as the time difference to the next visit. Durations longer than 5 minutes are set to `NA` since the user likely navigated away or closed the browser.
+The `duration` column now tells us how long each visit lasted (in
+seconds), calculated as the time difference to the next visit. Durations
+longer than 5 minutes are set to `NA` since the user likely navigated
+away or closed the browser.
 
-Let's visualize the distribution of visit durations to understand our data better:
+Let's visualize the distribution of visit durations to understand our
+data better:
 
 ```{r duration-distribution, fig.width=8, fig.height=5}
 # Distribution of visit durations (< 60 seconds only for readability)
@@ -505,7 +550,11 @@ wtr_data %>%
   theme_minimal()
 ```
 
-We can see a large spike at very short durations. Many of these are consecutive traces to the same URL, browser artifacts that we want to remove. The `deduplicate()` function from webtrackR identifies consecutive traces to the same URL within a time window and drops them, turning our raw traces into meaningful visits:
+We can see a large spike at very short durations. Many of these are
+consecutive traces to the same URL, browser artifacts that we want to
+remove. The `deduplicate()` function from webtrackR identifies
+consecutive traces to the same URL within a time window and drops them,
+turning our raw traces into meaningful visits:
 
 ```{r deduplicate}
 # Drop consecutive visits to the same URL within 3 seconds
@@ -514,7 +563,8 @@ wtr_data <- deduplicate(wtr_data, method = "drop", within = 3)
 cat("Visits after deduplication:", format(nrow(wtr_data), big.mark = ","), "\n")
 ```
 
-From here on, our data represents **visits** rather than raw traces. Let's see how the duration distribution changed after cleaning:
+From here on, our data represents **visits** rather than raw traces.
+Let's see how the duration distribution changed after cleaning:
 
 ```{r after-cleaning, fig.width=8, fig.height=5}
 # Duration distribution after deduplication
@@ -531,11 +581,16 @@ wtr_data %>%
   theme_minimal()
 ```
 
-**Try it yourself:** What happens if you change the deduplication window from 3 seconds to 5 seconds? How does it affect the number of visits?
+**Try it yourself:** What happens if you change the deduplication window
+from 3 seconds to 5 seconds? How does it affect the number of visits?
 
 ### Sessions
 
-A browsing session is a sequence of visits without a long gap in between. webtrackR's `add_session()` assigns a session ID to each visit based on a timeout cutoff -- if the gap between two consecutive visits exceeds the cutoff, a new session starts. A common choice is 30 minutes (1800 seconds):
+A browsing session is a sequence of visits without a long gap in
+between. webtrackR's `add_session()` assigns a session ID to each visit
+based on a timeout cutoff -- if the gap between two consecutive visits
+exceeds the cutoff, a new session starts. A common choice is 30 minutes
+(1800 seconds):
 
 ```{r add-session}
 wtr_data <- add_session(wtr_data, cutoff = 1800)
@@ -582,10 +637,11 @@ ggplot(sessions_per_user, aes(x = n_sessions)) +
   theme_minimal()
 ```
 
-
 ### URL cleaning
 
-We can also clean up URLs by removing query parameters and fragments. This is useful for grouping visits to the same page regardless of tracking parameters (e.g., `?utm_source=google`):
+We can also clean up URLs by removing query parameters and fragments.
+This is useful for grouping visits to the same page regardless of
+tracking parameters (e.g., `?utm_source=google`):
 
 ```{r drop-query}
 # Remove query strings and fragments from URLs
@@ -600,8 +656,6 @@ wtr_data %>%
   print()
 ```
 
-
-
 This way we can easily inspect some of the top URLs:
 
 ```{r top-urls}
@@ -614,18 +668,17 @@ wtr_data %>%
     print()
 ```
 
-
-
-
-
-
-
-
 ## Basic URL classification
 
-Raw URLs are hard to analyze directly. To make sense of browsing behavior, we need to group visits into meaningful categories. There are two main strategies: **domain-based** classification (matching against known domains) and **path-based** classification (using URL path patterns like `/politik/` or `/search?q=`).
+Raw URLs are hard to analyze directly. To make sense of browsing
+behavior, we need to group visits into meaningful categories. There are
+two main strategies: **domain-based** classification (matching against
+known domains) and **path-based** classification (using URL path
+patterns like `/politik/` or `/search?q=`).
 
-We'll start with a simple manual approach using `case_when()` and regex patterns, then show how `webtrackR` streamlines this with `classify_visits()`.
+We'll start with a simple manual approach using `case_when()` and regex
+patterns, then show how `webtrackR` streamlines this with
+`classify_visits()`.
 
 ```{r classify-manual}
 # Re-extract domain after deduplication (cleaning may drop extra columns)
@@ -652,7 +705,10 @@ wtr_data %>%
   print()
 ```
 
-This works, but manually writing regex for every domain is tedious and error-prone. The `classify_visits()` function from webtrackR offers a more structured approach. It takes a classification data frame that maps domains (or regex patterns) to categories:
+This works, but manually writing regex for every domain is tedious and
+error-prone. The `classify_visits()` function from webtrackR offers a
+more structured approach. It takes a classification data frame that maps
+domains (or regex patterns) to categories:
 
 ```{r classify-webtrackr}
 # Create a classification list as a data frame
@@ -692,18 +748,38 @@ wtr_data %>%
   print()
 ```
 
-Note that `classify_visits()` with `match_by = "domain"` performs exact domain matching. Visits to domains not in our list get `NA`. This is more precise than regex but requires listing each domain explicitly. For a comprehensive classification, you would rely on a larger domain list.
-
+Note that `classify_visits()` with `match_by = "domain"` performs exact
+domain matching. Visits to domains not in our list get `NA`. This is
+more precise than regex but requires listing each domain explicitly. For
+a comprehensive classification, you would rely on a larger domain list.
 
 ### Check and improve the News classification
 
-Our current News category may include misclassified domains. Because classification is a measurement decision, any errors at this stage directly affect all downstream analyses, such as visit counts, time measures, and correlations. We considered two common approaches. 
+Our current News category may include misclassified domains. Because
+classification is a measurement decision, any errors at this stage
+directly affect all downstream analyses, such as visit counts, time
+measures, and correlations. We considered two common approaches.
 
-1. First, we classified domains using regex or pattern matching (e.g., domains containing “news”, “zeitung”, or “nachrichten”). This approach is flexible and useful for detecting previously unknown news sites. However, it carries a substantial risk of false positives and may miss important outlets that do not contain obvious keywords in their domain (e.g., brand-based domains "spiegel").
+1.  First, we classified domains using regex or pattern matching (e.g.,
+    domains containing “news”, “zeitung”, or “nachrichten”). This
+    approach is flexible and useful for detecting previously unknown
+    news sites. However, it carries a substantial risk of false
+    positives and may miss important outlets that do not contain obvious
+    keywords in their domain (e.g., brand-based domains "spiegel").
 
-2. Second, we can use domain-specific mapping based on curated news lists. Here, a visit is classified as news if its domain appears in an established list (e.g., GOND or webtrackR::news_types). This approach typically offers higher precision and is more transparent and reproducible. Its main limitation is that it depends on having a comprehensive and up-to-date list.
+2.  Second, we can use domain-specific mapping based on curated news
+    lists. Here, a visit is classified as news if its domain appears in
+    an established list (e.g., GOND or webtrackR::news_types). This
+    approach typically offers higher precision and is more transparent
+    and reproducible. Its main limitation is that it depends on having a
+    comprehensive and up-to-date list.
 
-For substantive analysis, we therefore rely on an existing curated domain list. This provides a methodologically defensible and reproducible classification. Regex-based methods remain useful for exploratory checks or for identifying candidate domains to extend the list, but they should not serve as the primary classification strategy in a research setting.
+For substantive analysis, we therefore rely on an existing curated
+domain list. This provides a methodologically defensible and
+reproducible classification. Regex-based methods remain useful for
+exploratory checks or for identifying candidate domains to extend the
+list, but they should not serve as the primary classification strategy
+in a research setting.
 
 ```{r check-news-cat}
 # First, inspect what is currently labeled as News (quick reality check)
@@ -712,15 +788,17 @@ wtr_data %>%
   distinct(domain)
 ```
 
-
-If you see obviously non-news domains, it’s a sign that the regex-classification need improvement. Looks like we mis-classified some domains. Let's do the news classification a comprehensive news-list or use WebtrackR's internal news list.
+If you see obviously non-news domains, it’s a sign that the
+regex-classification need improvement. Looks like we mis-classified some
+domains. Let's do the news classification a comprehensive news-list or
+use WebtrackR's internal news list.
 
 ```{r }
 # load webtrackR's internal news-list
 news_types = webtrackR::news_types
 
 # load GOND news list
-gond <- openxlsx::read.xlsx(here::here("data", "GONDv3_domains.xlsx")) %>% 
+gond <- read.csv(here::here("data", "GONDv3_domains.csv"), sep=',') %>% 
   dplyr::filter(language=="de") %>% 
   dplyr::select(domain)
 
@@ -738,7 +816,6 @@ cat("=== What is the share of news visits in the data? ===\n")
 prop.table(table(wtr_data$is_news_gond))
 ```
 
-
 ```{r most-common-news-domains}
 cat("=== Most common news domains (first 20 rows) ===\n")
 wtr_data %>% 
@@ -755,30 +832,39 @@ wtr_data %>%
   dplyr::filter(is_news_gond==1) %>% 
   dplyr::filter(category=='Search') %>% 
   distinct(domain)
-``` 
+```
 
 ```{r update-category-classification}
 wtr_data = wtr_data %>% 
   mutate(category_updated = if_else(domain %in% gond$domain, 'News' , wtr_data$category))
 
 table(wtr_data$category, wtr_data$category_updated)
-``` 
+```
 
-**Try it yourself:** Can you subdivide news visits into subcategories (politics, sports, culture) using the `path` column? Hint: use `str_detect(path, "politik|political")` patterns on the path component.
-
-
+**Try it yourself:** Can you subdivide news visits into subcategories
+(politics, sports, culture) using the `path` column? Hint: use
+`str_detect(path, "politik|political")` patterns on the path component.
 
 ## Aggregation and summary statistics
 
-Once visits are cleaned and classified, we usually want to aggregate the data to a meaningful unit of analysis that matches your research question.. In panel studies, this is often the panelist level (e.g., total number of news visits per person).
+Once visits are cleaned and classified, we usually want to aggregate the
+data to a meaningful unit of analysis that matches your research
+question.. In panel studies, this is often the panelist level (e.g.,
+total number of news visits per person).
 
-We focus on the **Panelist-level** (each row = one person) → good for between-person differences (“who consumes more news?”). But there are also other options:
+We focus on the **Panelist-level** (each row = one person) → good for
+between-person differences (“who consumes more news?”). But there are
+also other options:
 
-**Event-level** (each row = one visit) → good for sequences, timing, within-person dynamics.
+**Event-level** (each row = one visit) → good for sequences, timing,
+within-person dynamics.
 
-**Panelist × category** (each row = person-category pair) → good for composition (“what share is politics vs sports?”).
+**Panelist × category** (each row = person-category pair) → good for
+composition (“what share is politics vs sports?”).
 
-Sometimes it is easier to aggregate by category and format the data to the wide format (one row per panelist, one column per category) afterwards.
+Sometimes it is easier to aggregate by category and format the data to
+the wide format (one row per panelist, one column per category)
+afterwards.
 
 ```{r aggregate-data}
 # Aggregate visits per panelist and category
@@ -813,8 +899,12 @@ cat("=== Wide Format (first 10 rows) ===\n")
 head(panelist_wide, 10)
 ```
 
-
-Something is still missing. We should also include the total number of visits per person. This variable serves as a baseline measure of overall online activity. Without accounting for it, we risk mistaking general internet use for the effect of our variable of interest. For example, people with higher political interest might simply browse more overall — not necessarily allocate more of their browsing to news.
+Something is still missing. We should also include the total number of
+visits per person. This variable serves as a baseline measure of overall
+online activity. Without accounting for it, we risk mistaking general
+internet use for the effect of our variable of interest. For example,
+people with higher political interest might simply browse more overall —
+not necessarily allocate more of their browsing to news.
 
 ```{r }
 df_ind <- wtr_data %>% 
@@ -831,11 +921,13 @@ df_ind = df_ind %>%
   left_join(panelist_summary_wide)
 ```
 
+A key advantage of panel web tracking studies such as the GESIS panel
+(Campusfile: ZA5670) is that browsing data can be linked to survey
+responses.
 
-
-A key advantage of panel web tracking studies such as the GESIS panel (Campusfile: ZA5670) is that browsing data can be linked to survey responses.
-
-For demonstration purposes, we merge the corresponding survey file that contains panelist-level variables such as age, gender, and political interest.
+For demonstration purposes, we merge the corresponding survey file that
+contains panelist-level variables such as age, gender, and political
+interest.
 
 ```{r join-survey}
 # Example: Load survey data (synthetic demo file)
@@ -889,13 +981,11 @@ cat("\n=== Merged Dataset (first 10 rows) ===\n")
 head(analysis_data, 10)
 ```
 
+Now we can examine relationships between browsing behavior and survey
+variables.
 
-
-
-Now we can examine relationships between browsing behavior and survey variables.
-
-For example: Is political interest associated with more visits to news websites?
-
+For example: Is political interest associated with more visits to news
+websites?
 
 ```{r correlations}
 # correlation matrix
@@ -903,7 +993,6 @@ analysis_data %>%
   select(-panelist_id, -da119a_sex, -da120a_ybrth, -da127a_seduc, -political_interest) %>%
   cor(method = "spearman", use = "pairwise.complete.obs")
 ```
-
 
 ```{r}
 analysis_data %>%
@@ -919,7 +1008,6 @@ analysis_data %>%
   theme_minimal()
 ```
 
-
 ```{r}
 analysis_data %>%
   group_by(da120a_ybrth) %>%
@@ -933,8 +1021,6 @@ analysis_data %>%
   ) +
   theme_minimal()
 ```
-
-
 
 ```{r}
 analysis_data %>%
@@ -953,27 +1039,26 @@ analysis_data %>%
 
 ## Wrap-up and next steps
 
-In this tutorial, we walked through the essential preprocessing steps for web tracking data:
+In this tutorial, we walked through the essential preprocessing steps
+for web tracking data:
 
-✔ Loading and inspecting raw tracking data
-✔ Parsing and extracting URL components
-✔ Cleaning artifacts and deduplicating visits
-✔ Classifying visits into meaningful categories
-✔ Aggregating browsing behavior at the panelist level
-✔ Linking behavioral data with survey responses
+✔ Loading and inspecting raw tracking data ✔ Parsing and extracting URL
+components ✔ Cleaning artifacts and deduplicating visits ✔ Classifying
+visits into meaningful categories ✔ Aggregating browsing behavior at the
+panelist level ✔ Linking behavioral data with survey responses
 
 What comes next? Depending on your research question, you might:
 
-- Detect sessions and browsing sequences
+-   Detect sessions and browsing sequences
 
-- Study media diets and exposure diversity
+-   Study media diets and exposure diversity
 
-- Analyze temporal dynamics (e.g., reactions to events)
+-   Analyze temporal dynamics (e.g., reactions to events)
 
-- Model behavioral outcomes using regression or multilevel models
+-   Model behavioral outcomes using regression or multilevel models
 
-**Reminder: Always run sanity checks after data cleaning, merging, and transformation steps to verify that everything worked as expected.**
-
+**Reminder: Always run sanity checks after data cleaning, merging, and
+transformation steps to verify that everything worked as expected.**
 
 # Outlook: Modeling
 
@@ -1000,18 +1085,14 @@ analysis_data %>%
   summarise(across(c(News_visits, ca110a_polin, da119a_sex, da120a_ybrth, da127a_seduc), ~ sum(is.na(.))))
 ```
 
-
-
-
-
-
 # Exercises
 
 Try these exercises on your own to practice what you've learned:
 
 ## 1. Custom classification
 
-Create a classification scheme for German news outlets (Spiegel vs Zeit vs Tagesschau, etc.)
+Create a classification scheme for German news outlets (Spiegel vs Zeit
+vs Tagesschau, etc.)
 
 ```{r exercise-1}
 # Hint: Use classify_visits() with a more granular classification data frame
@@ -1025,7 +1106,8 @@ Create a classification scheme for German news outlets (Spiegel vs Zeit vs Tages
 
 ## 2. Temporal analysis
 
-Calculate average visit duration by hour of day. When are people browsing most actively?
+Calculate average visit duration by hour of day. When are people
+browsing most actively?
 
 ```{r exercise-2}
 # Hint: Extract hour from timestamp, group by hour, summarise duration
@@ -1035,7 +1117,8 @@ Calculate average visit duration by hour of day. When are people browsing most a
 
 ## 3. User segmentation
 
-Identify different browsing profiles (news readers, shoppers, video watchers, etc.) based on category proportions.
+Identify different browsing profiles (news readers, shoppers, video
+watchers, etc.) based on category proportions.
 
 ```{r exercise-3}
 # Hint: Calculate share of visits per category per panelist
@@ -1044,7 +1127,8 @@ Identify different browsing profiles (news readers, shoppers, video watchers, et
 
 ## 4. Path analysis
 
-For YouTube videos, extract the video ID from URLs and identify most-watched videos.
+For YouTube videos, extract the video ID from URLs and identify
+most-watched videos.
 
 ```{r exercise-4}
 # Hint: Use ada_get_search() from adaR to extract query string,
@@ -1055,7 +1139,8 @@ For YouTube videos, extract the video ID from URLs and identify most-watched vid
 
 ## 5. Survey correlation
 
-Test if browsing behavior (total visits, category preferences) correlates with demographic variables from survey data.
+Test if browsing behavior (total visits, category preferences)
+correlates with demographic variables from survey data.
 
 ```{r exercise-5}
 # Hint: First aggregate visits per panelist (sum_visits with visit_class),
@@ -1064,22 +1149,23 @@ Test if browsing behavior (total visits, category preferences) correlates with d
 
 ```
 
-
-
-
 # Further resources
 
-- [webtrackR documentation](https://github.com/schochastics/webtrackR)
-- [adaR documentation](https://github.com/gesistsa/adaR)
-- ["Analyis of Web Browsing Data" Practical guide](https://bernhardclemm.com/browsing-data-code-guide/guide.html#defining-visit-duration)
-- [Clemm et al. "Analysis of Web Browsing Data: A Guide"] (https://journals.sagepub.com/doi/10.1177/08944393241227868)
-- [GESIS Guides to Digital Behavioral Data #23: Overview of Working with Web Tracking Data](https://doi.org/10.60762/ggdbd25023.1.0)
+-   [webtrackR documentation](https://github.com/schochastics/webtrackR)
+-   [adaR documentation](https://github.com/gesistsa/adaR)
+-   ["Analyis of Web Browsing Data" Practical
+    guide](https://bernhardclemm.com/browsing-data-code-guide/guide.html#defining-visit-duration)
+-   [Clemm et al. "Analysis of Web Browsing Data: A Guide"]
+    (<https://journals.sagepub.com/doi/10.1177/08944393241227868>)
+-   [GESIS Guides to Digital Behavioral Data #23: Overview of Working
+    with Web Tracking Data](https://doi.org/10.60762/ggdbd25023.1.0)
 
----
+------------------------------------------------------------------------
 
 # Reproducibility Information
 
-This tutorial was developed and tested with the following system and package versions:
+This tutorial was developed and tested with the following system and
+package versions:
 
 ```{r reproducibility, echo=FALSE}
 cat("Notebook built on:", as.character(Sys.Date()), "\n\n")
@@ -1102,6 +1188,7 @@ if (!is.null(package_info)) {
 ```
 
 <details>
+
 <summary>Full Session Info (click to expand)</summary>
 
 ```{r session-info, echo=FALSE}
@@ -1112,6 +1199,5 @@ sessionInfo()
 
 **Minimum Requirements:**
 
-- R version: >= 4.0.0
-- Required packages: tidyverse, webtrackR, adaR, here
-
+-   R version: \>= 4.0.0
+-   Required packages: tidyverse, webtrackR, adaR, here
