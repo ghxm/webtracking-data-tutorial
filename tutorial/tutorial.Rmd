@@ -531,6 +531,7 @@ wtr_data %>%
   theme_minimal()
 ```
 
+**Try it yourself:** What happens if you change the deduplication window from 3 seconds to 5 seconds? How does it affect the number of visits?
 
 ### Sessions
 
@@ -616,7 +617,7 @@ wtr_data %>%
 
 
 
-**Try it yourself:** What happens if you change the deduplication window from 3 seconds to 5 seconds? How does it affect the number of visits?
+
 
 
 
