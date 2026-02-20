@@ -712,16 +712,10 @@ wtr_data %>%
   distinct(domain)
 ```
 
-```{r check-news-cat}
-# inspect the news classification based on domain-specific mapping
-wtr_data %>% 
-  filter(type=='News') %>% 
-  distinct(domain)
-```
 
 If you see obviously non-news domains, it’s a sign that the regex-classification need improvement. Looks like we mis-classified some domains. Let's do the news classification a comprehensive news-list or use WebtrackR's internal news list.
 
-```{r check-news-cat}
+```{r }
 # load webtrackR's internal news-list
 news_types = webtrackR::news_types
 
@@ -753,7 +747,7 @@ wtr_data %>%
   head(20)
 ```
 
-```{r most-common-news-domains}
+```{r }
 cat("=== Compare GOND news classification and category ===\n")
 table(wtr_data$is_news_gond, wtr_data$category)
 
@@ -763,7 +757,7 @@ wtr_data %>%
   distinct(domain)
 ``` 
 
-```{r update category classification}
+```{r update-category-classification}
 wtr_data = wtr_data %>% 
   mutate(category_updated = if_else(domain %in% gond$domain, 'News' , wtr_data$category))
 
@@ -822,7 +816,7 @@ head(panelist_wide, 10)
 
 Something is still missing. We should also include the total number of visits per person. This variable serves as a baseline measure of overall online activity. Without accounting for it, we risk mistaking general internet use for the effect of our variable of interest. For example, people with higher political interest might simply browse more overall — not necessarily allocate more of their browsing to news.
 
-```{r aggregate-data}
+```{r }
 df_ind <- wtr_data %>% 
   group_by(panelist_id) %>% 
   summarise(
