@@ -3,12 +3,13 @@
 
 library(tidyverse)
 library(lubridate)
+library(here)
 
 set.seed(42) # Reproducibility
 
 # Read original data
 original_data <- read_delim(
-  "data/ZA5670_webtracking_data.csv",
+  here("data", "ZA5670_webtracking_data.csv"),
   delim = ";",
   col_types = cols(
     panelist_id = col_character(),
@@ -442,7 +443,7 @@ cat(sprintf("  Consecutive duplicate URLs in data: %d (%.1f%%)\n",
 
 # Write to CSV
 cat("\nWriting enhanced dataset...\n")
-write_csv(enhanced_data, "data/ZA5670_webtracking_data_enhanced.csv")
+write_csv(enhanced_data, here("data", "ZA5670_webtracking_data_enhanced.csv"))
 
-cat("\nDone! Enhanced dataset saved to data/ZA5670_webtracking_data_enhanced.csv\n")
+cat("\nDone! Enhanced dataset saved to", here("data", "ZA5670_webtracking_data_enhanced.csv"), "\n")
 cat(sprintf("Total records: %d\n", nrow(enhanced_data)))
