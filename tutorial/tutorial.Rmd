@@ -678,7 +678,7 @@ ggplot(sessions_per_user, aes(x = n_sessions)) +
 ## Basic URL classification
 
 Raw URLs are hard to analyze directly. To make sense of browsing
-behavior, we have to turn raw web-tracking URLs into variables we can analyze.  There are two main strategies: **domain-based** classification (matching against
+behavior, we have to turn raw web-tracking URLs into variables we can analyze. There are two main strategies: **domain-based** classification (matching against
 known domains) and **path-based** classification (using URL path
 patterns like `/politik/` or `/search?q=`).
 
@@ -777,13 +777,13 @@ We considered two common approaches.
     positives and may miss important outlets that do not contain obvious
     keywords in their domain (e.g., brand-based domains "spiegel").
 
-2.  Second, we can used domain-specific mapping based on curated news
+2.  Second, we can use domain-specific mapping based on curated news
     lists. This approach typically offers higher precision and is more transparent
     and reproducible. Its main limitation is that it depends on having a
     comprehensive and up-to-date list.
 
-For substantive analysis, we therefore rely an existing curated
-domain lists such as WebtrackR's internal news type list and the [GOND-list](https://osf.io/s5uhb/overview). This provides a more methodologically defensible and reproducible classification. Regex-based methods remain useful for
+For substantive analysis, we therefore rely on existing curated
+domain lists such as webtrackR's internal news type list and the [GOND-list](https://osf.io/s5uhb/overview). This provides a more methodologically defensible and reproducible classification. Regex-based methods remain useful for
 exploratory checks or for identifying unknown news domains to extend the
 list, but they should not serve as the primary classification strategy
 in a research setting.
@@ -797,7 +797,7 @@ wtr_data %>%
 ```
 
 If you see obviously non-news domains, it’s a sign that the
-regex-classification need improvement. Looks like we mis-classified some
+regex-classification needs improvement. Looks like we mis-classified some
 domains. Let's do the news classification using the GOND-list and WebtrackR's internal news list.
 
 ```{r }
@@ -946,7 +946,7 @@ survey_data <- read.csv2(here::here("data", "ZA5670_survey_data.csv"))
 cat("=== Survey Data Structure ===\n")
 glimpse(survey_data)
 
-# select basic demograhpics
+# select basic demographics
 survey_data <- survey_data %>% 
   dplyr::select(panelist_id, da119a_sex, da120a_ybrth, da127a_seduc, ca110a_polin) %>% 
   mutate(
@@ -1049,19 +1049,18 @@ analysis_data %>%
 In this tutorial, we walked through the essential preprocessing steps
 for web tracking data:
 
-✔ Loading and inspecting raw tracking data ✔ Parsing and extracting URL
-components ✔ Cleaning artifacts and deduplicating visits ✔ Classifying
-visits into meaningful categories ✔ Aggregating browsing behavior at the
-panelist level ✔ Linking behavioral data with survey responses
+-   Loading and inspecting raw tracking data
+-   Parsing and extracting URL components
+-   Cleaning artifacts and deduplicating visits
+-   Classifying visits into meaningful categories
+-   Aggregating browsing behavior at the panelist level
+-   Linking behavioral data with survey responses
 
 What comes next? Depending on your research question, you might:
 
 -   Detect sessions and browsing sequences
-
 -   Study media diets and exposure diversity
-
 -   Analyze temporal dynamics (e.g., reactions to events)
-
 -   Model behavioral outcomes using regression or multilevel models
 
 **Reminder: Always run sanity checks after data cleaning, merging, and
@@ -1173,7 +1172,7 @@ Can you subdivide news visits into subcategories (politics, sports,
 culture) using the `path` column?
 
 ```{r exercise-6}
-# Hint:Hint: use `str_detect(path, "politik|political")` patterns on the path component.
+# Hint: use `str_detect(path, "politik|political")` patterns on the path component.
 
 ```
 
@@ -1181,7 +1180,7 @@ culture) using the `path` column?
 
 -   [webtrackR documentation](https://github.com/schochastics/webtrackR)
 -   [adaR documentation](https://github.com/gesistsa/adaR)
--   ["Analyis of Web Browsing Data" Practical
+-   ["Analysis of Web Browsing Data" Practical
     guide](https://bernhardclemm.com/browsing-data-code-guide/guide.html#defining-visit-duration)
 -   [Clemm et al. "Analysis of Web Browsing Data: A Guide"]
     (<https://journals.sagepub.com/doi/10.1177/08944393241227868>)
