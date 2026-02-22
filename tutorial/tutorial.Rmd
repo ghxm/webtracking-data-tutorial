@@ -636,13 +636,11 @@ ggplot(sessions_per_user, aes(x = n_sessions)) +
 ## Basic URL classification
 
 Raw URLs are hard to analyze directly. To make sense of browsing
-behavior, we need to group visits into meaningful categories. There are
-two main strategies: **domain-based** classification (matching against
+behavior, we have to turn raw web-tracking URLs into variables we can analyze.  There are two main strategies: **domain-based** classification (matching against
 known domains) and **path-based** classification (using URL path
 patterns like `/politik/` or `/search?q=`).
 
-We'll start with a simple manual approach using `case_when()` and regex
-patterns, then show how `webtrackR` streamlines this with
+We'll start with a simple **domain-based** classification using `case_when()` and regex patterns, then show how `webtrackR` streamlines this with
 `classify_visits()`.
 
 ```{r classify-manual}
@@ -652,8 +650,8 @@ wtr_data <- extract_domain(wtr_data, varname = "url")
 # Manual classification using domain patterns
 wtr_data <- wtr_data %>%
   mutate(
-    category = case_when(
-      str_detect(domain, "spiegel|zeit\\.de|tagesschau|sueddeutsche|faz\\.net|welt\\.de|t-online|heise") ~ "News",
+    category_regex = case_when(
+      str_detect(domain, "spiegel|zeit\\.de|nachrichten|zeitung|tagesschau|sueddeutsche|faz\\.net|welt\\.de|t-online|heise") ~ "News",
       str_detect(domain, "wikipedia") ~ "Wikipedia",
       str_detect(domain, "amazon|ebay|kleinanzeigen|zalando|otto\\.de") ~ "E-commerce",
       str_detect(domain, "youtube|facebook|instagram|twitter|tiktok|reddit") ~ "Social/Video",
@@ -665,7 +663,7 @@ wtr_data <- wtr_data %>%
 
 cat("=== Classification Results (Manual) ===\n")
 wtr_data %>%
-  count(category, sort = TRUE) %>%
+  count(category_regex, sort = TRUE) %>%
   mutate(percentage = paste0(round(n / sum(n) * 100, 1), "%")) %>%
   print()
 ```
@@ -693,7 +691,7 @@ classification_df <- data.table::data.table(
     # Wikipedia
     "wikipedia.org"
   ),
-  type = c(
+  category_map = c(
     rep("News", 9),
     rep("Social/Video", 6),
     rep("E-commerce", 5),
@@ -707,8 +705,8 @@ wtr_data <- classify_visits(wtr_data, classes = classification_df, match_by = "d
 
 cat("=== Classification Results (webtrackR) ===\n")
 wtr_data %>%
-  mutate(type = replace_na(type, "Other/Unclassified")) %>%
-  count(type, sort = TRUE) %>%
+  mutate(category_map = replace_na(category_map, "Other/Unclassified")) %>%
+  count(category_map, sort = TRUE) %>%
   mutate(percentage = paste0(round(n / sum(n) * 100, 1), "%")) %>%
   print()
 ```
@@ -718,12 +716,17 @@ domain matching. Visits to domains not in our list get `NA`. This is
 more precise than regex but requires listing each domain explicitly. For
 a comprehensive classification, you would rely on a larger domain list.
 
+
+
+
 ### Check and improve the News classification
 
 Our current News category may include misclassified domains. Because
 classification is a measurement decision, any errors at this stage
 directly affect all downstream analyses, such as visit counts, time
-measures, and correlations. We considered two common approaches.
+measures, and correlations. 
+
+We considered two common approaches.
 
 1.  First, we classified domains using regex or pattern matching (e.g.,
     domains containing “news”, “zeitung”, or “nachrichten”). This
@@ -732,31 +735,28 @@ measures, and correlations. We considered two common approaches.
     positives and may miss important outlets that do not contain obvious
     keywords in their domain (e.g., brand-based domains "spiegel").
 
-2.  Second, we can use domain-specific mapping based on curated news
-    lists. Here, a visit is classified as news if its domain appears in
-    an established list (e.g., GOND or webtrackR::news_types). This
-    approach typically offers higher precision and is more transparent
+2.  Second, we can used domain-specific mapping based on curated news
+    lists. This approach typically offers higher precision and is more transparent
     and reproducible. Its main limitation is that it depends on having a
     comprehensive and up-to-date list.
 
-For substantive analysis, we therefore rely on an existing curated
-domain list. This provides a methodologically defensible and
-reproducible classification. Regex-based methods remain useful for
-exploratory checks or for identifying candidate domains to extend the
+For substantive analysis, we therefore rely an existing curated
+domain lists such as WebtrackR's internal news type list and the [GOND-list](https://osf.io/s5uhb/overview). This provides a more methodologically defensible and reproducible classification. Regex-based methods remain useful for
+exploratory checks or for identifying unknown news domains to extend the
 list, but they should not serve as the primary classification strategy
 in a research setting.
+
 
 ```{r check-news-cat}
 # First, inspect what is currently labeled as News (quick reality check)
 wtr_data %>% 
-  filter(category=='News') %>% 
+  filter(category_regex=='News') %>% 
   distinct(domain)
 ```
 
 If you see obviously non-news domains, it’s a sign that the
 regex-classification need improvement. Looks like we mis-classified some
-domains. Let's do the news classification a comprehensive news-list or
-use WebtrackR's internal news list.
+domains. Let's do the news classification using the GOND-list and WebtrackR's internal news list.
 
 ```{r }
 # load webtrackR's internal news-list
@@ -782,7 +782,7 @@ prop.table(table(wtr_data$is_news_gond))
 ```
 
 ```{r most-common-news-domains}
-cat("=== Most common news domains (first 20 rows) ===\n")
+cat("=== Most common news domains (first 20 rows) based on GOND-list ===\n")
 wtr_data %>% 
   filter(is_news_gond==1) %>% 
   count(domain, sort = TRUE) %>% 
@@ -791,26 +791,31 @@ wtr_data %>%
 
 ```{r }
 cat("=== Compare GOND news classification and category ===\n")
-table(wtr_data$is_news_gond, wtr_data$category)
+table(wtr_data$is_news_gond, wtr_data$category_regex)
 
 wtr_data %>% 
   dplyr::filter(is_news_gond==1) %>% 
-  dplyr::filter(category=='Search') %>% 
+  dplyr::filter(category_regex=='Search') %>% 
+  distinct(domain)
+
+# not in GOND-list, but flagged based on regex-news-classification
+wtr_data %>% 
+  dplyr::filter(is_news_gond==0) %>% 
+  dplyr::filter(category_regex=='News') %>% 
   distinct(domain)
 ```
 
 ```{r update-category-classification}
+# to keep it simple, we just overwrite our News category with the GOND-classification
 wtr_data = wtr_data %>% 
-  mutate(category_updated = if_else(domain %in% gond$domain, 'News' , wtr_data$category))
-
-table(wtr_data$category, wtr_data$category_updated)
+  mutate(category_final = if_else(domain %in% gond$domain, 'News' , wtr_data$category_regex))
 ```
 
 ## Aggregation and summary statistics
 
 Once visits are cleaned and classified, we usually want to aggregate the
 data to a meaningful unit of analysis that matches your research
-question.. In panel studies, this is often the panelist level (e.g.,
+question. In panel studies, this is often the panelist level (e.g.,
 total number of news visits per person).
 
 We focus on the **Panelist-level** (each row = one person) → good for
@@ -830,7 +835,7 @@ afterwards.
 ```{r aggregate-data}
 # Aggregate visits per panelist and category
 panelist_summary <- wtr_data %>%
-  group_by(panelist_id, category_updated) %>%
+  group_by(panelist_id, category_final) %>%
   summarise(
     visits = n(),
     total_time = sum(duration, na.rm = TRUE),
@@ -844,16 +849,16 @@ panelist_summary %>%
   print()
 ```
 
-Now let's aggregate the data to a wide-format.
+Now let's transform the data to a wide-format.
 
 ```{r aggregate-data-wide}
 panelist_summary_wide <- panelist_summary %>%
-  dplyr::select(panelist_id, category_updated, visits) %>%
+  dplyr::select(panelist_id, category_final, visits) %>%
   tidyr::pivot_wider(
-    names_from = category_updated,
+    names_from = category_final,
     values_from = visits,
     values_fill = 0,
-    names_glue  = "{category_updated}_visits"
+    names_glue  = "{category_final}_visits"
   )
 
 cat("=== Wide Format (first 10 rows) ===\n")
@@ -889,7 +894,7 @@ A key advantage of panel web tracking studies such as the GESIS panel
 responses.
 
 For demonstration purposes, we merge the corresponding survey file that
-contains panelist-level variables such as age, gender, and political
+contains panelist-level variables such as age, gender, education and political
 interest.
 
 ```{r join-survey}
@@ -914,7 +919,6 @@ survey_data <- survey_data %>%
     da120a_ybrth = factor(
       da120a_ybrth,
       levels = c("18-29", "30-44", "45-59", "60+"),
-      #ordered = TRUE
     ),
     da120a_ybrth_num = as.numeric(da120a_ybrth),
 
@@ -922,7 +926,6 @@ survey_data <- survey_data %>%
     da127a_seduc = factor(
       da127a_seduc,
       levels = c("low", "medium", "high"),
-      #ordered = TRUE
     ),
     da127a_seduc_num = as.numeric(da127a_seduc),
     
@@ -930,7 +933,6 @@ survey_data <- survey_data %>%
       ca110a_polin,
       levels = c(5, 4, 3, 2, 1),
       labels = c("Very Low", "Low", "Medium", "High", "Very High"),
-      #ordered = TRUE
     ),
     political_interest_num = as.numeric(political_interest)
   )
@@ -953,7 +955,7 @@ websites?
 ```{r correlations}
 # correlation matrix
 analysis_data %>%
-  select(-panelist_id, -da119a_sex, -da120a_ybrth, -da127a_seduc, -political_interest) %>%
+  select(n_visits, News_visits, contains('num')) %>%
   cor(method = "spearman", use = "pairwise.complete.obs")
 ```
 
@@ -1025,7 +1027,9 @@ transformation steps to verify that everything worked as expected.**
 
 # Outlook: Modeling
 
-We can also build some models. For this we need the `glmmTMB` package:
+We can also estimate models using the `glmmTMB` package. Because our outcome is a count variable (number of visits), we use a negative binomial (nbinom2) model. Web-tracking counts are typically highly skewed and show large differences between individuals, so standard linear models are not appropriate — they assume normally distributed errors and can produce unrealistic predictions.
+
+The negative binomial model is well suited for this type of overdispersed count data. In addition, `glmmTMB` is flexible and allows us to extend the model to a multilevel framework if we later include repeated measurements.
 
 ```{r eval=FALSE}
 
@@ -1044,18 +1048,17 @@ model <- glmmTMB::glmmTMB(
   News_visits ~ 
     political_interest_num + 
     da119a_sex + da120a_ybrth + da127a_seduc +
-    offset(log(pmax(n_visits, 1))) + 
-    (1 | panelist_id),
+    n_visits,
   family = nbinom2,
   data = analysis_data %>%
-    drop_na(News_visits, political_interest_num, 
-            da119a_sex, da120a_ybrth, da127a_seduc, n_visits, panelist_id)
+    drop_na(political_interest_num, da127a_seduc)
 )
 
 summary(model)
 
+# missings
 analysis_data %>% 
-  summarise(across(c(News_visits, ca110a_polin, da119a_sex, da120a_ybrth, da127a_seduc), ~ sum(is.na(.))))
+  summarise(across(c(News_visits, political_interest_num, da119a_sex, da120a_ybrth, da127a_seduc), ~ sum(is.na(.))))
 ```
 
 # Exercises
