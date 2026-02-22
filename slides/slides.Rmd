@@ -206,13 +206,17 @@ Each step involves **decisions** that affect downstream analysis.
 
 
 
-# Tools we'll use
+# Packages we'll use
 
 **R packages:**
 
 - `webtrackR` -- purpose-built for web tracking data preprocessing (extract, deduplicate, classify, aggregate)
-- `adaR` -- robust URL parsing (alternative to manual regex)
-- `dplyr` -- general data manipulation
+- `adaR` -- robust URL parsing
+
+\vspace{0.5em}
+
+- `tidyverse` -- general data manipulation and visualization
+- `here` -- Ensure file paths work across different environments
 
 
 
