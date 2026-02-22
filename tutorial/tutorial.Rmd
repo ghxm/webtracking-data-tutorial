@@ -26,11 +26,7 @@ For the most up-to-date version of this tutorial, check [its repository on GitHu
 # Setup and Prerequisites
 
 For this tutorial to work properly, you must open the **project from the
-repository root folder** in RStudio or your IDE.
-
--   [x] Correct: Open the project from
-    `/path/to/webtracking-data-tutorial/`
--   ✗ Incorrect: Opening files individually or from subdirectories
+repository root folder** (`/path/to/webtracking-data-tutorial/`) in RStudio or your IDE.
 
 This ensures all relative paths (to data files, helper scripts, etc.)
 work correctly.
