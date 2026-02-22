@@ -18,6 +18,10 @@ editor_options:
     wrap: 72
 ---
 
+# Note
+
+For the most up-to-date version of this tutorial, check [its repository on GitHub](https://github.com/ghxm/webtracking-data-tutorial).
+
 
 # Setup and Prerequisites
 
