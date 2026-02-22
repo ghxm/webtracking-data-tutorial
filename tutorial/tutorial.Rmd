@@ -5,15 +5,19 @@ author:
   - "Maximilian Haag"
 date: "`r Sys.Date()`"
 output:
-  html_document:
+  html_document: 
     toc: true
     toc_float: true
     code_folding: show
     theme: cosmo
-editor_options: 
-  markdown: 
+    df_print: default
+  html_notebook: 
+    toc: true
+editor_options:
+  markdown:
     wrap: 72
 ---
+
 
 # Setup and Prerequisites
 
@@ -76,7 +80,7 @@ create an enhanced dataset with synthetic full URLs to practice URL
 parsing and classification. This takes 2-3 minutes on the first run.
 
 ```{r setup, include=TRUE, message=TRUE}
-knitr::opts_chunk$set(echo = TRUE, warning = FALSE, message = FALSE, results = "hold")
+knitr::opts_chunk$set(echo = TRUE, warning = FALSE, message = FALSE, paged.print = FALSE, results = "hold")
 
 # Check R version (minimum 4.0.0)
 if (getRversion() < "4.0.0") {
