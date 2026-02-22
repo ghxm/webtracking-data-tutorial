@@ -182,6 +182,11 @@ cat("\n=== Basic Statistics ===\n")
 cat("Total traces:", format(nrow(wt_data), big.mark = ","), "\n")
 cat("Unique panelists:", n_panelists, "\n")
 
+
+```
+
+
+```{r}
 # Show traces per panelist (summary statistics)
 cat("\n=== Traces per Panelist ===\n")
 visits_per_panelist <- wt_data %>%
@@ -193,6 +198,10 @@ cat("Median:", median(visits_per_panelist), "\n")
 cat("Min:", min(visits_per_panelist), "\n")
 cat("Max:", format(max(visits_per_panelist), big.mark = ","), "\n")
 
+```
+
+
+```{r}
 # Show traces per day per panelist
 wt_data <- wt_data %>%
   mutate(date = as.Date(timestamp))
@@ -335,6 +344,14 @@ them down into components (protocol, host, domain, path, query
 parameters) and learn how to extract each piece. We'll show both manual
 tidyverse approaches and webtrackR's built-in functions.
 
+
+
+![](../assets/url_anatomy.jpg)
+
+Source: https://journals.sagepub.com/doi/10.1177/08944393241227868#fig2-08944393241227868
+
+</br>
+
 Because the data contains only the hostname / domain for some visits,
 we'll need to add a protocol to parse the URLs properly. This is a
 common issue with web tracking data where some entries are just domains
@@ -367,10 +384,8 @@ we'll primarily rely on webtrackR's built-in URL parsing functions for
 robustness and ease of use. These functions can handle edge cases and
 inconsistencies in the data more effectively than manual approaches.
 
-![URL anatomy. Source:
-<https://journals.sagepub.com/doi/10.1177/08944393241227868#fig2-08944393241227868>](../assets/url_anatomy.jpg)
 
-```{r ada-parse}
+```{r ada-parse, paged.print=FALSE}
 # Using adaR to parse URL components
 # adaR provides individual extraction functions and a comprehensive parser
 
@@ -389,7 +404,9 @@ wt_data %>%
   count(host, sort = TRUE) %>%
   head(20) %>%
   print()
+```
 
+```{r paged.print=FALSE}
 
 # OR: Parse all components at once with ada_url_parse()
 cat("\n=== Sample of Parsed URL Components ===\n")
@@ -431,6 +448,12 @@ wtr_data <- extract_domain(wtr_data, varname = "url")
 wtr_data <- extract_path(wtr_data, varname = "url")
 
 
+```
+
+
+```{r paged.print=FALSE}
+
+
 # Show results
 cat("=== Top 20 Domains ===\n")
 wtr_data %>%
@@ -445,9 +468,14 @@ wtr_data %>%
   slice_sample(n = 10) %>%
   print()
 
-cat("\nNote: webtrackR's extract_domain() returns the 'top private domain',")
-cat("\ne.g., 'mysite.blogspot.com' not 'blogspot.com'\n")
+
+
 ```
+
+Note: webtrackR's extract_domain() returns the 'top private domain', e.g.,
+'mysite.blogspot.com' not 'blogspot.com'.
+For more information take a look at the [webtrackR documentation](https://gesistsa.github.io/webtrackR/reference/extract_domain.html#details).
+
 
 An added benefit of using `webtrackR` is that it allows us to call
 `summary` on the dataset to get a quick overview of the variables and
@@ -461,6 +489,11 @@ summary(wtr_data)
 ```
 
 ## Data cleaning and augmentation
+
+Now we want to take a look at how can we make a bit more sense of our
+**raw traces** in order to make inferences about panelists' browsing behavior.
+
+![](../assets/traces_to_sessions.png)
 
 ### Deduplication: From traces to visits
 
@@ -485,6 +518,7 @@ Some URLs appear multiple times in a row:
 
 ```{r show-duplicates}
 # Identify consecutive duplicate URLs per panelist
+
 # Find a panelist with consecutive duplicate URLs close in time
 dup_example <- wtr_data %>%
   group_by(panelist_id) %>%
@@ -533,14 +567,14 @@ Let's visualize the distribution of visit durations to understand our
 data better:
 
 ```{r duration-distribution, fig.width=8, fig.height=5}
-# Distribution of visit durations (< 60 seconds only for readability)
+# Distribution of visit durations
 wtr_data %>%
-  filter(!is.na(duration), duration <= 60) %>%
+  filter(!is.na(duration)) %>%
   ggplot(aes(x = duration)) +
   geom_histogram(bins = 60, fill = "steelblue", color = "white") +
   scale_y_continuous(labels = function(x) format(x, big.mark = ",", scientific = FALSE)) +
   labs(
-    title = "Distribution of Visit Durations (up to 60 seconds)",
+    title = "Distribution of Visit Durations",
     x = "Duration (seconds)",
     y = "Number of Visits"
   ) +
@@ -566,7 +600,7 @@ Let's see how the duration distribution changed after cleaning:
 ```{r after-cleaning, fig.width=8, fig.height=5}
 # Duration distribution after deduplication
 wtr_data %>%
-  filter(!is.na(duration), duration <= 60) %>%
+  filter(!is.na(duration)) %>%
   ggplot(aes(x = duration)) +
   geom_histogram(bins = 60, fill = "steelblue", color = "white") +
   scale_y_continuous(labels = function(x) format(x, big.mark = ",", scientific = FALSE)) +
