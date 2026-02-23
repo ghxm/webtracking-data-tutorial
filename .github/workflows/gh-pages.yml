@@ -1,0 +1,35 @@
+name: Deploy tutorial to GitHub Pages
+
+on:
+  push:
+    branches: [main]
+    paths:
+      - 'tutorial/tutorial.html'
+
+permissions:
+  contents: read
+  pages: write
+  id-token: write
+
+concurrency:
+  group: pages
+  cancel-in-progress: true
+
+jobs:
+  deploy:
+    environment:
+      name: github-pages
+      url: ${{ steps.deployment.outputs.page_url }}
+    runs-on: ubuntu-latest
+    steps:
+      - uses: actions/checkout@v4
+
+      - name: Prepare pages directory
+        run: |
+          mkdir _site
+          cp tutorial/tutorial.html _site/index.html
+
+      - uses: actions/upload-pages-artifact@v3
+
+      - id: deployment
+        uses: actions/deploy-pages@v4
