@@ -15,9 +15,6 @@ Workshop session materials for an interactive code-along.
 
 **⚠️ You must open this project from the repository root folder in RStudio or your IDE for all paths to work correctly.**
 
-- ✓ Correct: Open the project from `/path/to/webtracking-data-tutorial/`
-- ✗ Incorrect: Opening individual files or subdirectories
-
 This ensures all relative paths to data files, helper scripts, and other resources work properly.
 
 ### Data Download
