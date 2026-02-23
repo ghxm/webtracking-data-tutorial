@@ -219,6 +219,20 @@ Each step involves **decisions** that affect downstream analysis.
 - `here` -- Ensure file paths work across different environments
 
 
+# Access the tutorial
+
+
+\centering
+\larger
+
+https://is.gd/wt_tutorial
+
+
+\begin{center}
+\includegraphics[width=0.3\textwidth]{../assets/qrcode_material.png}
+\end{center}
+
+
 
 
 
