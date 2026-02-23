@@ -1136,6 +1136,7 @@ watchers, etc.) based on category proportions.
 ```{r exercise-3}
 # Hint: Calculate share of visits per category per panelist
 # Then identify the dominant category per panelist with which.max()
+
 ```
 
 ## 4. Path analysis
@@ -1156,8 +1157,8 @@ Test if browsing behavior (total visits, category preferences)
 correlates with demographic variables from survey data.
 
 ```{r exercise-5}
-# Hint: First aggregate visits per panelist (sum_visits with visit_class),
-# then join with survey data (load_survey_data() + left_join by panelist_id),
+# Hint: First aggregate visits per panelist,
+# then join with survey data,
 # then compare groups (e.g., boxplot of news visits by education level)
 
 ```
