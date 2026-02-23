@@ -1157,8 +1157,7 @@ Test if browsing behavior (total visits, category preferences)
 correlates with demographic variables from survey data.
 
 ```{r exercise-5}
-# Hint: First aggregate visits per panelist,
-# then join with survey data,
+# Hint: First aggregate visits per panelist, then join with survey data,
 # then compare groups (e.g., boxplot of news visits by education level)
 
 ```
@@ -1169,7 +1168,7 @@ Can you subdivide news visits into subcategories (politics, sports,
 culture) using the `path` column?
 
 ```{r exercise-6}
-# Hint: use `str_detect(path, "politik|political")` patterns on the path component.
+# Hint: use `str_detect(path, "politik|politics")` patterns on the path component.
 
 ```
 
