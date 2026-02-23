@@ -3,8 +3,6 @@ name: Deploy tutorial to GitHub Pages
 on:
   push:
     branches: [main]
-    paths:
-      - 'tutorial/tutorial.html'
   workflow_dispatch:
 
 permissions:
