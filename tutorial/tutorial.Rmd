@@ -43,7 +43,7 @@ work correctly.
 ## Install and Load Packages
 
 Run this chunk to install (if needed) and load all required packages.
-This may take a few minutes on first run.
+This may take a few minutes on the first run.
 
 ```{r install-packages, message=TRUE}
 # Required packages
@@ -1182,6 +1182,7 @@ culture) using the `path` column?
     (<https://journals.sagepub.com/doi/10.1177/08944393241227868>)
 -   [GESIS Guides to Digital Behavioral Data #23: Overview of Working
     with Web Tracking Data](https://doi.org/10.60762/ggdbd25023.1.0)
+
 
 ------------------------------------------------------------------------
 
