@@ -5,6 +5,7 @@ on:
     branches: [main]
     paths:
       - 'tutorial/tutorial.html'
+  workflow_dispatch:
 
 permissions:
   contents: read
