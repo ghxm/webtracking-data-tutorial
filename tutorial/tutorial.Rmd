@@ -798,7 +798,7 @@ domains. Let's do the news classification using the GOND-list and WebtrackR's in
 
 ```{r }
 # load webtrackR's internal news-list
-news_types = webtrackR::news_types
+news_types <- webtrackR::news_types
 
 # load GOND news list
 gond <- read.csv(here::here("data", "GONDv3_domains.csv"), sep=',') %>% 
@@ -806,7 +806,7 @@ gond <- read.csv(here::here("data", "GONDv3_domains.csv"), sep=',') %>%
   dplyr::select(domain)
 
 # flag news based on domain-specific mapping
-wtr_data = wtr_data %>% 
+wtr_data <- wtr_data %>%
   mutate(is_news_gond = if_else(domain %in% gond$domain,1,0),
          is_news_webtrackR = if_else(domain %in% news_types$domain,1,0)) 
 
@@ -845,7 +845,7 @@ wtr_data %>%
 
 ```{r update-category-classification}
 # to keep it simple, we just overwrite our News category with the GOND-classification
-wtr_data = wtr_data %>% 
+wtr_data <- wtr_data %>%
   mutate(category_final = if_else(domain %in% gond$domain, 'News' , wtr_data$category_regex))
 ```
 
@@ -921,7 +921,7 @@ df_ind <- wtr_data %>%
   )
 
 # join the data
-df_ind = df_ind %>% 
+df_ind <- df_ind %>%
   left_join(panelist_summary_wide)
 ```
 
