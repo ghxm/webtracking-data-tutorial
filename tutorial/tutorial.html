@@ -12,7 +12,7 @@
 <meta name="author" content="Felix Schmidt" />
 <meta name="author" content="Maximilian Haag" />
 
-<meta name="date" content="2026-02-22" />
+<meta name="date" content="2026-02-24" />
 
 <title>Working with Web Tracking Data - Tutorial</title>
 
@@ -1590,7 +1590,7 @@ border-radius: 0px;
 Tutorial</h1>
 <h4 class="author">Felix Schmidt</h4>
 <h4 class="author">Maximilian Haag</h4>
-<h4 class="date">2026-02-22</h4>
+<h4 class="date">2026-02-24</h4>
 
 </div>
 
@@ -1622,7 +1622,7 @@ have:</strong></p>
 <div id="install-and-load-packages" class="section level2">
 <h2>Install and Load Packages</h2>
 <p>Run this chunk to install (if needed) and load all required packages.
-This may take a few minutes on first run.</p>
+This may take a few minutes on the first run.</p>
 <pre class="r"><code># Required packages
 required_packages &lt;- c(
   &quot;tidyverse&quot;,    # Data manipulation and visualization
@@ -1672,34 +1672,7 @@ if (getRversion() &lt; &quot;4.0.0&quot;) {
 # Load data functions and create enhanced dataset
 # Use here::here() to find load_data.R from project root (works when knitting)
 source(here::here(&quot;scripts&quot;, &quot;load_data.R&quot;))</code></pre>
-<pre><code>## 
-## ========================================
-## FIRST-TIME SETUP
-## ========================================
-## 
-## The enhanced dataset doesn&#39;t exist yet.
-## Creating it now (this will take 1-2 minutes)...
-## 
-## Creating enhanced dataset with synthetic URLs...
-## This will take about 1-2 minutes. Please wait.
-## 
-## Synthesizing URLs...
-## Injecting duplicate artifacts...
-##   Consecutive duplicate URLs in data: 535369 (46.5%)
-## 
-## Writing enhanced dataset...
-## 
-## Done! Enhanced dataset saved to /Users/maxhaag/courses/webtracking-data-handson/data/ZA5670_webtracking_data_enhanced.csv 
-## Total records: 1151858
-## 
-## ✓ Enhanced dataset created successfully!
-##   Location: /Users/maxhaag/courses/webtracking-data-handson/data/ZA5670_webtracking_data_enhanced.csv 
-## 
-## ========================================
-## Setup complete! You&#39;re ready to start.
-## ========================================
-## 
-## Loading enhanced web tracking data...
+<pre><code>## Loading enhanced web tracking data...
 ## ✓ Loaded 1,151,858 enhanced web tracking records
 ##   Panelists: 600 
 ## 
@@ -1958,16 +1931,16 @@ wt_data %&gt;%
 ## 
 ## === Sample URLs by Type ===
 ## # A tibble: 9 × 2
-##   url_type            url                             
-##   &lt;chr&gt;               &lt;chr&gt;                           
-## 1 Domain only         www.bafoeg-digital.de           
-## 2 Domain only         www.gmx.net                     
-## 3 Domain only         sw.cint.com                     
-## 4 Full URL            https://discord.com/            
-## 5 Full URL            https://www.linkedin.com/       
-## 6 Full URL            https://app.lifepointspanel.com/
-## 7 Privacy placeholder blacked_out                     
-## 8 Privacy placeholder blacked_out                     
+##   url_type            url                        
+##   &lt;chr&gt;               &lt;chr&gt;                      
+## 1 Domain only         www.google.com             
+## 2 Domain only         www.youtube.com            
+## 3 Domain only         www.bahn.de                
+## 4 Full URL            https://www.musiktest24.de/
+## 5 Full URL            https://ergoquest18.com/   
+## 6 Full URL            https://www.youtube.com/   
+## 7 Privacy placeholder blacked_out                
+## 8 Privacy placeholder blacked_out                
 ## 9 Privacy placeholder blacked_out</code></pre>
 </div>
 <div id="url-anatomy-and-parsing" class="section level2">
@@ -2171,30 +2144,30 @@ wtr_data %&gt;%
 ##                &lt;char&gt;  &lt;int&gt;
 ## 
 ## === Sample of Extracted Components ===
-##                                        url                           host
-##                                     &lt;char&gt;                         &lt;char&gt;
-##  1:          https://account.microsoft.com          account.microsoft.com
-##  2:                https://www.paypal.com/                 www.paypal.com
-##  3: https://accounts.login.idm.telekom.com accounts.login.idm.telekom.com
-##  4:                   https://www.ebay.de/                    www.ebay.de
-##  5:           https://emea.focusvision.com           emea.focusvision.com
-##  6:           https://www.kleinanzeigen.de           www.kleinanzeigen.de
-##  7:                   https://www.bing.com                   www.bing.com
-##  8:                   https://www.bing.com                   www.bing.com
-##  9:                https://mail.google.com                mail.google.com
-## 10:                https://wetransfer.com/                 wetransfer.com
-##               domain
-##               &lt;char&gt;
-##  1:    microsoft.com
-##  2:       paypal.com
-##  3:      telekom.com
-##  4:          ebay.de
-##  5:  focusvision.com
-##  6: kleinanzeigen.de
-##  7:         bing.com
-##  8:         bing.com
-##  9:       google.com
-## 10:   wetransfer.com</code></pre>
+##                                     url                       host
+##                                  &lt;char&gt;                     &lt;char&gt;
+##  1:                https://chatgpt.com/                chatgpt.com
+##  2:       https://kunden.commerzbank.de      kunden.commerzbank.de
+##  3: https://global.americanexpress.com/ global.americanexpress.com
+##  4:            https://navigator.web.de           navigator.web.de
+##  5:               https://sb.ktrmr.com/               sb.ktrmr.com
+##  6:     https://www.innofact-umfrage.de    www.innofact-umfrage.de
+##  7:                 https://www.zdf.de/                 www.zdf.de
+##  8:       https://bap.navigator.gmx.net      bap.navigator.gmx.net
+##  9:         https://steamcommunity.com/         steamcommunity.com
+## 10:         https://nrg.decipherinc.com        nrg.decipherinc.com
+##                  domain
+##                  &lt;char&gt;
+##  1:         chatgpt.com
+##  2:      commerzbank.de
+##  3: americanexpress.com
+##  4:              web.de
+##  5:           ktrmr.com
+##  6: innofact-umfrage.de
+##  7:              zdf.de
+##  8:             gmx.net
+##  9:  steamcommunity.com
+## 10:     decipherinc.com</code></pre>
 <p>Note: webtrackR’s extract_domain() returns the ‘top private domain’,
 e.g., ‘mysite.blogspot.com’ not ‘blogspot.com’. For more information
 take a look at the <a href="https://gesistsa.github.io/webtrackR/reference/extract_domain.html#details">webtrackR
@@ -2690,7 +2663,7 @@ regex-classification needs improvement. Looks like we mis-classified
 some domains. Let’s do the news classification using the GOND-list and
 WebtrackR’s internal news list.</p>
 <pre class="r"><code># load webtrackR&#39;s internal news-list
-news_types = webtrackR::news_types
+news_types &lt;- webtrackR::news_types
 
 # load GOND news list
 gond &lt;- read.csv(here::here(&quot;data&quot;, &quot;GONDv3_domains.csv&quot;), sep=&#39;,&#39;) %&gt;% 
@@ -2698,7 +2671,7 @@ gond &lt;- read.csv(here::here(&quot;data&quot;, &quot;GONDv3_domains.csv&quot;)
   dplyr::select(domain)
 
 # flag news based on domain-specific mapping
-wtr_data = wtr_data %&gt;% 
+wtr_data &lt;- wtr_data %&gt;%
   mutate(is_news_gond = if_else(domain %in% gond$domain,1,0),
          is_news_webtrackR = if_else(domain %in% news_types$domain,1,0)) 
 
@@ -2786,7 +2759,7 @@ wtr_data %&gt;%
 ## 13:                   sparwelt.de
 ## 14:                  gameswelt.de</code></pre>
 <pre class="r"><code># to keep it simple, we just overwrite our News category with the GOND-classification
-wtr_data = wtr_data %&gt;% 
+wtr_data &lt;- wtr_data %&gt;%
   mutate(category_final = if_else(domain %in% gond$domain, &#39;News&#39; , wtr_data$category_regex))</code></pre>
 </div>
 </div>
@@ -2888,7 +2861,7 @@ overall — not necessarily allocate more of their browsing to news.</p>
   )
 
 # join the data
-df_ind = df_ind %&gt;% 
+df_ind &lt;- df_ind %&gt;%
   left_join(panelist_summary_wide)</code></pre>
 </div>
 <div id="linking-survey-data" class="section level2">
@@ -3189,15 +3162,14 @@ most-watched videos.</p>
 <h2>5. Survey correlation</h2>
 <p>Test if browsing behavior (total visits, category preferences)
 correlates with demographic variables from survey data.</p>
-<pre class="r"><code># Hint: First aggregate visits per panelist (sum_visits with visit_class),
-# then join with survey data (load_survey_data() + left_join by panelist_id),
+<pre class="r"><code># Hint: First aggregate visits per panelist, then join with survey data,
 # then compare groups (e.g., boxplot of news visits by education level)</code></pre>
 </div>
 <div id="sub-divide-paths" class="section level2">
 <h2>6. Sub-divide paths</h2>
 <p>Can you subdivide news visits into subcategories (politics, sports,
 culture) using the <code>path</code> column?</p>
-<pre class="r"><code># Hint: use `str_detect(path, &quot;politik|political&quot;)` patterns on the path component.</code></pre>
+<pre class="r"><code># Hint: use `str_detect(path, &quot;politik|politics&quot;)` patterns on the path component.</code></pre>
 </div>
 </div>
 <div id="further-resources" class="section level1">
@@ -3220,7 +3192,7 @@ Data</a></li>
 <h1>Reproducibility Information</h1>
 <p>This tutorial was developed and tested with the following system and
 package versions:</p>
-<pre><code>## Notebook built on: 2026-02-22 
+<pre><code>## Notebook built on: 2026-02-24 
 ## 
 ## System Information:
 ##   R version: 4.3.1 
@@ -3254,7 +3226,7 @@ Full Session Info (click to expand)
 ## LAPACK: /Library/Frameworks/R.framework/Versions/4.3-arm64/Resources/lib/libRlapack.dylib;  LAPACK version 3.11.0
 ## 
 ## locale:
-## [1] en_US.UTF-8/en_US.UTF-8/en_US.UTF-8/C/en_US.UTF-8/en_US.UTF-8
+## [1] C/en_US.UTF-8/C/C/C/C
 ## 
 ## time zone: Europe/Berlin
 ## tzcode source: internal
@@ -3277,15 +3249,14 @@ Full Session Info (click to expand)
 ## [16] jquerylib_0.1.4     cli_3.6.5           rlang_1.1.6        
 ## [19] crayon_1.5.3        triebeard_0.4.1     bit64_4.6.0-1      
 ## [22] withr_3.0.2         cachem_1.1.0        yaml_2.3.10        
-## [25] parallel_4.3.1      tools_4.3.1         tzdb_0.5.0         
+## [25] tools_4.3.1         parallel_4.3.1      tzdb_0.5.0         
 ## [28] fastmatch_1.1-6     vctrs_0.6.5         R6_2.6.1           
 ## [31] lifecycle_1.0.4     bit_4.6.0           vroom_1.6.5        
 ## [34] pkgconfig_2.0.3     pillar_1.11.0       bslib_0.9.0        
 ## [37] gtable_0.3.6        glue_1.8.0          data.table_1.18.2.1
 ## [40] Rcpp_1.1.0          xfun_0.52           tidyselect_1.2.1   
-## [43] rstudioapi_0.17.1   knitr_1.50          farver_2.1.2       
-## [46] htmltools_0.5.8.1   labeling_0.4.3      rmarkdown_2.29     
-## [49] compiler_4.3.1</code></pre>
+## [43] knitr_1.50          farver_2.1.2        htmltools_0.5.8.1  
+## [46] labeling_0.4.3      rmarkdown_2.29      compiler_4.3.1</code></pre>
 </details>
 <p><strong>Minimum Requirements:</strong></p>
 <ul>
